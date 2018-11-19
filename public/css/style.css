@@ -1,0 +1,138 @@
+html,
+body {
+    height: 100%;
+    width: 100%;
+}
+
+
+.navbar-nav {
+    margin-left: auto;
+    z-index: 99;
+    overflow-x: hidden;
+}
+
+.navbar-nav a {
+    text-decoration: none;
+    font-size: 20px;
+    display: block;
+    font-family: Cormorant Garamond, sans-serif;
+}
+
+
+.navbar-nav a:hover {
+}
+
+
+#form_renseignement {
+    display: flex;
+}
+
+
+#renseignement {
+    width: 90%;
+}
+
+#form_connexion { 
+    margin-left: 50px;
+    width: 50%;
+}
+
+
+#header-perso { 
+    background-image: url("../img/banniere.jpg");
+    background-repeat: no-repeat;
+    background-position: center;
+    margin-top: 50px;
+    height: 500px;
+    z-index: 2;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    box-shadow: 3px 3px 10px 5px #f1f1f1;
+}
+
+#header-perso3 { 
+    background-image: url("../img/banner2.png");
+    background-repeat: no-repeat;
+    margin-top: 50px;
+    height: 200px;
+    z-index: 2;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    box-shadow: 3px 3px 10px 5px #f1f1f1;
+}
+
+#connexion_id {
+    margin-top : -10px;
+    height: 50px;
+}
+
+
+#logo_text {
+    text-align: center;
+    font-size: 3em;
+    height: 500px;
+    width: 98%;
+    color : #ff3399;
+    margin-top: 95px;
+    margin-left: 7%;
+    box-shadow: 3px 3px 25px 5px #000;
+    font-family: Zilla Slab Highlight, sans-serif;
+}
+
+
+#search {
+    padding: 6px 8px 6px 16px;
+    text-decoration: none;
+    font-size: 20px;
+    color: black;
+    display: block;
+    font-family: Cormorant Garamond, sans-serif;
+}
+
+.btn-success { 
+    height: 20%;
+    margin-top: 30px;
+}
+
+#titre_principal {
+    font-family: Sail, sans-serif;
+    margin-top: 20px;
+}
+
+#photo_animal {
+    float: left;
+}
+
+.Liste_adoption {
+    display: flex;
+    flex-direction: column;
+    padding: 10px 10px 10px 10px;
+    margin-bottom: 100px;
+}
+
+.hr_liste {
+    height: 2px;
+    margin-left: 0;
+    color: #F00;
+    background-color: #ff8fc7;
+    border-radius: 500% 0% 500% 0%;
+    padding: 10px;
+    border: 0; 
+}
+
+#name_color {
+    height: 2px;
+    width: 20%;
+    margin-left: 0;
+    margin-top: -5px;
+    color: #F00;
+    background-color: #F00;
+    border-radius: 50%;
+    border: 0;
+}
+
+footer {
+    clear: both;
+}
