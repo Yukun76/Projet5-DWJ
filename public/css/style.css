@@ -6,7 +6,6 @@ body {
 
 
 .navbar-nav {
-    margin-left: auto;
     z-index: 99;
     overflow-x: hidden;
 }
@@ -29,6 +28,7 @@ body {
 
 
 #renseignement {
+    margin-left: auto;
     width: 90%;
 }
 
