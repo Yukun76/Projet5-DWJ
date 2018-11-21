@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Animals;
+use App\Entity\Article;
 use App\Form\AnimalType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Form\Forms;
@@ -28,8 +29,13 @@ class HomeController extends AbstractController
         $animals = new Animals();
         $form = $this->createForm(AnimalType::class, $animals);
 
+        $repo = $this->getDoctrine()->getRepository(Article::class);
+
+        $articles = $repo->findAll();
+
                 return $this->render('home/accueil.html.twig', [
-                    'form' => $form->createView()
+                    'form' => $form->createView(),
+                    'articles' => $articles
                 ]);
     }
 }

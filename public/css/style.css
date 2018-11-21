@@ -9,22 +9,41 @@ h1 {
     margin-top: 100px;
 }
 
+h2 {
+    font-family: Tangerine, sans-serif;
+    font-size: 3em;
+}
+
+p {
+    font-family: Lato, sans-serif;
+}
+
 
 .navbar-nav {
     z-index: 99;
     overflow-x: hidden;
 }
 
+.nav-item{
+    padding-right: 10px;
+}
+
+.form-inline {
+    margin-right: 100px;
+}
 
 .navbar-nav a {
     text-decoration: none;
     font-size: 20px;
     display: block;
     font-family: Cormorant Garamond, sans-serif;
+    border: solid 1px #f3f3f3;
+    border-radius: 25% 25% 25% 25%;
 }
 
 
 .navbar-nav a:hover {
+    background: #f3f3f3;
 }
 
 
@@ -38,9 +57,40 @@ h1 {
     width: 85%;
 }
 
+.hr_liste {
+    height: 2px;
+    margin-left: 0;
+    color: #F00;
+    background-color: #ff8fc7;
+    border-radius: 500% 0% 500% 0%;
+    padding: 10px;
+    border: 0; 
+}
+
+#titre_principal {
+    font-family: Sail, sans-serif;
+    margin-top: 20px;
+}
+
+
 #form_connexion { 
-    margin-left: 50px;
-    width: 50%;
+    width: 80%;
+}
+
+#form_registration {
+    width: 80%;
+}
+
+
+.title-id {
+    color: #046380;
+}
+
+.Liste_adoption {
+    display: flex;
+    flex-direction: column;
+    padding: 10px 10px 10px 10px;
+    margin-bottom: 100px;
 }
 
 
@@ -141,4 +191,5 @@ h1 {
 
 footer {
     clear: both;
+    margin-top: 100px;
 }

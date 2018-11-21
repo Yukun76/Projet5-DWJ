@@ -20,7 +20,6 @@
 					<div class="navbar-nav" id="renseignement">
 						<form id="form_renseignement" method="post" action="traitement.php">
 							{{ form_start(form) }}
-
 							{{ form_row(form.type, {
 								'attr':{
 									'placeholder' :"Choisissez le type"
@@ -36,7 +35,6 @@
 									'placeholder' :"Choisissez la région"
 								}})
 							}}&nbsp;
-
 							{{ form_end(form) }}
 						</form>
 						<button class="btn btn-success" type="submit" id="search">Lancer la recherche</button>
@@ -47,6 +45,18 @@
 	</div>
 {% endblock %}
 {% block body %}
+	<h1 id="titre_principal"> Adopter en un ! </h1>
+	<div class="Liste_adoption">
+		<article>
+			{% for article in articles %}
+				<hr class="hr_liste">
+				<h2>{{ article.title }}</h2>
+				<img src="{{ article.image }}" alt="photo animal">
+				<p>{{ article.content }}</p>
+				<a href="#" class="btn btn-primary">Lire La suite...</a>
+			{% endfor %}
+		</article>
+	</div>
 {% endblock %}
 {% block footer %}
 	<!-- Footer -->
