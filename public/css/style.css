@@ -4,11 +4,17 @@ body {
     width: 100%;
 }
 
+h1 {
+    font-family: Cormorant Garamond, sans-serif;
+    margin-top: 100px;
+}
+
 
 .navbar-nav {
     z-index: 99;
     overflow-x: hidden;
 }
+
 
 .navbar-nav a {
     text-decoration: none;
@@ -29,7 +35,7 @@ body {
 
 #renseignement {
     margin-left: auto;
-    width: 90%;
+    width: 85%;
 }
 
 #form_connexion { 

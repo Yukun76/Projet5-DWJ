@@ -1,82 +1,53 @@
 {% extends 'base.html.twig' %}
-
 {% block title %}Home : Adopter un animal de compagnie !{% endblock %}
-
 {% block head %}
-<div class="header banner" id="header-perso">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-12">
-                <p  id="logo_text"> Adopter un joyeux compagnon de vie.</p>
-            </div>
-        </div>
-    </div>
-</div>
-    <div class="barre_recherche">
-        <div class="container">
-            <nav class="navbar navbar-expand-lg" id="nav_admin">
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-                    <div class="navbar-nav" id="renseignement">
-                        <form id="form_renseignement" method="post" action="traitement.php">
-                            <p>
-                                <label for="type">Type</label><br />
-                                <select class= "form-control" name="type" id="type" required />
-                                    <option value=""></option>
-                                    <option value="chien">Chien</option>
-                                    <option value="chat">Chat</option>
-                                    <option value="autres-especes">Autres espèces</option>
-                                </select>
-                            </p>&nbsp;&nbsp;
-                            <p>
-                                <label for="sexe">Sexe</label><br />
-                                <select class= "form-control" name="sexe" id="sexe" required />
-                                    <option value=""></option>
-                                    <option value="male">Mâle</option>
-                                    <option value="femelle">Femelle</option>
-                                </select>
-                            </p>&nbsp;&nbsp;
-                            <p>
-                                <label for="région">Région</label><br />
-                                <select class= "form-control" name="région" id="région" width="10" required />
-                                    <option value=""></option>
-                                    <option value="auvergne-rhone-alpes">Auvergne-Rhône-Alpes</option>
-                                    <option value="bourgogne-franche-comte">Bourgogne-Franche-Comté</option>
-                                    <option value="bretagne ">Bretagne </option>
-                                    <option value="centre-val-de-loire ">Centre-Val de Loire</option>
-                                    <option value="grand-est">Grand Est : Alsace</option>
-                                    <option value="hauts-de-france">Hauts-de-France</option>
-                                    <option value="ile-de-france ">Île-de-France</option>
-                                    <option value="normandie">Normandie</option>
-                                    <option value="nouvelle-aquitaine">Nouvelle-Aquitaine</option>
-                                    <option value="occitanie">Occitanie : Languedoc-Roussillon-Midi-Pyrénées</option>
-                                    <option value="pays-de-la-loire">Pays de la Loire</option>
-                                    <option value="provence-alpes">Provence-Alpes-Côte d’Azur</option>
-                                </select>
-                            </p>&nbsp;&nbsp;
-                            <p>
-                            <label for="mots clés">Mots clés</label><br />
-                            <input class= "form-control" id="mot_clé" type="text" name="mot clé" />
-                            </p>&nbsp;&nbsp;
-                        </form>
-                        <button class="btn btn-success" type="submit" id="search">Lancer la recherche</button>
-                    </div>
-                </div>
-            </nav>
-        </div>
-    </div>
+	<div class="header banner" id="header-perso">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-12">
+					<p  id="logo_text"> Adopter un joyeux compagnon de vie.</p>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="barre_recherche">
+		<div class="container">
+			<nav class="navbar navbar-expand-lg" id="nav_admin">
+				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+				</button>
+				<div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+					<div class="navbar-nav" id="renseignement">
+						<form id="form_renseignement" method="post" action="traitement.php">
+							{{ form_start(form) }}
+
+							{{ form_row(form.type, {
+								'attr':{
+									'placeholder' :"Choisissez le type"
+								}})
+							}}&nbsp;
+							{{ form_row(form.sexe, {
+								'attr':{
+									'placeholder' :"Choisissez le sexe"
+								}})
+							}}&nbsp;
+							{{ form_row(form.region, {
+								'attr':{
+									'placeholder' :"Choisissez la région"
+								}})
+							}}&nbsp;
+
+							{{ form_end(form) }}
+						</form>
+						<button class="btn btn-success" type="submit" id="search">Lancer la recherche</button>
+					</div>
+				</div>
+			</nav>
+		</div>
+	</div>
 {% endblock %}
-
-
-
 {% block body %}
-
 {% endblock %}
-
-
-
 {% block footer %}
 	<!-- Footer -->
 	<footer class="page-footer font-small blue-grey lighten-5">
@@ -194,5 +165,4 @@
 		<!-- Copyright -->
 	</footer>
 	<!-- Footer -->
-
 {% endblock %}

@@ -2,9 +2,11 @@
 
 namespace App\Controller;
 
+use App\Entity\Animals;
+use App\Form\AnimalType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Form\Forms;
+use Symfony\Component\Routing\Annotation\Route;
 
 class HomeController extends AbstractController
 {
@@ -23,6 +25,11 @@ class HomeController extends AbstractController
      */
 
     public function accueil() {
-    	return $this->render('home/accueil.html.twig');
+        $animals = new Animals();
+        $form = $this->createForm(AnimalType::class, $animals);
+
+                return $this->render('home/accueil.html.twig', [
+                    'form' => $form->createView()
+                ]);
     }
 }

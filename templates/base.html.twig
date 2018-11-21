@@ -6,7 +6,7 @@
 		{% block stylesheets %}
 			<link href="https://fonts.googleapis.com/css?family=Cormorant+Garamond|Crimson+Text|Indie+Flower|Lato|Berkshire+Swash|Tangerine|Roboto|Roboto+Slab|Ubuntu|Sail|Zilla+Slab+Highlight" rel="stylesheet">
 			<link rel="stylesheet" href="https://bootswatch.com/4/litera/bootstrap.min.css" />
-			<link rel="stylesheet" type="text/css" href="../css/style.css" />	
+			<link rel="stylesheet" type="text/css" href="../css/style.css" />
 		{% endblock %}
 	</head>
 	<body>
@@ -15,43 +15,37 @@
 			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor03" aria-controls="navbarColor03" aria-expanded="false" aria-label="Toggle navigation">
 			<span class="navbar-toggler-icon"></span>
 			</button>
-			<div class="collapse navbar-collapse" id="navbarColor03">
-				<ul class="navbar-nav mr-auto">
+			<div class="collapse navbar-collapse justify-content-end" id="navbarColor03">
+				<ul class="navbar-nav">
+					<form class="form-inline my-2 my-lg-0">
+						<input class="form-control mr-sm-2" type="text" placeholder="Search">
+						<button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
+					</form>
 					{% if not app.user %}
-					<li class="nav-item">
-						<a class="nav-link" href="{{path('security_registration')}}">Register</a>
-					</li>
-					<li class="nav-item">
-						<a class="nav-link" href="{{path('login')}}">Login</a>
-					</li>
+						<li class="nav-item">
+							<a class="nav-link" href="{{path('security_registration')}}">Register</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" href="{{path('login')}}">Login</a>
+						</li>
 					{% else %}
-					<li class="nav-item">
-						<a class="nav-link" href="{{path('logout')}}">Logout</a>
-					</li>
+						<li class="nav-item">
+							<a class="nav-link" href="{{path('logout')}}">Logout</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" href="#">Mon compte</a>
+						</li>
 					{% endif %}
 				</ul>
-				<form class="form-inline my-2 my-lg-0">
-					<input class="form-control mr-sm-2" type="text" placeholder="Search">
-					<button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
-				</form>
 			</div>
 		</nav>
-
 		{% block head %}
-        {% endblock %}
-
-
+		{% endblock %}
 		<div class="container">
 			{% block body %}
-	            <div id="contenu">
-	                <?= $contenu ?>
-	            </div>
-	            <!-- #contenu -->
 			{% endblock %}
 		</div>
-
 		{% block footer %}{% endblock %}
-
 		{% block javascripts %}
 			<script src="Public/js/jquery.js"></script>
 			<script src="Public/js/bootstrap.min.js"></script>

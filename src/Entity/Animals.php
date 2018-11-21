@@ -18,6 +18,7 @@ class Animals
 
     /**
      * @ORM\Column(type="string", length=255)
+     * 
      */
     private $type;
 
