@@ -6,17 +6,16 @@ use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Validator\Constraints as Assert;
-use Symfony\Component\Security\Core\Validator\Constraints as SecurityAssert;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\UserRepository")
  * @UniqueEntity(
- *  fields= {"email"},
- *  message= "L'email indiqué est déjà utilisé"
+ *      fields= {"email"},
+ *      message= "L'email indiqué est déjà utilisé"
  *  )
  * @UniqueEntity(
- *  fields= {"username"},
- *  message= "Le pseudo est déjà utilisé"
+ *      fields= {"username"},
+ *      message= "Le pseudo est déjà utilisé"
  *  )
  */
 class User implements UserInterface
@@ -41,15 +40,25 @@ class User implements UserInterface
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Assert\Length(min="8", minMessage="Votre mot de passe doit faire minimum 8 caractères")
-     * @SecurityAssert\UserPassword(message = "Wrong value for your current password")
+     * @Assert\Length(min="8", max="4096", minMessage="Votre mot de passe doit faire minimum 8 caractères")
      */
     private $password;
 
     /**
      *@Assert\EqualTo(propertyPath="password", message="Vous n'avez pas tapé le même mot de passe")
      */
-    public $confirm_password;
+    private $repeatPassword;
+
+    /**
+     * @ORM\Column(type="array")
+     */
+    private $roles;
+
+
+    public function __construct()
+    {
+        $this->roles = array('ROLE_ADMIN');
+    }
 
     public function getId(): ?int
     {
@@ -80,6 +89,16 @@ class User implements UserInterface
         return $this;
     }
 
+    public function getRepeatPassword(): ?string
+    {
+        return $this->repeatPassword;
+    }
+
+    public function setRepeatPassword(string $password): self 
+    {
+        $this->repeatPassword = $password;
+    }
+
     public function getPassword(): ?string
     {
         return $this->password;
@@ -92,12 +111,15 @@ class User implements UserInterface
         return $this;
     }
 
-    public function eraseCredentials() {}
 
-    public function getSalt() {}
-
-    public function getRoles() {
-        return ['ROLE_USER'];
+    public function getSalt() {
+        return null;
     }
 
+    public function getRoles()
+    {
+        return $this->roles;
+    }
+
+    public function eraseCredentials() {}
 }

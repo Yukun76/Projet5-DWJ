@@ -1,4 +1,5 @@
 {% extends 'base.html.twig' %}
+{% block title %}PetAdopt' : Inscription{% endblock %}
 {% block head %}
 	<header class="header banner" id="header-perso3">
 		<div class="container">
@@ -14,10 +15,10 @@
 	<div id="form_registration">
 		<h1 class="title-id">Inscription</h1>
 		{{ form_start(form) }}
-		{{ form_row(form.username, {'Label': 'Name','attr':{'placeholder' :'Votre pseudo'}}) }}
+		{{ form_row(form.username, {'Label': 'name','attr':{'placeholder' :'Votre pseudo'}}) }}
 		{{ form_row(form.email, {'Label': 'email','attr':{'placeholder' :'Votre email'}}) }}
-		{{ form_row(form.password, {'Label': 'password','attr':{'placeholder' :'Votre mot de passe'}}) }}
-		{{ form_row(form.confirm_password, {'Label': 'confirm password','attr':{'placeholder' :'Confirmation du mot de passe'}}) }}
+		{{ form_row(form.password.first, {'attr':{'placeholder' :'Votre mot de passe'}}) }}
+		{{ form_row(form.password.second, {'attr':{'placeholder' :'Confirmation du mot de passe'}}) }}
 		<button type="submit" class="btn btn-success">Validez</button>
 		{{ form_end(form) }}
 	</div>

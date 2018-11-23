@@ -4,9 +4,16 @@
 		<meta charset="UTF-8">
 		<title>{% block title %}Welcome!{% endblock %}</title>
 		{% block stylesheets %}
+			<meta name="viewport" content="width=device-width, initial-scale=1">
+
+			<link rel="stylesheet" type="text/css" href="../css/style.css" />
 			<link href="https://fonts.googleapis.com/css?family=Cormorant+Garamond|Crimson+Text|Indie+Flower|Lato|Berkshire+Swash|Tangerine|Roboto|Roboto+Slab|Ubuntu|Sail|Zilla+Slab+Highlight" rel="stylesheet">
 			<link rel="stylesheet" href="https://bootswatch.com/4/litera/bootstrap.min.css" />
-			<link rel="stylesheet" type="text/css" href="../css/style.css" />
+			<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
+
+			<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+			<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+
 		{% endblock %}
 	</head>
 	<body>
@@ -23,17 +30,24 @@
 					</form>
 					{% if not app.user %}
 						<li class="nav-item">
-							<a class="nav-link" href="{{path('security_registration')}}">Register</a>
-						</li>
+							<a class="nav-link" href="{{path('registration')}}">Register</a>
+						</li>&nbsp;&nbsp;
 						<li class="nav-item">
 							<a class="nav-link"  href="{{path('login')}}">Login</a>
 						</li>
 					{% else %}
-						<li class="nav-item">
-							<a class="nav-link" href="{{path('logout')}}">Logout</a>
-						</li>
-						<li class="nav-item">
-							<a class="nav-link" href="#">Mon compte</a>
+						<li class="nav-item dropdown">
+							<a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Mon compte</a>
+							<div class="dropdown-menu" x-placement="bottom-start" style="position: absolute; will-change: transform; top: 0px; left: 0px; transform: translate3d(-25px, 48px, 0px);">
+								{% if is_granted('IS_AUTHENTICATED_FULLY') %}
+    								<a class="dropdown-item" href="{{path('admin')}}"><i class="fa fa-lock" aria-hidden="true"></i> Administration</a>
+								{% endif %}
+								<a class="dropdown-item" href="#"><i class="fa fa-user"></i> Mon profil</a>
+								<a class="dropdown-item" href="#"><i class="fa fa-heart" aria-hidden="true"></i> Mes favoris</a>
+								<a class="dropdown-item" href="#"><i class="fa fa-commenting" aria-hidden="true"></i> Messagerie</a>
+								<div class="dropdown-divider"></div>
+								<a class="dropdown-item" href="{{path('logout')}}"><i class="fa fa-sign-out" aria-hidden="true"></i> Logout</a>
+							</div>
 						</li>
 					{% endif %}
 				</ul>
@@ -41,15 +55,12 @@
 		</nav>
 		{% block head %}
 		{% endblock %}
-		<div class="container">
-			{% block body %}
-
-			{% endblock %}
-		</div>
+			<div class="container">
+				{% block body %}
+				{% endblock %}
+			</div>
 		{% block footer %}{% endblock %}
 		{% block javascripts %}
-			<script src="Public/js/jquery.js"></script>
-			<script src="Public/js/bootstrap.min.js"></script>
 		{% endblock %}
 	</body>
 </html>

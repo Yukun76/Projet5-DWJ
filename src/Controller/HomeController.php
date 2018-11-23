@@ -30,12 +30,11 @@ class HomeController extends AbstractController
         $form = $this->createForm(AnimalType::class, $animals);
 
         $repo = $this->getDoctrine()->getRepository(Article::class);
-
         $articles = $repo->findAll();
 
-                return $this->render('home/accueil.html.twig', [
-                    'form' => $form->createView(),
-                    'articles' => $articles
-                ]);
+        return $this->render('home/accueil.html.twig', [
+            'form' => $form->createView(),
+            'articles' => $articles
+        ]);
     }
 }

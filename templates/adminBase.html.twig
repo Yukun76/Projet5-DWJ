@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>{% block title %}Adminitration{% endblock %}</title>
+		{% block stylesheets %}
+			<link href="https://fonts.googleapis.com/css?family=Cormorant+Garamond|Crimson+Text|Indie+Flower|Lato|Berkshire+Swash|Tangerine|Roboto|Roboto+Slab|Ubuntu|Sail|Zilla+Slab+Highlight" rel="stylesheet">
+			<link rel="stylesheet" href="https://bootswatch.com/4/litera/bootstrap.min.css" />
+			<link rel="stylesheet" type="text/css" href="../css/style.css" />
+		{% endblock %}
+	</head>
+	<body>
+		{% block head %}
+		{% endblock %}
+		<div class="container">
+			{% block body %}
+			{% endblock %}
+		</div>
+		{% block footer %}{% endblock %}
+		{% block javascripts %}
+			<script src="public/js/jquery.js"></script>
+		{% endblock %}
+	</body>
+</html>
