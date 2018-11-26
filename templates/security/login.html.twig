@@ -12,24 +12,41 @@
 	</header>
 {% endblock %}
 {% block body %}
-<form method="post">
-	{% if error %}
-        <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
-    {% endif %}
-	<div id="form_connexion">
-		<h1 class="title-id">Connexion</h1>
-		<form action="{{ path('login') }}" method="post">
-			<div class="form-group">
-				<input value="{{ last_username }}" placeholder="Pseudo" required name="_username" type="text" class="form-control">
+	<div class="container">
+		<div class="card card-register mx-auto mt-5">
+			<div class="card-header">Login</div>
+			<div class="card-body">
+				<form method="post" action="{{path('login')}}">
+					<?php include('errors.php'); ?>
+					<div class="form-group">
+						<div class="form-row">
+							<div class="col-md-12">
+								<label for="exampleInputEmail1">Username</label>
+								<input value="{{ last_username }}" placeholder="Pseudo" required name="_username" type="text" class="form-control">
+							</div>
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="exampleInputPassword1">Password</label>
+						<input placeholder="Mot de passe" required name="_password" type="password" class="form-control" >
+					</div>
+					<div class="form-group">
+						<div class="form-row">
+							<div class="col-md-6">
+								<input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
+							</div>
+						</div>
+					</div>
+					<div class="form-check"> 
+            			 <label class="form-check-label"> 
+              			 <input class="form-check-input" type="checkbox"> Remember Password</label>
+          			</div><br/>
+					<button type="submit" class="btn btn-primary btn-block" name="reg_user">Connexion</button>
+				</form>
+				<div class="text-center">
+					<a class="d-block small mt-3" href="{{path('registration')}}">Register an Account</a>
+				</div>
 			</div>
-			<div class="form-group">
-				<input placeholder="Mot de passe" required name="_password" type="password" class="form-control" >
-			</div>
-			<input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
-			<div class="form-group">
-				<button type="submit" class="btn btn-success">Connexion</button>
-			</div>
-		</form>
+		</div>
 	</div>
-</form>
 {% endblock %}

@@ -1,6 +1,5 @@
 {% extends 'adminBase.html.twig' %}
 {% block title %}PetAdopt' : Administration{% endblock %}
-
 {% block body %}
- <h1> Panneau Admin </h1>
+	<h1> Bienvenue {{ app.user.getUsername() }}</h1>
 {% endblock %}

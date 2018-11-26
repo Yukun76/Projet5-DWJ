@@ -12,14 +12,40 @@
 	</header>
 {% endblock %}
 {% block body %}
-	<div id="form_registration">
-		<h1 class="title-id">Inscription</h1>
-		{{ form_start(form) }}
-		{{ form_row(form.username, {'Label': 'name','attr':{'placeholder' :'Votre pseudo'}}) }}
-		{{ form_row(form.email, {'Label': 'email','attr':{'placeholder' :'Votre email'}}) }}
-		{{ form_row(form.password.first, {'attr':{'placeholder' :'Votre mot de passe'}}) }}
-		{{ form_row(form.password.second, {'attr':{'placeholder' :'Confirmation du mot de passe'}}) }}
-		<button type="submit" class="btn btn-success">Validez</button>
-		{{ form_end(form) }}
+	<div class="container">
+		<div class="card card-register mx-auto mt-5">
+			<div class="card-header">Register an Account</div>
+			<div class="card-body">
+				<form method="post" action="{{path('registration')}}">
+					{{ form_start(form) }}
+					<?php include('errors.php'); ?>
+					<div class="form-group">
+						<div class="form-row">
+							<div class="col-md-12">
+								{{ form_row(form.username, {'Label': 'name','attr':{'placeholder' :'Votre pseudo'}}) }}
+							</div>
+						</div>
+						<div class="form-group">
+							{{ form_row(form.email, {'Label': 'email','attr':{'placeholder' :'Votre email'}}) }}
+						</div>
+					</div>
+					<div class="form-group">
+						<div class="form-row">
+							<div class="col-md-6">
+								{{ form_row(form.password.first, {'attr':{'placeholder' :'Votre mot de passe'}}) }}
+							</div>
+							<div class="col-md-6">
+								{{ form_row(form.password.second, {'attr':{'placeholder' :'Confirmation du mot de passe'}}) }}
+							</div>
+						</div>
+					</div>
+					<button type="submit" class="btn btn-primary btn-block" name="reg_user">Register</button>
+					{{ form_end(form) }}
+				</form>
+				<div class="text-center">
+					<a class="d-block small mt-3" href="{{path('login')}}">Login Page</a>
+				</div>
+			</div>
+		</div>
 	</div>
 {% endblock %}
