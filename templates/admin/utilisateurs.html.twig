@@ -1,10 +1,9 @@
 {% extends 'adminBase.html.twig' %}
 {% block title %}PetAdopt' : Administration{% endblock %}
 {% block body %}
-
-<h1> Liste des utilisateurs </h1>
-<br/>
-<table class="table">
+    <h1> Liste des utilisateurs </h1>
+    <br/>
+    <table class="table">
         <thead>
             <tr>
                 <th class="title-id">Pseudo</th>
@@ -13,20 +12,23 @@
             </tr>
         </thead>
         <tbody>
-               {% for user in users %}
-                    <tr>
-                        <td>
-                            {{ user.username }}
-                        </td>
-                        <td>
-  							{{ user.email }} 
-                        </td>
-                        <td>
-                        	<a class="btn btn-primary" href="#"><i class="fa fa-envelope" aria-hidden="true"></i> Message</a>
+            {% for user in users %}
+                <tr>
+                    <td>
+                        {{ user.username }}
+                    </td>
+                    <td>
+                        {{ user.email }}
+                    </td>
+                    <td>
+                        {% if user.id == 1 %}
+                        {% else %}
+                            <a class="btn btn-primary" href="#"><i class="fa fa-envelope" aria-hidden="true"></i> Message</a>
                             <a href="#" data-toggle="modal" data-target="#myModal" class="btn btn-danger" id="del-billet" data-billet-title="" data-modal-confirm-url=""><i class="fa fa-trash" aria-hidden="true"></i> Supprimer</a>
-                        </td>
-                    </tr>
-                {% endfor %}
+                        {% endif %}
+                    </td>
+                </tr>
+            {% endfor %}
         </tbody>
     </table>
 {% endblock %}

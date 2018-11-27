@@ -3,11 +3,13 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\ORM\Mapping\JoinColumn;
+use Doctrine\ORM\Mapping\OneToOne;
 
 /**
- * @ORM\Entity(repositoryClass="App\Repository\ArticleRepository")
+ * @ORM\Entity(repositoryClass="App\Repository\AdRepository")
  */
-class Article
+class Ad
 {
     /**
      * @ORM\Id()
@@ -15,6 +17,7 @@ class Article
      * @ORM\Column(type="integer")
      */
     private $id;
+
 
     /**
      * @ORM\Column(type="string", length=255)
@@ -35,6 +38,13 @@ class Article
      * @ORM\Column(type="datetime")
      */
     private $createdAt;
+
+    /**
+     * One Ad has One Animal.
+     * @OneToOne(targetEntity="Animal", inversedBy="ad")
+     * @JoinColumn(name="animal_id", referencedColumnName="id")
+     */
+    private $animal;
 
     
 

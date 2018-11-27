@@ -2,25 +2,25 @@
 
 namespace App\Repository;
 
-use App\Entity\Article;
+use App\Entity\Ad;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Symfony\Bridge\Doctrine\RegistryInterface;
 
 /**
- * @method Article|null find($id, $lockMode = null, $lockVersion = null)
- * @method Article|null findOneBy(array $criteria, array $orderBy = null)
- * @method Article[]    findAll()
- * @method Article[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
+ * @method Ad|null find($id, $lockMode = null, $lockVersion = null)
+ * @method Ad|null findOneBy(array $criteria, array $orderBy = null)
+ * @method Ad[]    findAll()
+ * @method Ad[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
  */
-class ArticleRepository extends ServiceEntityRepository
+class AdRepository extends ServiceEntityRepository
 {
     public function __construct(RegistryInterface $registry)
     {
-        parent::__construct($registry, Article::class);
+        parent::__construct($registry, Ad::class);
     }
 
     // /**
-    //  * @return Article[] Returns an array of Article objects
+    //  * @return Ad[] Returns an array of Ad objects
     //  */
     /*
     public function findByExampleField($value)
@@ -37,7 +37,7 @@ class ArticleRepository extends ServiceEntityRepository
     */
 
     /*
-    public function findOneBySomeField($value): ?Article
+    public function findOneBySomeField($value): ?Ad
     {
         return $this->createQueryBuilder('a')
             ->andWhere('a.exampleField = :val')

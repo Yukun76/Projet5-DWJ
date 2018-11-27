@@ -3,11 +3,13 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\ORM\Mapping\JoinColumn;
+use Doctrine\ORM\Mapping\OneToOne;
 
 /**
- * @ORM\Entity(repositoryClass="App\Repository\AnimalsRepository")
+ * @ORM\Entity(repositoryClass="App\Repository\AnimalRepository")
  */
-class Animals
+class Animal
 {
     /**
      * @ORM\Id()
@@ -15,6 +17,7 @@ class Animals
      * @ORM\Column(type="integer")
      */
     private $id;
+
 
     /**
      * @ORM\Column(type="string", length=255)
@@ -30,14 +33,28 @@ class Animals
     /**
      * @ORM\Column(type="string", length=255)
      */
+    private $name;
+
+    /**
+     * One Animal has One Ad.
+     * @OneToOne(targetEntity="Ad", mappedBy="animal")
+     */
+    private $ad;
+
+    /**
+     * One Animal has One Region.
+     * @OneToOne(targetEntity="Region")
+     * @JoinColumn(name="region_id", referencedColumnName="id")
+     */
     private $region;
 
-    public function getId(): ?int
+
+    public function getId(): int
     {
         return $this->id;
     }
 
-    public function getType(): ?string
+    public function getType(): string
     {
         return $this->type;
     }
@@ -49,7 +66,7 @@ class Animals
         return $this;
     }
 
-    public function getSexe(): ?string
+    public function getSexe(): string
     {
         return $this->sexe;
     }
@@ -61,14 +78,15 @@ class Animals
         return $this;
     }
 
-    public function getRegion(): ?string
+
+    public function getName(): string
     {
-        return $this->region;
+        return $this->name;
     }
 
-    public function setRegion(string $region): self
+    public function setName(string $name): self
     {
-        $this->region = $region;
+        $this->name = $name;
 
         return $this;
     }

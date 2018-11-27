@@ -187,9 +187,19 @@ p {
     display: flex;
 }
 
+#form_renseignement .form-group {
+    padding-right: 15px;
+}
+
+#animal_save {
+    height: 50px;
+    margin-top: 25px;
+}
+
+
 
 #renseignement {
-    margin-left: 17%;
+    margin-left: 15%;
     width: 100%;
 }
 

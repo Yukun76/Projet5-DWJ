@@ -2,25 +2,25 @@
 
 namespace App\Repository;
 
-use App\Entity\Animals;
+use App\Entity\Animal;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Symfony\Bridge\Doctrine\RegistryInterface;
 
 /**
- * @method Animals|null find($id, $lockMode = null, $lockVersion = null)
- * @method Animals|null findOneBy(array $criteria, array $orderBy = null)
- * @method Animals[]    findAll()
- * @method Animals[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
+ * @method Animal|null find($id, $lockMode = null, $lockVersion = null)
+ * @method Animal|null findOneBy(array $criteria, array $orderBy = null)
+ * @method Animal[]    findAll()
+ * @method Animal[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
  */
-class AnimalsRepository extends ServiceEntityRepository
+class AnimalRepository extends ServiceEntityRepository
 {
     public function __construct(RegistryInterface $registry)
     {
-        parent::__construct($registry, Animals::class);
+        parent::__construct($registry, Animal::class);
     }
 
     // /**
-    //  * @return Animals[] Returns an array of Animals objects
+    //  * @return Animal[] Returns an array of Animal objects
     //  */
     /*
     public function findByExampleField($value)
@@ -37,7 +37,7 @@ class AnimalsRepository extends ServiceEntityRepository
     */
 
     /*
-    public function findOneBySomeField($value): ?Animals
+    public function findOneBySomeField($value): ?Animal
     {
         return $this->createQueryBuilder('a')
             ->andWhere('a.exampleField = :val')

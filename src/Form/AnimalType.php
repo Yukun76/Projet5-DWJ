@@ -2,9 +2,10 @@
 
 namespace App\Form;
 
-use App\Entity\Animals;
+use App\Entity\Animal;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -13,23 +14,23 @@ class AnimalType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder->add('type', ChoiceType::class, array(
+            'required' => false,
             'choices' => array(
-                '' => 'placeholder',
                 'Chien' => 'chien',
                 'Chat' => 'chat',
                 'Autres espèces' => 'autre',
             ),
         ))
                 ->add('sexe', ChoiceType::class, array(
+            'required' => false,
             'choices' => array(
-                '' => 'placeholder',
                 'Mâle' => 'm',
                 'Femelle' => 'f',
             ),
         ))
                 ->add('region', ChoiceType::class, array(
+            'required' => false,
             'choices' => array(
-                '' => 'placeholder',
                 'Auvergne-Rhône-Alpes' => 'ara',
                 'Bourgogne-Franche-Comté' => 'bfc',
                 'Bretagne'   => 'bre',
@@ -44,13 +45,20 @@ class AnimalType extends AbstractType
                 'Pays de la loire' => 'pdl',
                 'Provence-Alpes-Côte d’Azur' => 'pac',
             ),
-        ));
+        ))
+                ->add('save', SubmitType::class, array(
+                    'label' => 'Lancer la recherche',
+                    'attr' => ['class' => 'btn-success']
+                ))
+
+        ;
     }
 
-    public function configureOptions(OptionsResolver $resolver)
+ /*  public function configureOptions(OptionsResolver $resolver)
     {
-        $resolver->setDefaults([
-            'data_class' => Animals::class,
+       $resolver->setDefaults([
+           'data_class' => Animals::class,
         ]);
     }
+ */ 
 }

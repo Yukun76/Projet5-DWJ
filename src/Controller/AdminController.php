@@ -2,7 +2,7 @@
 
 namespace App\Controller;
 
-use App\Entity\Article;
+use App\Entity\Ad;
 use App\Entity\User;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -37,11 +37,11 @@ class AdminController extends AbstractController
      */
     public function moderation()
     {
-        $repo = $this->getDoctrine()->getRepository(Article::class);
-        $articles = $repo->findAll();
+        $repo = $this->getDoctrine()->getRepository(Ad::class);
+        $ads = $repo->findAll();
 
         return $this->render('admin/moderation.html.twig', [
-            'articles' => $articles
+            'ads' => $ads
         ]);
     }
 

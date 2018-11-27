@@ -15,16 +15,16 @@
             </tr>
         </thead>
         <tbody>
-               {% for article in articles %}
+               {% for ad in ads %}
                     <tr>
                     	<td>
-                            <img src="{{ article.image }}" alt="photo animal" style="width: 50%;">
+                            <img src="{{ ad.image }}" alt="photo animal" style="width: 50%;">
                         </td>
                         <td>
-                            {{ article.title }}
+                            {{ ad.title }}
                         </td>
                         <td>
-  							{{ article.content }} 
+  							{{ ad.content }} 
                         </td>
                         <td>
                             <a href="#" data-toggle="modal" data-target="#myModal" class="btn btn-danger" id="del-billet" data-billet-title="" data-modal-confirm-url=""><i class="fa fa-trash" aria-hidden="true"></i> Supprimer</a>

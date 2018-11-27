@@ -2,8 +2,8 @@
 
 namespace App\Controller;
 
-use App\Entity\Animals;
-use App\Entity\Article;
+use App\Entity\Animal;
+use App\Entity\Ad;
 use App\Form\AnimalType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Form\Forms;
@@ -24,17 +24,15 @@ class HomeController extends AbstractController
     /**
      *   @Route("/", name="accueil")
      */
-
     public function accueil() {
-        $animals = new Animals();
-        $form = $this->createForm(AnimalType::class, $animals);
+        $form = $this->createForm(AnimalType::class);
 
-        $repo = $this->getDoctrine()->getRepository(Article::class);
-        $articles = $repo->findAll();
+        $repo = $this->getDoctrine()->getRepository(Ad::class);
+        $ads = $repo->findAll();
 
         return $this->render('home/accueil.html.twig', [
             'form' => $form->createView(),
-            'articles' => $articles
+            'ads' => $ads
         ]);
     }
 }

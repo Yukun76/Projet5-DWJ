@@ -13,36 +13,14 @@
 	<div class="barre_recherche">
 		<div class="container">
 			<nav class="navbar navbar-expand-lg" id="nav_admin">
-				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-				<span class="navbar-toggler-icon"></span>
-				</button>
-				<div id="navbarNavAltMarkup">
-					<div class="navbar-nav" id="renseignement">
-						<form id="form_renseignement" method="post" action="traitement.php">
-							{{ form_start(form) }}
-							
-							{{ form_row(form.type, {
-								'attr':{
-									'placeholder' :"Choisissez le type"
-								}})
-							}}&nbsp;
-
-							{{ form_row(form.sexe, {
-								'attr':{
-									'placeholder' :"Choisissez le sexe"
-								}})
-							}}&nbsp;
-
-							{{ form_row(form.region, {
-								'attr':{
-									'placeholder' :"Choisissez la région"
-								}})
-							}}&nbsp;
-
-							{{ form_end(form) }}
-						</form>
-						<button class="btn btn-success" type="submit" id="search">Lancer la recherche</button>
-					</div>
+				<div class="navbar-nav" id="renseignement">
+					<form id="form_renseignement" method="get" action="">
+						{{ form_start(form) }}							
+						{{ form_row(form.type)}}
+						{{ form_row(form.sexe) }}
+						{{ form_row(form.region) }}
+						{{ form_end(form) }}
+					</form>					
 				</div>
 			</nav>
 		</div>
@@ -51,20 +29,20 @@
 {% block body %}
 	<h1 id="titre_principal"> Adopter en un ! </h1>
 	<div class="Liste_adoption">
-		<article>
-			{% for article in articles %}
+		<ad>
+			{% for ad in ads %}
 				<hr class="hr_liste">
-				<h2>{{ article.title }}</h2>
+				<h2>{{ ad.title }}</h2>
 				<div class="metadata">	
-					Publié le {{ article.createdAt | date('d/m/Y') }} à {{ article.createdAt | date('H:i') }}
+					Publié le {{ ad.createdAt | date('d/m/Y') }} à {{ ad.createdAt | date('H:i') }}
 				</div>
 				<div class="content">
-					<img src="{{ article.image }}" alt="photo animal">
-					{{ article.content }}
+					<img src="{{ ad.image }}" alt="photo animal">
+					{{ ad.content }}
 					<a href="#" class="btn btn-primary">Lire La suite...</a>
 				</div>
 			{% endfor %}
-		</article>
+		</ad>
 	</div>
 {% endblock %}
 {% block footer %}
