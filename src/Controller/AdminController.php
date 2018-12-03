@@ -4,9 +4,10 @@ namespace App\Controller;
 
 use App\Entity\Ad;
 use App\Entity\User;
+use Symfony\Component\Routing\Annotation\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\Routing\Annotation\Route;
+
 
  /**
   * Require ROLE_ADMIN for *every* controller method in this class.

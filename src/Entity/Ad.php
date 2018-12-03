@@ -100,4 +100,17 @@ class Ad
 
         return $this;
     }
+
+
+    public function getAnimal(): string
+    {
+        return $this->animal;
+    }
+
+    public function setAnimal(): self
+    {
+        $this->animal = $animal;
+
+        return $this;
+    }
 }

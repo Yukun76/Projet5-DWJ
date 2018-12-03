@@ -2,8 +2,10 @@
 
 namespace App\Entity;
 
+use App\Entity\Region;
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\ORM\Mapping\JoinColumn;
+use Doctrine\ORM\Mapping\ManyToOne;
 use Doctrine\ORM\Mapping\OneToOne;
 
 /**
@@ -42,19 +44,17 @@ class Animal
     private $ad;
 
     /**
-     * One Animal has One Region.
-     * @OneToOne(targetEntity="Region")
+     * @ManyToOne(targetEntity="Region", inversedBy="animal")
      * @JoinColumn(name="region_id", referencedColumnName="id")
      */
     private $region;
-
 
     public function getId(): int
     {
         return $this->id;
     }
 
-    public function getType(): string
+    public function getType(): ?string
     {
         return $this->type;
     }
@@ -66,7 +66,7 @@ class Animal
         return $this;
     }
 
-    public function getSexe(): string
+    public function getSexe(): ?string
     {
         return $this->sexe;
     }
@@ -79,7 +79,7 @@ class Animal
     }
 
 
-    public function getName(): string
+    public function getName(): ?string
     {
         return $this->name;
     }
@@ -87,6 +87,31 @@ class Animal
     public function setName(string $name): self
     {
         $this->name = $name;
+
+        return $this;
+    }
+
+
+    public function getAd(): string
+    {
+        return $this->ad;
+    }
+
+    public function setAd(string $ad): self
+    {
+        $this->ad = $ad;
+
+        return $this;
+    }
+
+    public function getRegion(): Region
+    {
+        return $this->region;
+    }
+
+    public function setRegion(Region $region): self
+    {
+        $this->region = $region;
 
         return $this;
     }

@@ -3,10 +3,10 @@
 namespace App\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\ORM\Mapping\OneToMany;
 use Doctrine\ORM\Mapping as ORM;
-use Doctrine\ORM\Mapping\JoinColumn;
-use Doctrine\ORM\Mapping\JoinTable;
-use Doctrine\ORM\Mapping\ManyToMany;
+use App\Entity\Animal;
+
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\RegionRepository")
@@ -25,21 +25,12 @@ class Region
      */
     private $name;
 
-
     /**
-     * Many Region have Many Animal.
-     * @ManyToMany(targetEntity="Animal")
-     * @JoinTable(name="region_animal",
-     *      joinColumns={@JoinColumn(name="region_id", referencedColumnName="id")},
-     *      inverseJoinColumns={@JoinColumn(name="animal_id", referencedColumnName="id", unique=true)}
-     *      )
+     * One Region has Many Animal.
+     * @OneToMany(targetEntity="Animal", mappedBy="region")
      */
     private $animal;
 
-    public function __construct()
-    {
-        $this->animal = new \Doctrine\Common\Collections\ArrayCollection();
-    }
 
     public function getId(): ?int
     {
@@ -54,6 +45,19 @@ class Region
     public function setName(string $name): self
     {
         $this->name = $name;
+
+        return $this;
+    }
+
+
+    public function getAnimal(): string
+    {
+        return $this->animal;
+    }
+
+    public function setAnimal(string $name): self
+    {
+        $this->animal = $animal;
 
         return $this;
     }

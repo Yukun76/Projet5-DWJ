@@ -1,19 +1,22 @@
 <?php
 
 namespace App\Form;
-
 use App\Entity\Animal;
 use Symfony\Component\Form\AbstractType;
-use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
-use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 
 class AnimalType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('type', ChoiceType::class, array(
+        $builder
+                ->setAction('search')
+                ->setMethod('GET')
+                ->add('type', ChoiceType::class, array(
+
             'required' => false,
             'choices' => array(
                 'Chien' => 'chien',
@@ -37,7 +40,7 @@ class AnimalType extends AbstractType
                 'Centre-Val de Loire' => 'cvl',
                 'Corse' => 'cor',
                 'Grand Est : Alsace' => 'ges',
-                'Hauts-de-France' => 'hdf',
+                'Hauts-de-France' => '1',
                 'Île-de-France' => 'idf',
                 'Normandie' => 'nor',
                 'Nouvelle-Aquitain' => 'naq',
@@ -54,11 +57,12 @@ class AnimalType extends AbstractType
         ;
     }
 
- /*  public function configureOptions(OptionsResolver $resolver)
+
+  /*  public function configureOptions(OptionsResolver $resolver)
     {
        $resolver->setDefaults([
-           'data_class' => Animals::class,
+           'data_class' => Animal::class,
         ]);
     }
- */ 
+ */
 }
