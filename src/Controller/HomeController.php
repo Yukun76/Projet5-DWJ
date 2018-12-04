@@ -3,7 +3,7 @@
 namespace App\Controller;
 use App\Entity\Ad;
 use App\Entity\Animal;
-use App\Form\AnimalType;
+use App\Form\SearchAnimalType;
 use Symfony\Component\Form\Forms;
 use Symfony\Component\HttpFoundation\Request;
 use Doctrine\Common\Persistence\ObjectManager;
@@ -18,7 +18,7 @@ class HomeController extends AbstractController
     public function search(request $request)
     {
         $searchAnimal = $request->get('animal');
-        $search = $this->createForm(AnimalType::class, $searchAnimal);  
+        $search = $this->createForm(SearchAnimalType::class, $searchAnimal);  
 
         // $repo = $this->getDoctrine()->getRepository(Ad::class);
        // $ads = $repo->findAll();
@@ -55,7 +55,7 @@ class HomeController extends AbstractController
      */
     public function accueil(request $request)
     {
-        $search = $this->createForm(AnimalType::class);        
+        $search = $this->createForm(SearchAnimalType::class);        
         $repo = $this->getDoctrine()->getRepository(Ad::class);
         $ads = $repo->findAll();
 
@@ -68,6 +68,20 @@ class HomeController extends AbstractController
         return $this->render('home/accueil.html.twig', [
             'search' => $search->createView(),
             'ads' => $ads            
+        ]);
+    }
+
+    /**
+     * @Route("/ad/{id}", name="ad_show")
+     */
+    public function show($id)
+    {
+        $repo = $this->getDoctrine()->getRepository(ad::Class);
+
+        $article = $repo->find($id);
+
+        return $this->render('ad/show.html.twig',[
+            'article' => $article
         ]);
     }
 }

@@ -33,18 +33,6 @@ class AdminController extends AbstractController
         return $this->render('admin/admin.html.twig');
     }
 
-    /**
-     * @Route("/moderation", name="moderation")
-     */
-    public function moderation()
-    {
-        $repo = $this->getDoctrine()->getRepository(Ad::class);
-        $ads = $repo->findAll();
-
-        return $this->render('admin/moderation.html.twig', [
-            'ads' => $ads
-        ]);
-    }
 
     /**
      * @Route("/utilisateurs", name="utilisateurs")
@@ -58,6 +46,19 @@ class AdminController extends AbstractController
 
         return $this->render('admin/utilisateurs.html.twig', [
             'users' => $users
+        ]);
+    }
+
+    /**
+     * @Route("/article", name="article")
+     */
+    public function article() 
+    {    
+        $repo = $this->getDoctrine()->getRepository(Ad::class);
+        $ads = $repo->findAll();  
+
+        return $this->render('admin/article.html.twig', [
+            'ads' => $ads            
         ]);
     }
 
