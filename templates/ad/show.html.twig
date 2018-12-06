@@ -2,15 +2,35 @@
 {% block title %}PetAdopt' : Home - Adopter un animal de compagnie !{% endblock %}
 {% block body %}<br/><br/><br/><br/>
 	<article>
-		<h2>{{ article.title }}</h2>
-		<div class="metadata">Ecrit le {{ article.createdAt | date('d/m/Y') }} à {{ article.createdAt | date('H:i')}} </div>
-		<div class="content">
-			<img src="{{ article.image }}" alt=""></img>
-			{{ article.content | raw }}
+		<div class="container text-center text-md-left mt-5">
+			<img  class="img-thumbnail" id="show_image" src="{{ annonce.image }}" alt=""></img>
 		</div>
-
-
+		<div class="card-header" id="title_show">
+			<h3>{{ annonce.title }}</h3>
+			<div class="metadata">Ecrit le {{ annonce.createdAt | date('d/m/Y') }} à {{ annonce.createdAt | date('H:i')}}</div>
+		</div><br/>
+		<div class="card bg-info text-white">
+			<div class="card-body">
+				<h2> Information </h2>
+				<p>Nom : {{ annonce.animal.name }}</p>
+				{% if annonce.animal.sexe == 'f' %}
+				<p>Sexe: Femelle</p>
+				{% else %}
+				<p>Sexe: Mâle</p>
+				{% endif %}
+				<p>Lieu pour adoption: {{ annonce.animal.region }}</p>
+			</div>
+		</div><br/>
+		<div class="card bg-success text-white">
+			<div class="card-body">
+				<h2> Description </h2>
+				{{ annonce.content | raw }}
+			</div>
+		</div><br/>
+		<button class="btn btn-info">Réserver</button>
+		<button class="btn btn-info">En savoir plus</button>
 	</article>
 {% endblock %}
 {% block footer %}
 {% endblock %}
+

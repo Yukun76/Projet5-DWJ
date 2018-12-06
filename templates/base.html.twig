@@ -14,7 +14,8 @@
 			<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 		{% endblock %}
 	</head>
-	{% block head %}{% endblock %}
+	{% block head %}
+	{% endblock %}
 	<body>
 		<nav class="navbar navbar-expand-lg navbar navbar-light bg-light fixed-top" id="nav_admin">
 			<a class="navbar-brand" href="/">PetAdopt'</a>
@@ -29,14 +30,14 @@
 					</form>
 					{% if not app.user %}
 						<li class="nav-item">
-							<a class="nav-link"  href="{{path('login')}}">Login</a>
+							<a class="nav-link"  href="{{ path('login') }}">Login</a>
 						</li>
 					{% else %}
 						<li class="nav-item dropdown">
 							<a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Mon compte</a>
 							<div class="dropdown-menu" x-placement="bottom-start" style="position: absolute; will-change: transform; top: 0px; left: 0px; transform: translate3d(-25px, 48px, 0px);">
 								{% if is_granted('IS_AUTHENTICATED_FULLY') %}
-									<a class="dropdown-item" href="{{path('admin')}}"><i class="fa fa-lock" aria-hidden="true"></i> Administration</a>
+									<a class="dropdown-item" href="{{ path('admin') }}"><i class="fa fa-lock" aria-hidden="true"></i> Administration</a>
 								{% endif %}
 								<a class="dropdown-item" href="#"><i class="fa fa-user"></i> Mon profil</a>
 								<a class="dropdown-item" href="#"><i class="fa fa-heart" aria-hidden="true"></i> Mes favoris</a>

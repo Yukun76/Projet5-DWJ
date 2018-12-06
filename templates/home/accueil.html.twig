@@ -36,10 +36,10 @@
 				<div class="metadata">	
 					Publié le {{ ad.createdAt | date('d/m/Y') }} à {{ ad.createdAt | date('H:i') }}
 				</div>
-				<div class="content" id="imageSize">
-					<img src="{{ ad.image }}" alt="photo animal">
+				<div class="container" id="imageSize">
+					<img  class="img-thumbnail" width="304" height="236" src="{{ ad.image }}" alt="photo animal">
 					{{ ad.content }}
-					<a href="#" class="btn btn-primary">Lire La suite...</a>
+					<a href="{{path('ad_show', { 'id': ad.id})}}" class="btn btn-link">[...]</a>
 				</div>
 			{% endfor %}
 		</article>

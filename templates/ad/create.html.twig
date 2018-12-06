@@ -1,0 +1,34 @@
+{% extends 'base.html.twig' %}
+{% form_theme formAd 'bootstrap_4_layout.html.twig'%}
+
+{% block title %}PetAdopt' : Ajout/Modification d'une annonce !{% endblock %}
+{% block body %}<br/><br/><br/><br/>
+
+	{% if edit %}
+		<h2> Modification de l'annonce </h2>
+	{% else %}
+		<h2> Création d'une annonce </h2>
+	{% endif %}
+	<br/>
+	{{ form_start(formAd) }}
+
+	{{ form_row(formAd.animal) }}
+	<br/>
+	{{ form_row(formAd.title, {'attr' : {'placeholder' : "Titre de l'annonce"}}) }}
+	{{ form_row(formAd.content, {'attr' : {'placeholder' : "Contenu de l'annonce"}}) }}
+	{{ form_row(formAd.image, {'attr' : {'placeholder' : "URL de l'image"}}) }}
+	
+
+	<button type="submit" class="btn btn-success">
+		{% if edit %}
+			Modifier
+		{% else %}
+			Ajouter l'annonce
+		{% endif %}
+	</button>
+
+	{{ form_end(formAd) }}
+
+{% endblock %}
+{% block footer %}
+{% endblock %}

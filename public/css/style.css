@@ -29,7 +29,6 @@ td img {
     width: 50%;
 }
 
-
 .navbar-nav {
     z-index: 999;
 }
@@ -215,10 +214,6 @@ td img {
     border: 0; 
 }
 
-#imageSize img {
-    width: 300px;
-    height: 200px;
-}
 
 #titre_principal {
     font-family: Sail, sans-serif;
@@ -369,6 +364,26 @@ tbody tr {
 }
 
 #td_content {
+    width: 100%;
+}
+
+#show_image {
+    width: 600px;
+    height: 100%;
+    float: right;
+    margin-top: 140px;
+    margin-left: 2%;
+    margin-right: auto;
+    display: block;
+
+}
+
+#animal_information_show {
+    margin-top: 20px;
+}
+
+#title_show {
+    margin-top: 100px;
     width: 100%;
 }
 

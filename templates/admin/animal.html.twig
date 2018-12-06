@@ -1,0 +1,87 @@
+{% extends 'adminBase.html.twig' %}
+
+
+{% block title %}PetAdopt' : Home - Adopter un animal de compagnie !{% endblock %}
+{% block body %}
+
+ <h1> Liste des animaux à adopter </h1>
+    <p><a href="{{ path('pet_new') }}" class="btn btn-success" id="btn-success">Ajouter</a></p>
+    <table class="table">
+        <thead>
+            <tr>
+                <th class="title-id">Nom</th>
+                <th class="title-id">Type</th>
+                <th class="title-id">Sexe</th>
+                <th class="title-id">Region</th>
+                <th class="title-id">Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for animal in animals %}
+                    <tr>  
+                        <td>
+                            {{ animal.name }}                 
+                        </td>                      
+                        <td>
+                            {{ animal.type }}                 
+                        </td>
+                        <td>
+                            {% if animal.sexe == 'f' %}
+                                Femelle 
+                            {% else %}
+                                Male
+                            {% endif %}              
+                        </td>
+                        <td>
+                            {{ animal.region.name }}
+                        </td>
+                        <td>
+                            <a class="btn btn-primary" href="{{path('pet_edit', { 'id': animal.id})}}">Editer</a>
+                            <a href="#" data-toggle="modal" data-target="#myModal" class="btn btn-danger" id="del-billet" data-billet-title="" data-modal-confirm-url="{{path('del_pet', { 'id': animal.id})}}">Supprimer</a>
+                        </td>
+                    </tr>
+                {% endfor %}
+ 
+        </tbody>
+    </table>
+{% endblock %}
+{% block footer %}
+    <!-- Modal -->
+    <div class="modal fade" id="myModal" role="dialog">
+        <div class="modal-dialog">
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3>Demande de confirmation</h3>
+                    <a href="#" data-dismiss="modal" aria-hidden="true" class="close">×</a>
+                </div>
+                <div class="modal-body">
+                    <p>Etes-vous sur de vouloir supprimer l'animal concerné ?</p>
+                </div>
+                <div class="modal-footer">
+                    <a href="" id="btnYes" class="btn btn-default">Oui, je confirme</a>
+                    <a href="#" data-dismiss="modal" aria-hidden="true" class="btn btn-secondary">Non, j'annule</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(function(){
+        $modal = $('.modal');
+        $('a.btn-danger').on('click',function(e){
+            e.preventDefault();
+            $modal.find('a#btnYes').attr('href',$(this).data('modalConfirmUrl'));
+            $modal.find('.modal-body p').text("Êtes-vous sûr de vouloir supprimer l'animal" + $(this).data('billetTitle'));
+            $modal.modal("show");
+        })
+    });
+    
+    $(document).ready(function(){
+        $('a#btnYes').click(function(){
+            $('.alert').show()
+        })
+    });
+</script>
+{% endblock %}

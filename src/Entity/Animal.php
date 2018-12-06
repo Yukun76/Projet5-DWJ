@@ -49,7 +49,7 @@ class Animal
      */
     private $region;
 
-    public function getId(): int
+    public function getId(): ?int
     {
         return $this->id;
     }
@@ -92,19 +92,19 @@ class Animal
     }
 
 
-    public function getAd(): string
+    public function getAd(): ?Ad
     {
         return $this->ad;
     }
 
-    public function setAd(string $ad): self
+    public function setAd(Ad $ad): self
     {
         $this->ad = $ad;
 
         return $this;
     }
 
-    public function getRegion(): Region
+    public function getRegion(): ?Region
     {
         return $this->region;
     }
@@ -114,5 +114,10 @@ class Animal
         $this->region = $region;
 
         return $this;
+    }
+
+    public function __toString() 
+    {
+        return (string) $this->name;
     }
 }

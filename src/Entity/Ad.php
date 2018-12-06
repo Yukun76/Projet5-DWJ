@@ -2,9 +2,11 @@
 
 namespace App\Entity;
 
+use App\Entity\Animal;
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\ORM\Mapping\JoinColumn;
 use Doctrine\ORM\Mapping\OneToOne;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\AdRepository")
@@ -21,16 +23,19 @@ class Ad
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\Length(min=10, max=255, minMessage="Votre titre doit faire 10 caractères mininum")
      */
     private $title;
 
     /**
      * @ORM\Column(type="text")
+     * @Assert\Length(min=10, minMessage="Le contenu doit faire 10 caractères mininum")
      */
     private $content;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\Url()
      */
     private $image;
 
@@ -102,12 +107,12 @@ class Ad
     }
 
 
-    public function getAnimal(): string
+    public function getAnimal(): ?Animal
     {
         return $this->animal;
     }
 
-    public function setAnimal(): self
+    public function setAnimal(Animal $animal): self
     {
         $this->animal = $animal;
 

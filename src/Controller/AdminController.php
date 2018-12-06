@@ -3,10 +3,11 @@
 namespace App\Controller;
 
 use App\Entity\Ad;
+use App\Entity\Animal;
 use App\Entity\User;
-use Symfony\Component\Routing\Annotation\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\Routing\Annotation\Route;
 
 
  /**
@@ -50,16 +51,30 @@ class AdminController extends AbstractController
     }
 
     /**
-     * @Route("/article", name="article")
+     * @Route("/annonce", name="annonce")
      */
-    public function article() 
+    public function annonce() 
     {    
         $repo = $this->getDoctrine()->getRepository(Ad::class);
         $ads = $repo->findAll();  
 
-        return $this->render('admin/article.html.twig', [
+        return $this->render('admin/annonce.html.twig', [
             'ads' => $ads            
         ]);
     }
+
+    /**
+     * @Route("/animal", name="animal")
+     */
+    public function animal() 
+    {    
+        $repo = $this->getDoctrine()->getRepository(Animal::class);
+        $animals = $repo->findAll();  
+
+        return $this->render('admin/animal.html.twig', [
+            'animals' => $animals           
+        ]);
+    }
+
 
 }

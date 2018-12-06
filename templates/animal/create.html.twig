@@ -1,0 +1,32 @@
+{% extends 'base.html.twig' %}
+{% form_theme formAnimal 'bootstrap_4_layout.html.twig'%}
+
+{% block title %}PetAdopt' : Ajout/Modification d'un animal ! !{% endblock %}
+{% block body %}<br/><br/><br/><br/>
+
+	{% if edit %}
+		<h2> Modification des informations sur l'animal </h2>
+	{% else %}
+		<h2> Ajout des informations sur un animal à adopter </h2>
+	{% endif %}
+	<br/>
+	{{ form_start(formAnimal) }}
+
+	{{ form_row(formAnimal.name, {'attr' : {'placeholder' : "Nom de l'animal"}}) }}
+	{{ form_row(formAnimal.type, {'attr' : {'placeholder' : "Type de l'animal (chien/chat/autre) "}}) }}
+	{{ form_row(formAnimal.sexe, {'attr' : {'placeholder' : "Sexe de l'animal (f/m)"}}) }}
+	{{ form_row(formAnimal.region) }}
+
+	 <button type="submit" class="btn btn-success">
+	 	{% if edit %}
+	 		Modifier
+	 	{% else %}
+	 		Ajouter l'animal
+	 	{% endif %}
+	 </button>
+
+	{{ form_end(formAnimal) }}
+
+{% endblock %}
+{% block footer %}
+{% endblock %}

@@ -78,10 +78,10 @@ class HomeController extends AbstractController
     {
         $repo = $this->getDoctrine()->getRepository(ad::Class);
 
-        $article = $repo->find($id);
+        $annonce = $repo->find($id);
 
         return $this->render('ad/show.html.twig',[
-            'article' => $article
+            'annonce' => $annonce,
         ]);
     }
 }
