@@ -235,8 +235,9 @@ td img {
 }
 
 .Liste_adoption {
-    display: flex;
-    flex-direction: column;
+    margin-right: auto;
+    margin-left: auto;
+    display: block;
     padding: 10px 10px 10px 10px;
     margin-bottom: 100px;
 }
@@ -311,8 +312,6 @@ td img {
 }
 
 .Liste_adoption {
-    display: flex;
-    flex-direction: column;
     padding: 10px 10px 10px 10px;
     margin-bottom: 100px;
 }
@@ -326,6 +325,15 @@ td img {
     padding: 10px;
     border: 0; 
 }
+
+.flex-container {
+    display: flex;
+}
+
+#card_accueil {
+  margin-left: 100px;
+}
+
 
 #name_color {
     height: 2px;
@@ -360,18 +368,21 @@ tbody tr {
 }
 
 #td_title {
-    width: 30%;
+    width: 20%;
 }
 
 #td_content {
     width: 100%;
 }
 
+#td_image {
+    width: 25%;
+}
+
 #show_image {
     width: 600px;
     height: 100%;
     float: right;
-    margin-top: 140px;
     margin-left: 2%;
     margin-right: auto;
     display: block;
@@ -382,8 +393,20 @@ tbody tr {
     margin-top: 20px;
 }
 
+.bg-light {
+    padding: 10px;
+}
+
+.vl {
+    border-left: 6px solid white;
+    height: 400px;
+    float: right;
+    margin-right: 10%;
+    position: relative;
+}
+
 #title_show {
-    margin-top: 100px;
+    margin-top: 50px;
     width: 100%;
 }
 

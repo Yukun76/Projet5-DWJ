@@ -2,24 +2,26 @@
 {% block title %}PetAdopt' : Home - Adopter un animal de compagnie !{% endblock %}
 {% block body %}<br/><br/><br/><br/>
 	<article>
-		<div class="container text-center text-md-left mt-5">
-			<img  class="img-thumbnail" id="show_image" src="{{ annonce.image }}" alt=""></img>
-		</div>
 		<div class="card-header" id="title_show">
 			<h3>{{ annonce.title }}</h3>
 			<div class="metadata">Ecrit le {{ annonce.createdAt | date('d/m/Y') }} à {{ annonce.createdAt | date('H:i')}}</div>
 		</div><br/>
+		<img  class="card bg-light text-dark" id="show_image" src="{{ annonce.image }}" alt=""></img>
 		<div class="card bg-info text-white">
 			<div class="card-body">
-				<h2> Information </h2>
-				<p>Nom : {{ annonce.animal.name }}</p>
+				<div class="vl"></div>
+				<h2>Information</h2>
+				<p><strong>Nom :</strong> {{ annonce.animal.name }}</p>
+
 				{% if annonce.animal.sexe == 'f' %}
-				<p>Sexe: Femelle</p>
+					<p><strong>Sexe:</strong> Femelle</p>
 				{% else %}
-				<p>Sexe: Mâle</p>
+					<p><strong>Sexe:</strong> Mâle</p>
 				{% endif %}
-				<p>Lieu pour adoption: {{ annonce.animal.region }}</p>
+				
+				<p><strong>Lieu d'adoption:</strong> {{ annonce.animal.region }}</p>
 			</div>
+
 		</div><br/>
 		<div class="card bg-success text-white">
 			<div class="card-body">
@@ -33,4 +35,3 @@
 {% endblock %}
 {% block footer %}
 {% endblock %}
-

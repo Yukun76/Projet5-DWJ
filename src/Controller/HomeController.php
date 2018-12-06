@@ -72,7 +72,7 @@ class HomeController extends AbstractController
     }
 
     /**
-     * @Route("/ad/{id}", name="ad_show")
+     * @Route("/annonce/{id}", name="ad_show")
      */
     public function show($id)
     {
