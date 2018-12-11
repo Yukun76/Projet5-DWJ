@@ -75,6 +75,4 @@ class AdminController extends AbstractController
             'animals' => $animals           
         ]);
     }
-
-
 }

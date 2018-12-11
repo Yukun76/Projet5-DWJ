@@ -4,166 +4,126 @@
 	<div class="header banner" id="header-perso">
 		<div class="container">
 			<div class="row">
-				<div class="col-lg-12">
-					<p  id="logo_text"> Adopter un compagnon de vie.</p>
+				<div class="col-lg-12" id="logo_text">
+					<p class="ml2"> Adopter un compagnon de vie </p>
+					<div class="barre_recherche">
+						<nav class="navbar navbar-expand-lg" id="nav_admin">
+							<div  id="renseignement">
+								{{ form_start(search) }}
+								{{ form_row(search.type) }}
+								{{ form_row(search.sexe) }}
+								{{ form_row(search.region) }}
+								{{ form_end(search) }}
+							</div>
+						</nav>
+					</div>
 				</div>
 			</div>
-		</div>
-	</div>
-	<div class="barre_recherche">
-		<div class="container">
-			<nav class="navbar navbar-expand-lg" id="nav_admin">
-				<div class="navbar-nav" id="renseignement">
-					{{ form_start(search) }}
-					{{ form_row(search.type) }}
-					{{ form_row(search.sexe) }}
-					{{ form_row(search.region) }}
-					{{ form_end(search) }}
-				</div>
-			</nav>
 		</div>
 	</div>
 {% endblock %}
 {% block body %}
-	<h1 id="titre_principal"> Adopter en un ! </h1>
+	<h1 id="titre_principal"> Adopter en un </h1>
 	<div class="Liste_adoption">
 		<article>
 			<hr class="hr_liste"><br/>
-			<div class="flex-container">
-			{% for ad in ads %}
-					<div class="card" id="card_accueil" style="width:400px">
-						<img class="card-img-top" src="{{ ad.image }}" alt="Card image" style="width:100%">
-						<div class="card-body">
-							<h4 class="card-title">{{ ad.title }}</h4>
-							<div class="metadata">
-								Publié le {{ ad.createdAt | date('d/m/Y') }} à {{ ad.createdAt | date('H:i') }}
-							</div><br/>
-							<p class="card-text">{{ ad.content[:100] ~ '...'  }}</p>
-							<a href="{{path('ad_show', { 'id': ad.id})}}" class="btn btn-primary">See More</a>
+			<div class="zoomInUp">
+				<div class="flex-container">
+					{% for ad in ads %}
+						<div class="card" id="card_accueil" style="width:400px">
+							<img class="card-img-top" src="{{ asset('uploads/animals/' ~ ad.image) }}" alt="Card image" style="width:100%">
+							<div class="card-body">
+								<h4 class="card-title">{{ ad.title }}</h4>
+								<div class="metadata">
+									Publié le {{ ad.createdAt | date('d/m/Y') }} à {{ ad.createdAt | date('H:i') }}
+								</div><br/>
+								<p class="card-text">{{ ad.content[:100] ~ '...'  }}</p>
+								<a href="{{path('ad_show', { 'id': ad.id})}}" class="btn btn-primary">Lire la suite</a>
+							</div>
 						</div>
-					</div>			
-			{% endfor %}
-		</div>
-		<br/>
-		<hr class="hr_liste">
-		</article>
+					{% endfor %}
+				</div>
+				<br/>
+			</div>
+			<div class="navigation">
+		    	{{ knp_pagination_render(ads) }}
+			</div>
+			<hr class="hr_liste">
+		</article>		
 	</div>
-	{% endblock %}
-	{% block footer %}
-		<!-- Footer -->
-		<footer class="page-footer font-small blue-grey lighten-5">
-			<div style="background-color: #21d192;">
-				<div class="container">
-					<!-- Grid row-->
-					<div class="row py-4 d-flex align-items-center">
-						<!-- Grid column -->
-						<div class="col-md-6 col-lg-5 text-center text-md-left mb-4 mb-md-0">
-							<h6 class="mb-0">Get connected with us on social networks!</h6>
-						</div>
-						<!-- Grid column -->
-						<!-- Grid column -->
-						<div class="col-md-6 col-lg-7 text-center text-md-right">
-							<!-- Facebook -->
-							<a class="fb-ic">
-								<i class="fa fa-facebook white-text mr-4"> </i>
-							</a>
-							<!-- Twitter -->
-							<a class="tw-ic">
-								<i class="fa fa-twitter white-text mr-4"> </i>
-							</a>
-							<!-- Google +-->
-							<a class="gplus-ic">
-								<i class="fa fa-google-plus white-text mr-4"> </i>
-							</a>
-							<!--Linkedin -->
-							<a class="li-ic">
-								<i class="fa fa-linkedin white-text mr-4"> </i>
-							</a>
-							<!--Instagram-->
-							<a class="ins-ic">
-								<i class="fa fa-instagram white-text"> </i>
-							</a>
-						</div>
-						<!-- Grid column -->
-					</div>
-					<!-- Grid row-->
-				</div>
-			</div>
-			<!-- Footer Links -->
-			<div class="container text-center text-md-left mt-5">
-				<!-- Grid row -->
-				<div class="row mt-3 dark-grey-text">
+{% endblock %}
+{% block footer %}
+	<!-- Footer -->
+	<footer class="page-footer font-small blue-grey lighten-5">
+		<div style="background-color: #21d192;">
+			<div class="container">
+				<!-- Grid row-->
+				<div class="row py-4 d-flex align-items-center">
 					<!-- Grid column -->
-					<div class="col-md-3 col-lg-4 col-xl-3 mb-4">
-						<!-- Content -->
-						<h6 class="text-uppercase font-weight-bold">Company name</h6>
-						<hr class="teal accent-3 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
-						<p>Here you can use rows and columns here to organize your footer content. Lorem ipsum dolor sit amet, consectetur
-						adipisicing elit.</p>
+					<div class="col-md-6 col-lg-5 text-center text-md-left mb-4 mb-md-0">
+						<h6 class="mb-0">Get connected with us on social networks!</h6>
 					</div>
 					<!-- Grid column -->
 					<!-- Grid column -->
-					<div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
-						<!-- Links -->
-						<h6 class="text-uppercase font-weight-bold">Products</h6>
-						<hr class="teal accent-3 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
-						<p>
-							<a class="dark-grey-text" href="#!">MDBootstrap</a>
-						</p>
-						<p>
-							<a class="dark-grey-text" href="#!">MDWordPress</a>
-						</p>
-						<p>
-							<a class="dark-grey-text" href="#!">BrandFlow</a>
-						</p>
-						<p>
-							<a class="dark-grey-text" href="#!">Bootstrap Angular</a>
-						</p>
-					</div>
-					<!-- Grid column -->
-					<!-- Grid column -->
-					<div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
-						<!-- Links -->
-						<h6 class="text-uppercase font-weight-bold">Useful links</h6>
-						<hr class="teal accent-3 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
-						<p>
-							<a class="dark-grey-text" href="#!">Your Account</a>
-						</p>
-						<p>
-							<a class="dark-grey-text" href="#!">Become an Affiliate</a>
-						</p>
-						<p>
-							<a class="dark-grey-text" href="#!">Shipping Rates</a>
-						</p>
-						<p>
-							<a class="dark-grey-text" href="#!">Help</a>
-						</p>
-					</div>
-					<!-- Grid column -->
-					<!-- Grid column -->
-					<div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
-						<!-- Links -->
-						<h6 class="text-uppercase font-weight-bold">Contact</h6>
-						<hr class="teal accent-3 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
-						<p>
-						<i class="fa fa-home mr-3"></i> New York, NY 10012, US</p>
-						<p>
-						<i class="fa fa-envelope mr-3"></i> info@example.com</p>
-						<p>
-						<i class="fa fa-phone mr-3"></i> + 01 234 567 88</p>
-						<p>
-						<i class="fa fa-print mr-3"></i> + 01 234 567 89</p>
+					<div class="col-md-6 col-lg-7 text-center text-md-right">
+						<!-- Facebook -->
+						<a class="fb-ic">
+							<i class="fa fa-facebook white-text mr-4"> </i>
+						</a>
+						<!-- Twitter -->
+						<a class="tw-ic">
+							<i class="fa fa-twitter white-text mr-4"> </i>
+						</a>
+						<!-- Google +-->
+						<a class="gplus-ic">
+							<i class="fa fa-google-plus white-text mr-4"> </i>
+						</a>
+						<!--Linkedin -->
+						<a class="li-ic">
+							<i class="fa fa-linkedin white-text mr-4"> </i>
+						</a>
+						<!--Instagram-->
+						<a class="ins-ic">
+							<i class="fa fa-instagram white-text"> </i>
+						</a>
 					</div>
 					<!-- Grid column -->
 				</div>
-				<!-- Grid row -->
+				<!-- Grid row-->
 			</div>
-			<!-- Footer Links -->
-			<!-- Copyright -->
-			<div class="footer-copyright text-center text-black-50 py-3">© 2018 Copyright:
-				<a class="dark-grey-text" href="http://localhost/Projet5-DWJ/accueil/"> Yukun.fr</a>
-			</div>
-			<!-- Copyright -->
-		</footer>
-		<!-- Footer -->
+		</div>
+		<!-- Footer Links -->
+		<!-- Copyright -->
+		<div class="footer-copyright text-center text-black-50 py-3">© 2018 Copyright:
+			<a class="dark-grey-text" href="http://localhost/Projet5-DWJ/accueil/"> Yukun.fr</a>
+		</div>
+		<!-- Copyright -->
+	</footer>
+	<!-- Footer -->
+	{% block javascripts %}
+		<script>
+			$('.ml2').each(function(){
+			  $(this).html($(this).text().replace(/([^\x00-\x80]|\w)/g, "<span class='letter'>$&</span>"));
+			});
+
+			anime.timeline({loop: true})
+			  .add({
+			    targets: '.ml2 .letter',
+			    scale: [4,1],
+			    opacity: [0,1],
+			    translateZ: 0,
+			    easing: "easeOutExpo",
+			    duration: 950,
+			    delay: function(el, i) {
+			      return 70*i;
+			    }
+			  }).add({
+			    targets: '.ml2',
+			    opacity: 0,
+			    duration: 1000,
+			    easing: "easeOutExpo",
+			    delay: 5000
+			  });
+		</script>
 	{% endblock %}
+{% endblock %}

@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use App\Entity\Region;
+use App\Entity\Booking;
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\ORM\Mapping\JoinColumn;
 use Doctrine\ORM\Mapping\ManyToOne;
@@ -48,6 +49,7 @@ class Animal
      * @JoinColumn(name="region_id", referencedColumnName="id")
      */
     private $region;
+
 
     public function getId(): ?int
     {

@@ -3,14 +3,17 @@
 namespace App\Controller;
 use App\Entity\Ad;
 use App\Entity\Animal;
+use App\Entity\User;
 use App\Form\SearchAnimalType;
+use Doctrine\ORM\Query;
+use Doctrine\Common\Persistence\ObjectManager;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\Form\Forms;
 use Symfony\Component\HttpFoundation\Request;
-use Doctrine\Common\Persistence\ObjectManager;
 use Symfony\Component\Routing\Annotation\Route;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
-class HomeController extends AbstractController
+class HomeController extends Controller
 {
     /**
      * @Route("/search", name="search")
@@ -59,6 +62,16 @@ class HomeController extends AbstractController
         $repo = $this->getDoctrine()->getRepository(Ad::class);
         $ads = $repo->findAll();
 
+    /**
+     *  @var $paginator \Knp Component\Pager\Paginator
+     */
+        $paginator = $this->get('knp_paginator');
+        $result = $paginator->paginate(
+            $ads,
+            $request->query->getInt('page', 1),
+            $request->query->getInt('limit', 3)
+        );
+
         $search->handleRequest($request);
         if ($search->isSubmitted() && $search->isValid() ) {
 
@@ -67,7 +80,7 @@ class HomeController extends AbstractController
 
         return $this->render('home/accueil.html.twig', [
             'search' => $search->createView(),
-            'ads' => $ads            
+            'ads' => $result,
         ]);
     }
 
@@ -83,5 +96,14 @@ class HomeController extends AbstractController
         return $this->render('ad/show.html.twig',[
             'annonce' => $annonce,
         ]);
+    }
+
+    /**
+     * @Route("/profile", name="u_profile")
+     */
+
+    public function profile()
+    {    
+        return $this->render('home/profile.html.twig');
     }
 }

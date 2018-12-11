@@ -6,31 +6,29 @@
 			<h3>{{ annonce.title }}</h3>
 			<div class="metadata">Ecrit le {{ annonce.createdAt | date('d/m/Y') }} à {{ annonce.createdAt | date('H:i')}}</div>
 		</div><br/>
-		<img  class="card bg-light text-dark" id="show_image" src="{{ annonce.image }}" alt=""></img>
 		<div class="card bg-info text-white">
 			<div class="card-body">
+				<img  class="card bg-light text-dark" id="show_image" src="{{ asset('uploads/animals/' ~ annonce.image) }}" alt=""></img>
 				<div class="vl"></div>
-				<h2>Information</h2>
-				<p><strong>Nom :</strong> {{ annonce.animal.name }}</p>
-
-				{% if annonce.animal.sexe == 'f' %}
-					<p><strong>Sexe:</strong> Femelle</p>
-				{% else %}
-					<p><strong>Sexe:</strong> Mâle</p>
-				{% endif %}
-				
-				<p><strong>Lieu d'adoption:</strong> {{ annonce.animal.region }}</p>
-			</div>
-
+					<h2><u>Identité</u> :</h2>
+					<p><b>Nom :</b> {{ annonce.animal.name }}</p>
+					{% if annonce.animal.sexe == 'f' %}
+						<p><b>Sexe :</b> Femelle</p>
+					{% else %}
+						<p><b>Sexe :</b> Mâle</p>
+					{% endif %}
+					
+					<p><b>Region :</b> {{ annonce.animal.region }}</p>
+				</div>
 		</div><br/>
 		<div class="card bg-success text-white">
 			<div class="card-body">
-				<h2> Description </h2>
+				<h2><u>Description</u> :</h2>
 				{{ annonce.content | raw }}
 			</div>
 		</div><br/>
 		<button class="btn btn-info">Réserver</button>
-		<button class="btn btn-info">En savoir plus</button>
+		<a class="btn btn-info" href="mailto:YuKunOCR@gmail.com?subject=Plus%20d'infos"> Plus d'infos </a>
 	</article>
 {% endblock %}
 {% block footer %}

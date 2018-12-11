@@ -37,7 +37,7 @@
                         </td>
                         <td>
                             <a class="btn btn-primary" href="{{path('pet_edit', { 'id': animal.id})}}">Editer</a>
-                            <a href="#" data-toggle="modal" data-target="#myModal" class="btn btn-danger" id="del-billet" data-billet-title="" data-modal-confirm-url="{{path('del_pet', { 'id': animal.id})}}">Supprimer</a>
+                            <a href="#" data-toggle="modal" data-target="#myModal" class="btn btn-danger" id="del-billet" data-billet-title="{{ animal.name }}" data-modal-confirm-url="{{path('del_pet', { 'id': animal.id})}}">Supprimer</a>
                         </td>
                     </tr>
                 {% endfor %}
@@ -73,7 +73,7 @@
         $('a.btn-danger').on('click',function(e){
             e.preventDefault();
             $modal.find('a#btnYes').attr('href',$(this).data('modalConfirmUrl'));
-            $modal.find('.modal-body p').text("Êtes-vous sûr de vouloir supprimer l'animal" + $(this).data('billetTitle'));
+            $modal.find('.modal-body p').text("Êtes-vous sûr de vouloir supprimer " + $(this).data('billetTitle'));
             $modal.modal("show");
         })
     });

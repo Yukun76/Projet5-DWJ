@@ -6,6 +6,7 @@ use App\Entity\Animal;
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\ORM\Mapping\JoinColumn;
 use Doctrine\ORM\Mapping\OneToOne;
+use Symfony\Component\HttpFoundation\File\File;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
@@ -35,7 +36,7 @@ class Ad
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Assert\Url()
+     * @Assert\File(maxSize="10M")
      */
     private $image;
 
@@ -82,12 +83,15 @@ class Ad
         return $this;
     }
 
-    public function getImage(): ?string
+    public function getImage() 
     {
-        return $this->image;
+     /*   if($this->image) {
+           return new File($this->image);
+        }
+      */  return $this->image;
     }
 
-    public function setImage(string $image): self
+    public function setImage($image): self
     {
         $this->image = $image;
 

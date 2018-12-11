@@ -12,22 +12,20 @@
 			<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
 			<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
 			<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+			<script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/2.0.2/anime.min.js"></script>
 		{% endblock %}
 	</head>
 	{% block head %}
 	{% endblock %}
 	<body>
+
 		<nav class="navbar navbar-expand-lg navbar navbar-light bg-light fixed-top" id="nav_admin">
-			<a class="navbar-brand" href="/">PetAdopt'</a>
+			<a class="navbar-brand" href="/"><img src="{{ asset('img/patte.png') }}" alt="image_paw" style="width:7%";> PetAdopt'</a>
 			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor03" aria-controls="navbarColor03" aria-expanded="false" aria-label="Toggle navigation">
 			<span class="navbar-toggler-icon"></span>
 			</button>
 			<div class="collapse navbar-collapse justify-content-end" id="navbarColor03">
 				<ul class="navbar-nav">
-					<form class="form-inline my-2 my-lg-0">
-						<input class="form-control mr-sm-2" type="text" placeholder="Search">
-						<button  id="search" class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
-					</form>
 					{% if not app.user %}
 						<li class="nav-item">
 							<a class="nav-link"  href="{{ path('login') }}">Login</a>
@@ -38,10 +36,9 @@
 							<div class="dropdown-menu" x-placement="bottom-start" style="position: absolute; will-change: transform; top: 0px; left: 0px; transform: translate3d(-25px, 48px, 0px);">
 								{% if is_granted('IS_AUTHENTICATED_FULLY') %}
 									<a class="dropdown-item" href="{{ path('admin') }}"><i class="fa fa-lock" aria-hidden="true"></i> Administration</a>
-								{% endif %}
-								<a class="dropdown-item" href="#"><i class="fa fa-user"></i> Mon profil</a>
+								{% endif %}								
+								<a class="dropdown-item" href="{{ path('u_profile') }}"><i class="fa fa-user"></i> Mon profil</a>
 								<a class="dropdown-item" href="#"><i class="fa fa-heart" aria-hidden="true"></i> Mes favoris</a>
-								<a class="dropdown-item" href="#"><i class="fa fa-commenting" aria-hidden="true"></i> Messagerie</a>
 								<div class="dropdown-divider"></div>
 								<a class="dropdown-item" href="{{path('logout')}}"><i class="fa fa-sign-out" aria-hidden="true"></i> Logout</a>
 							</div>

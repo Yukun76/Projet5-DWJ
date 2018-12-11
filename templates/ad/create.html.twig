@@ -1,34 +1,41 @@
 {% extends 'base.html.twig' %}
 {% form_theme formAd 'bootstrap_4_layout.html.twig'%}
-
-{% block title %}PetAdopt' : Ajout/Modification d'une annonce !{% endblock %}
-{% block body %}<br/><br/><br/><br/>
-
-	{% if edit %}
-		<h1> Modification de l'annonce </h1>
-	{% else %}
-		<h1> Création d'une annonce </h1>
-	{% endif %}
-	<br/>
-	{{ form_start(formAd) }}
-
-	{{ form_row(formAd.animal) }}
-	<br/>
-	{{ form_row(formAd.title, {'attr' : {'placeholder' : "Titre de l'annonce"}}) }}
-	{{ form_row(formAd.content, {'attr' : {'placeholder' : "Contenu de l'annonce"}}) }}
-	{{ form_row(formAd.image, {'attr' : {'placeholder' : "URL de l'image"}}) }}
-	
-
-	<button type="submit" class="btn btn-success">
-		{% if edit %}
-			Modifier
-		{% else %}
-			Ajouter l'annonce
-		{% endif %}
-	</button>
-
-	{{ form_end(formAd) }}
-
-{% endblock %}
-{% block footer %}
-{% endblock %}
+	{% block title %}PetAdopt' : Ajout/Modification d'une annonce !{% endblock %}
+	{% block body %}<br/><br/><br/>
+		<div class="container">
+			<nav aria-label="navigation">
+				<ul class="pager">
+					<a href="{{ path('annonce') }}" title="Précédent"><i class="fa fa-arrow-circle-o-left" aria-hidden="true"></i></a>
+				</ul>
+			</nav>
+			<div class="card card-register mx-auto mt-5">
+				<div class="card-header">
+					{% if edit %}
+						<h1> Modification de l'annonce </h1>
+					{% else %}
+						<h1> Création d'une annonce </h1>
+					{% endif %}
+				</div>
+				<div class="card-body">
+					<br/>
+					{{ form_start(formAd) }}
+					{{ form_row(formAd.animal) }}
+					<br/>
+					{{ form_row(formAd.title, {'attr' : {'placeholder' : "Titre de l'annonce"}}) }}
+					{{ form_row(formAd.content, {'attr' : {'placeholder' : "Contenu de l'annonce"}}) }}
+					{{ form_row(formAd.image) }}
+					
+					<button type="submit" class="btn btn-success">
+						{% if edit %}
+							Modifier
+						{% else %}
+							Ajouter l'annonce
+						{% endif %}
+					</button>
+					{{ form_end(formAd) }}
+				</div>
+			</div>
+		</div>
+	{% endblock %}
+	{% block footer %}
+	{% endblock %}

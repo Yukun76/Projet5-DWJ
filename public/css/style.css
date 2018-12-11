@@ -2,6 +2,7 @@ html,
 body {
     height: 100%;
     width: 100%;
+    background: #FEFEFE;
 }
 
 .admin_body {
@@ -33,11 +34,13 @@ td img {
     z-index: 999;
 }
 
+
 .nav-item {
     padding: 8px; 
     border: solid 1px #f3f3f3;
     border-radius: 25% 25% 25% 25%;
 }
+
 
 .dropdown {
     border: none;
@@ -52,7 +55,7 @@ td img {
     text-decoration: none;
     font-size: 20px;
     display: block;
-    font-family: Cormorant Garamond, sans-serif;
+    font-family: Sail, sans-serif;
 }
 
 
@@ -186,23 +189,6 @@ td img {
 }
 
 
-#renseignement form {
-    display: flex;
-}
-
-#renseignement .form-group {
-    padding-right: 15px;
-}
-
-#search_animal_save {
-    height: 50px;
-    margin-top: 25px;
-}
-
-#renseignement {
-    margin-left: 15%;
-    width: 100%;
-}
 
 .hr_liste {
     height: 2px;
@@ -212,6 +198,11 @@ td img {
     border-radius: 500% 0% 500% 0%;
     padding: 10px;
     border: 0; 
+}
+
+.navigation {
+    position: relative;
+    margin-left: 40%;
 }
 
 
@@ -229,7 +220,6 @@ td img {
     width: 80%;
 }
 
-
 .title-id {
     color: #046380;
 }
@@ -243,13 +233,12 @@ td img {
 }
 
 
-
 #header-perso { 
-    background-image: url("../img/banniere.jpg");
+    background-image: url("../img/sleep.jpg");
     background-repeat: no-repeat;
     background-position: center;
     margin-top: 50px;
-    height: 500px;
+    height: 910px;
     z-index: 2;
     display: block;
     margin-left: auto;
@@ -269,22 +258,72 @@ td img {
     box-shadow: 3px 3px 10px 5px #f1f1f1;
 }
 
+#renseignement form {
+    display: flex;
+}
+
+#renseignement .form-group {
+    padding-right: 15px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#search_animal_save {
+    height: 50px;
+    margin-top: 25px;
+}
+
+#renseignement {
+    margin-top: -300px;
+    box-shadow: 3px 3px 25px 5px #FFDAB9;
+    background: rgba(250, 235, 215, 0.7);
+    padding: 50px;
+    width: 100%;
+    border: groove 2px #000;
+}
+
+label {
+    font-weight: bold;
+    font-family: Berkshire Swash, sans-serif;
+    font-size: 1.2em;
+}
+
+#logo_text {
+    margin-top: 100px;
+    box-shadow: 3px 3px 25px 5px #000;
+
+}
+
+.ml2 {
+    font-weight: 900;
+    font-size: 3.5em;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    height: 700px;
+    width: 100%;
+    color : #472100;
+    font-family: Berkshire Swash, sans-serif;
+}
+
+.ml2 .letter {
+  display: inline-block;
+  line-height: 1em;
+}
+
+.pager {
+    font-size: 4em;
+    margin-left: -10%;
+}
+
+.fa-arrow-circle-o-left{
+    color: black;
+}
+
 #connexion_id {
     margin-top : -10px;
     height: 50px;
-}
-
-
-#logo_text {
-    text-align: center;
-    font-size: 3em;
-    height: 500px;
-    width: 98%;
-    color : #ff3399;
-    margin-top: 95px;
-    margin-left: 7%;
-    box-shadow: 3px 3px 25px 5px #000;
-    font-family: Zilla Slab Highlight, sans-serif;
 }
 
 
@@ -296,6 +335,48 @@ td img {
     display: block;
     font-family: Cormorant Garamond, sans-serif;
 }
+
+.zoomInUp {
+  -webkit-animation-name: zoomInUp;
+  animation-name: zoomInUp;
+  -webkit-animation-duration: 1s;
+  animation-duration: 1s;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+  }
+  @-webkit-keyframes zoomInUp {
+  0% {
+  opacity: 0;
+  -webkit-transform: scale3d(.1, .1, .1) translate3d(0, 1000px, 0);
+  transform: scale3d(.1, .1, .1) translate3d(0, 1000px, 0);
+  -webkit-animation-timing-function: cubic-bezier(0.550, 0.055, 0.675, 0.190);
+  animation-timing-function: cubic-bezier(0.550, 0.055, 0.675, 0.190);
+  }
+  60% {
+  opacity: 1;
+  -webkit-transform: scale3d(.475, .475, .475) translate3d(0, -60px, 0);
+  transform: scale3d(.475, .475, .475) translate3d(0, -60px, 0);
+  -webkit-animation-timing-function: cubic-bezier(0.175, 0.885, 0.320, 1);
+  animation-timing-function: cubic-bezier(0.175, 0.885, 0.320, 1);
+  }
+  }
+  @keyframes zoomInUp {
+  0% {
+  opacity: 0;
+  -webkit-transform: scale3d(.1, .1, .1) translate3d(0, 1000px, 0);
+  transform: scale3d(.1, .1, .1) translate3d(0, 1000px, 0);
+  -webkit-animation-timing-function: cubic-bezier(0.550, 0.055, 0.675, 0.190);
+  animation-timing-function: cubic-bezier(0.550, 0.055, 0.675, 0.190);
+  }
+  60% {
+  opacity: 1;
+  -webkit-transform: scale3d(.475, .475, .475) translate3d(0, -60px, 0);
+  transform: scale3d(.475, .475, .475) translate3d(0, -60px, 0);
+  -webkit-animation-timing-function: cubic-bezier(0.175, 0.885, 0.320, 1);
+  animation-timing-function: cubic-bezier(0.175, 0.885, 0.320, 1);
+  }
+} 
+
 
 .btn-success { 
     height: 20%;
@@ -333,7 +414,6 @@ td img {
 #card_accueil {
   margin-left: 100px;
 }
-
 
 #name_color {
     height: 2px;
@@ -382,7 +462,7 @@ tbody tr {
 #show_image {
     width: 600px;
     height: 100%;
-    float: right;
+    float: left;
     margin-left: 2%;
     margin-right: auto;
     display: block;
@@ -400,14 +480,24 @@ tbody tr {
 .vl {
     border-left: 6px solid white;
     height: 400px;
-    float: right;
-    margin-right: 10%;
+    float: left;
     position: relative;
+    margin-left:100px;
+    padding-right: 50px;
+}
+
+.card-body b, .card-body h2 {
+    color: #242424;
 }
 
 #title_show {
     margin-top: 50px;
     width: 100%;
+    -moz-box-shadow: 10px 10px 5px #656565;
+    -webkit-box-shadow: 10px 10px 5px #656565;
+    -o-box-shadow: 10px 10px 5px #656565;
+    box-shadow: 10px 10px 5px #656565;
+    filter:progid:DXImageTransform.Microsoft.Shadow(color='#6565', Direction=135, Strength=5); 
 }
 
 footer {

@@ -1,32 +1,39 @@
 {% extends 'base.html.twig' %}
 {% form_theme formAnimal 'bootstrap_4_layout.html.twig'%}
-
-{% block title %}PetAdopt' : Ajout/Modification d'un animal ! !{% endblock %}
-{% block body %}<br/><br/><br/><br/>
-
-	{% if edit %}
-		<h1> Modification des informations sur l'animal </h1>
-	{% else %}
-		<h1> Ajout des informations sur l'animal à adopter </h1>
-	{% endif %}
-	<br/>
-	{{ form_start(formAnimal) }}
-
-	{{ form_row(formAnimal.name, {'attr' : {'placeholder' : "Nom de l'animal"}}) }}
-	{{ form_row(formAnimal.type, {'attr' : {'placeholder' : "Type de l'animal (chien/chat/autre) "}}) }}
-	{{ form_row(formAnimal.sexe, {'attr' : {'placeholder' : "Sexe de l'animal (f/m)"}}) }}
-	{{ form_row(formAnimal.region) }}
-
-	 <button type="submit" class="btn btn-success">
-	 	{% if edit %}
-	 		Modifier
-	 	{% else %}
-	 		Ajouter l'animal
-	 	{% endif %}
-	 </button>
-
-	{{ form_end(formAnimal) }}
-
-{% endblock %}
-{% block footer %}
-{% endblock %}
+	{% block title %}PetAdopt' : Ajout/Modification d'un animal ! !{% endblock %}
+	{% block body %}<br/><br/><br/>
+		<div class="container">
+			<nav aria-label="navigation">
+				<ul class="pager">
+					<a href="{{ path('animal') }}" title="Précédent"><i class="fa fa-arrow-circle-o-left" aria-hidden="true"></i></a>
+				</ul>
+			</nav>
+			<div class="card card-register mx-auto mt-5">
+				<div class="card-header">
+					{% if edit %}
+						<h1> Modification des informations sur l'animal </h1>
+					{% else %}
+						<h1> Ajout des informations sur l'animal à adopter </h1>
+					{% endif %}
+				</div>
+				<div class="card-body">
+					<br/>
+					{{ form_start(formAnimal) }}
+					{{ form_row(formAnimal.name, {'attr' : {'placeholder' : "Nom de l'animal"}}) }}
+					{{ form_row(formAnimal.type, {'attr' : {'placeholder' : "Type de l'animal (chien/chat/autre) "}}) }}
+					{{ form_row(formAnimal.sexe, {'attr' : {'placeholder' : "Sexe de l'animal (f/m)"}}) }}
+					{{ form_row(formAnimal.region) }}
+					<button type="submit" class="btn btn-success">
+					{% if edit %}
+						Modifier
+					{% else %}
+						Ajouter l'animal
+					{% endif %}
+					</button>
+					{{ form_end(formAnimal) }}
+				</div>
+			</div>
+		</div>
+	{% endblock %}
+	{% block footer %}
+	{% endblock %}
