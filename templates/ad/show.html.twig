@@ -10,16 +10,16 @@
 			<div class="card-body">
 				<img  class="card bg-light text-dark" id="show_image" src="{{ asset('uploads/animals/' ~ annonce.image) }}" alt=""></img>
 				<div class="vl"></div>
-					<h2><u>Identité</u> :</h2>
-					<p><b>Nom :</b> {{ annonce.animal.name }}</p>
-					{% if annonce.animal.sexe == 'f' %}
-						<p><b>Sexe :</b> Femelle</p>
-					{% else %}
-						<p><b>Sexe :</b> Mâle</p>
-					{% endif %}
-					
-					<p><b>Region :</b> {{ annonce.animal.region }}</p>
-				</div>
+				<h2><u>Identité</u> :</h2>
+				<p><b>Nom :</b> {{ annonce.animal.name }}</p>
+				{% if annonce.animal.sexe == 'f' %}
+					<p><b>Sexe :</b> Femelle</p>
+				{% else %}
+					<p><b>Sexe :</b> Mâle</p>
+				{% endif %}
+				
+				<p><b>Region :</b> {{ annonce.animal.region }}</p>
+			</div>
 		</div><br/>
 		<div class="card bg-success text-white">
 			<div class="card-body">
@@ -27,9 +27,54 @@
 				{{ annonce.content | raw }}
 			</div>
 		</div><br/>
-		<button class="btn btn-info">Réserver</button>
-		<a class="btn btn-info" href="mailto:YuKunOCR@gmail.com?subject=Plus%20d'infos"> Plus d'infos </a>
+		<div class="center">
+			<button data-toggle="modal" data-target="#squarespaceModal" class="btn btn-info center-block">Reserver</button>
+			<a class="btn btn-info" href="{{ path("admin_contact")}}"> Plus d'infos </a>
+		</div>
+		<!-- line modal -->
+		<div class="modal fade" id="squarespaceModal" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-6 ">
+                            <h2 class="tour-form-title">Réservation</h2>
+                        </div>
+						<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
+					</div>
+					<div class="modal-body">
+						<div class="container">
+							{{ form_start(formBook) }}
+							<div class="form-row">
+								<div class="col-md-12 mb-3">
+									{{ form_row(formBook.petName) }}
+								</div>
+								<div class="col-md-6 mb-3">
+									{{ form_row(formBook.firstname) }}
+								</div>
+								<div class="col-md-6 mb-3">
+									{{ form_row(formBook.lastname) }}
+								</div>
+							</div>
+							<div class="form-row">
+								<div class="col-md-12 mb-3">
+									{{ form_row(formBook.email) }}
+								</div>
+								<div class="col-md-12 mb-3">
+									{{ form_row(formBook.telephone) }}
+								</div>
+							{{ form_end(formBook) }}
+						</div> <!-- /container -->
+					</div>
+				</div>
+			</div>
+		</div>
+	    <br/>
 	</article>
+	<br/>
 {% endblock %}
 {% block footer %}
+{% endblock %}
+
+{% block javascripts %}
+
 {% endblock %}

@@ -52,7 +52,7 @@ class Ad
      */
     private $animal;
 
-    
+   
 
     public function getId(): ?int
     {

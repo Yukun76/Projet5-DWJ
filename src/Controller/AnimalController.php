@@ -21,7 +21,7 @@ class AnimalController extends AbstractController
 
     /**
      * @Route("/animal/new", name="pet_new")
-     * @Route("/animal/{id}/edit", name="pet_edit")
+     * @Route("/animal/{id}", name="pet_edit")
      */
     public function form(Animal $animal = null, request $request, ObjectManager $manager)
     {

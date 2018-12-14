@@ -5,8 +5,11 @@ namespace App\Controller;
 use App\Entity\Ad;
 use App\Entity\Animal;
 use App\Entity\User;
+use Doctrine\ORM\Query;
+use Symfony\Component\HttpFoundation\Request;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\Routing\Annotation\Route;
 
 
@@ -15,7 +18,7 @@ use Symfony\Component\Routing\Annotation\Route;
   *
   * @IsGranted("ROLE_ADMIN")
   */
-class AdminController extends AbstractController
+class AdminController extends Controller
 {
     /**
      * Require ROLE_ADMIN for only this controller method.
@@ -53,26 +56,46 @@ class AdminController extends AbstractController
     /**
      * @Route("/annonce", name="annonce")
      */
-    public function annonce() 
+    public function annonce(request $request) 
     {    
         $repo = $this->getDoctrine()->getRepository(Ad::class);
-        $ads = $repo->findAll();  
+        $ads = $repo->findAll(); 
+
+        /**
+         *  @var $paginator \Knp Component\Pager\Paginator
+         */
+        $paginator = $this->get('knp_paginator');
+        $result = $paginator->paginate(
+            $ads,
+            $request->query->getInt('page', 1),
+            3
+        ); 
 
         return $this->render('admin/annonce.html.twig', [
-            'ads' => $ads            
+            'ads' => $result            
         ]);
     }
 
     /**
      * @Route("/animal", name="animal")
      */
-    public function animal() 
+    public function animal(request $request) 
     {    
         $repo = $this->getDoctrine()->getRepository(Animal::class);
-        $animals = $repo->findAll();  
+        $animals = $repo->findAll(); 
+
+        /**
+         *  @var $paginator \Knp Component\Pager\Paginator
+         */
+        $paginator = $this->get('knp_paginator');
+        $result = $paginator->paginate(
+            $animals,
+            $request->query->getInt('page', 1),
+            3
+        );  
 
         return $this->render('admin/animal.html.twig', [
-            'animals' => $animals           
+            'animals' => $result           
         ]);
     }
 }

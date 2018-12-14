@@ -3,10 +3,13 @@
 namespace App\Controller;
 use App\Entity\Ad;
 use App\Entity\Animal;
+use App\Entity\Booking;
 use App\Entity\User;
+use App\Form\BookingType;
 use App\Form\SearchAnimalType;
-use Doctrine\ORM\Query;
 use Doctrine\Common\Persistence\ObjectManager;
+use Doctrine\ORM\Query;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\Form\Forms;
@@ -69,7 +72,7 @@ class HomeController extends Controller
         $result = $paginator->paginate(
             $ads,
             $request->query->getInt('page', 1),
-            $request->query->getInt('limit', 3)
+            3
         );
 
         $search->handleRequest($request);
@@ -85,20 +88,45 @@ class HomeController extends Controller
     }
 
     /**
-     * @Route("/annonce/{id}", name="ad_show")
+     * @Route("/information/{id}", name="ad_show")
      */
-    public function show($id)
+    public function show($id, request $request, ObjectManager $manager)
     {
         $repo = $this->getDoctrine()->getRepository(ad::Class);
-
         $annonce = $repo->find($id);
+
+        $booking = new Booking();
+        $form = $this->createForm(BookingType::class, $booking);
+
+        $form->handleRequest($request);
+        if($form->isSubmitted() && $form->isValid()) {
+
+
+            $manager->persist($booking);
+            $manager->flush();
+
+            return $this->redirectToRoute("accueil");
+        }
 
         return $this->render('ad/show.html.twig',[
             'annonce' => $annonce,
+            'formBook' => $form->createView()
         ]);
     }
 
     /**
+     * 
+     * @Route("/contact", name="admin_contact")
+     */
+
+    public function contact()
+    {    
+        
+        return $this->render('contact/contact.html.twig');
+    }
+
+    /**
+     * 
      * @Route("/profile", name="u_profile")
      */
 
