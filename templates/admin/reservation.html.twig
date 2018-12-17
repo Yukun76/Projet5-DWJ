@@ -3,6 +3,42 @@
 
 {% block title %}PetAdopt' : Home - Adopter un animal de compagnie !{% endblock %}
 {% block body %}
+ <table class="table">
+        <thead>
+            <tr>
+                <th class="title-id">Prénom</th>
+                <th class="title-id">Nom</th>
+                <th class="title-id">Email</th>
+                <th class="title-id">Téléphone</th>
+                <th class="title-id">Nom Animal</th>
+                <th class="title-id">Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for booking in bookings %}
+                    <tr>  
+                        <td>
+                            {{ booking.firstname }}                 
+                        </td>                      
+                        <td>
+                            {{ booking.lastname }}                 
+                        </td>
+                        <td>
+                			 {{ booking.email }}
+                        </td>
+                        <td>
+                            {{ booking.telephone }}
+                        </td>
+                        <td>
+  					
+                        </td>
+                        <td>
+                            <a href="#" data-toggle="modal" data-target="#myModal" class="btn btn-danger" id="del-billet" data-billet-title="" data-modal-confirm-url="">Supprimer</a>
+                        </td>
+                    </tr>
+                {% endfor %} 
+        </tbody>
+    </table>
 {% endblock %}
 {% block footer %}
 {% endblock %}

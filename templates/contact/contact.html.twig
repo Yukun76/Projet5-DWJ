@@ -3,7 +3,7 @@
 {% block body %}<br><br><br><br>
 
 <div class="row" id="contatti">
-	  <img  src="img/animaux.jpg"  id="logo" alt="animaux"></img>
+	  <img  src="{{ asset('img/animaux.jpg') }}"  id="logo" alt="animaux"></img>
 <div class="container mt-5" >
 <div class="container-fluid">
 <div class="section">
@@ -11,11 +11,11 @@
   <div class="top-border right"></div>
   <h1>CONTACTEZ NOUS</h1>
   <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-    <a href="#down">CONTACT <i class="fa fa-arrow-circle-down" aria-hidden="true"></i>
+    <a href="#info">CONTACT <i class="fa fa-arrow-circle-down" aria-hidden="true"></i>
 </a>
 </div>
-<hr>
-<a id="down"></a>
+<hr id="hr_contact">
+<a id="info"></a>
  <div class="row">
  <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d2623.9421160966094!2d2.3624693!3d48.87838!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47e66e74623cb693%3A0x10389ef77ae91296!2s75000+Paris!5e0!3m2!1sfr!2sfr!4v1544796672795" width="100%" height="320" frameborder="0" style="border:0" allowfullscreen></iframe>
  </div>
@@ -44,7 +44,7 @@
 {% block javascripts %}
 <script type="text/javascript">
 	$(function() {
-    $("a[href='#down']").click(function() {
+    $("a[href='#info']").click(function() {
         $("html, body").animate({
             scrollTop: 0
         }, "slow");

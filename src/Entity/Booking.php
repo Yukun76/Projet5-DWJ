@@ -37,10 +37,6 @@ class Booking
      */
     private $telephone;
 
-    /**
-     * @ORM\Column(type="string", length=255)
-     */
-    private $petName;
 
 
     public function getId(): ?int
@@ -96,15 +92,4 @@ class Booking
         return $this;
     }
 
-    public function getPetName(): ?string
-    {
-        return $this->petName;
-    }
-
-    public function setPetName(string $petName): self
-    {
-        $this->petName = $petName;
-
-        return $this;
-    }
 }

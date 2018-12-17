@@ -20,7 +20,7 @@ use Symfony\Component\Validator\Constraints\DateTime;
   */ 
 class AdController extends AbstractController
 {
-    /**
+    /** 
      * @Route("/annonce/new", name="ad_new")
      * @Route("/annonce/{id}", name="ad_edit")
      */

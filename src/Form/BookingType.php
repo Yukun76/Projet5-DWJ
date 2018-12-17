@@ -19,7 +19,6 @@ class BookingType extends AbstractType
             ->add('lastname', TextType::class, ['label' => "Nom"])
             ->add('email', EmailType::class, ['label' => "Email"])
             ->add('telephone', TextType::class, ['label' => "N° de Téléphone"])
-            ->add('petName', TextType::class, ['label' => "Réservation pour :"])
             ->add('save', SubmitType::class, ['label' => 'Envoyer'])
         ;
     }

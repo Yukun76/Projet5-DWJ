@@ -4,12 +4,14 @@ namespace App\Controller;
 
 use App\Entity\Ad;
 use App\Entity\Animal;
+use App\Entity\Booking;
 use App\Entity\User;
+use App\Form\BookingType;
 use Doctrine\ORM\Query;
-use Symfony\Component\HttpFoundation\Request;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 
 
@@ -96,6 +98,19 @@ class AdminController extends Controller
 
         return $this->render('admin/animal.html.twig', [
             'animals' => $result           
+        ]);
+    }
+
+    /**
+     * @Route("/reservation", name="reservation")
+     */
+    public function reservation() 
+    {    
+        $repo = $this->getDoctrine()->getRepository(Booking::class);
+        $bookings = $repo->findAll(); 
+
+        return $this->render('admin/reservation.html.twig', [
+            'bookings' => $bookings, 
         ]);
     }
 }
