@@ -6,6 +6,21 @@
 
  <h1> Liste des animaux à adopter </h1>
     <p><a href="{{ path('pet_new') }}" class="btn btn-success" id="btn-success">Ajouter</a></p>
+
+    <div class="jumbotron">
+        <div class="container">
+            {{ form_start(form) }}
+            <div class="form-row">
+                <div class="col">
+                    {{ form_row(form.type) }}
+                </div>
+                <div class="col">
+                    <button class="btn btn-primary">Rechercher</button> 
+                </div>
+            </div>
+            {{ form_end(form) }}
+        </div>
+    </div>
     <table class="table">
         <thead>
             <tr>

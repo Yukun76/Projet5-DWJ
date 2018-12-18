@@ -2,10 +2,14 @@
 
 namespace App\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
-use Symfony\Component\Validator\Constraints as Assert;
-use Symfony\Component\Security\Core\User\UserInterface;
+use Doctrine\ORM\Mapping\OneToMany;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+use Symfony\Component\Security\Core\User\UserInterface;
+use Symfony\Component\Validator\Constraints as Assert;
+
+use App\Entity\Booking;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\UserRepository")
@@ -54,10 +58,15 @@ class User implements UserInterface
      */
     private $roles;
 
+    /**
+     * @oneToMany(targetEntity="Booking", mappedBy="user")
+     */
+    private $bookings;
 
     public function __construct()
     {
-        $this->roles = array('ROLE_ADMIN');
+        $this->roles = array('ROLE_USER');
+        $this->bookings = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -122,4 +131,32 @@ class User implements UserInterface
     }
 
     public function eraseCredentials() {}
+
+    /**
+     * @return Booking[]
+     */
+    public function getBookings() : array
+    {
+        if ($this->bookings->isEmpty()) {
+            return [];
+        }
+
+        return $this->bookings->toArray();
+    }
+
+    public function addBookings(Booking $booking) : User
+    {
+        if ($this->bookings->contains($booking)) {
+            return $this;
+        }
+
+        $this->bookings->add($booking);
+        $booking->setUser($this);
+        return $this;
+    }
+
+    public function __toString() 
+    {
+        return (string) $this->getUsername(); 
+    }
 }

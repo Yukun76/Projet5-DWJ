@@ -6,11 +6,10 @@
  <table class="table">
         <thead>
             <tr>
-                <th class="title-id">Prénom</th>
-                <th class="title-id">Nom</th>
+                <th class="title-id">Date de la réservation</th>
+                <th class="title-id">Pseudo</th>
                 <th class="title-id">Email</th>
-                <th class="title-id">Téléphone</th>
-                <th class="title-id">Nom Animal</th>
+                <th class="title-id">Nom de l'animal</th>
                 <th class="title-id">Actions</th>
             </tr>
         </thead>
@@ -18,20 +17,19 @@
             {% for booking in bookings %}
                     <tr>  
                         <td>
-                            {{ booking.firstname }}                 
+                            {{ booking.createdAt | date('d/m/Y') }}              
+                        </td> 
+                                                
+                        <td>
+                            {{ booking.user.username }}                 
                         </td>                      
                         <td>
-                            {{ booking.lastname }}                 
+                            {{ booking.user.email }}                 
                         </td>
                         <td>
-                			 {{ booking.email }}
-                        </td>
-                        <td>
-                            {{ booking.telephone }}
-                        </td>
-                        <td>
-  					
-                        </td>
+                            <a href="{{path('ad_show', { 'id': booking.ad.id})}}"> {{ booking.ad.animal.name }}</a>
+                           
+                        </td> 
                         <td>
                             <a href="#" data-toggle="modal" data-target="#myModal" class="btn btn-danger" id="del-billet" data-billet-title="" data-modal-confirm-url="">Supprimer</a>
                         </td>

@@ -3,6 +3,10 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\ORM\Mapping\JoinColumn;
+use Doctrine\ORM\Mapping\OneToOne;
+
+use App\Entity\User;
 
 
 /**
@@ -17,79 +21,69 @@ class Booking
      */
     private $id;
 
-    /**
-     * @ORM\Column(type="string", length=255)
-     */
-    private $firstname;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="datetime")
      */
-    private $lastname;
+    private $createdAt;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * One Booking has One User.
+     * @OneToOne(targetEntity="User")
+     * @JoinColumn(name="user_id", referencedColumnName="id")
      */
-    private $email;
+    private $user;
 
     /**
-     * @ORM\Column(type="text")
+     * One Booking has One Ad.
+     * @OneToOne(targetEntity="Ad")
+     * @JoinColumn(name="ad_id", referencedColumnName="id")
      */
-    private $telephone;
-
-
+    private $ad;
 
     public function getId(): ?int
     {
         return $this->id;
     }
 
-    public function getFirstname(): ?string
+
+    public function getCreatedAt(): ?\DateTimeInterface
     {
-        return $this->firstname;
+        return $this->createdAt;
     }
 
-    public function setFirstname(string $firstname): self
+    public function setCreatedAt(\DateTimeInterface $createdAt): self
     {
-        $this->firstname = $firstname;
+        $this->createdAt = $createdAt;
 
         return $this;
     }
 
-    public function getLastname(): ?string
+
+    public function getUser(): ?User
     {
-        return $this->lastname;
+        return $this->user;
     }
 
-    public function setLastname(string $lastname): self
+    public function setUser(User $user): self
     {
-        $this->lastname = $lastname;
+        $this->user = $user;
 
         return $this;
     }
 
-    public function getEmail(): ?string
+
+    public function getAd(): ?Ad
     {
-        return $this->email;
+        return $this->ad;
     }
 
-    public function setEmail(string $email): self
+    public function setAd(Ad $ad): self
     {
-        $this->email = $email;
+        $this->ad = $ad;
 
         return $this;
     }
 
-    public function getTelephone(): ?string
-    {
-        return $this->telephone;
-    }
-
-    public function setTelephone(string $telephone): self
-    {
-        $this->telephone = $telephone;
-
-        return $this;
-    }
 
 }

@@ -97,15 +97,22 @@ class HomeController extends Controller
         $form = $this->createForm(BookingType::class, $booking);
 
         $form->handleRequest($request);
-        if($form->isSubmitted() && $form->isValid()) {
+        if($form->isSubmitted() && $form->isValid()) {           
            
+            if(!$booking->getId()){
+                $booking->setCreatedAt(new \DateTime());
+            }
+            $user = $this->getUser();
+            $booking->setUser($user);
+  
+            $booking->setAd($annonce);
 
             $manager->persist($booking);
             $manager->flush();
 
             //Envoie un mail de confirmation à l'utilisateur
-            $email = $form->get('email')->getData();
-            $user = $form->get('firstname')->getData();
+            $email = $this->getUser()->getEmail();
+            $username = $this->getUser()->getUsername();
             $pet = $annonce->getAnimal()->getName();
 
 
@@ -115,7 +122,7 @@ class HomeController extends Controller
                 ->setBody(
                     $this->renderView(
                         'emails/reservation.html.twig',[ 
-                        'firstname' => $user,
+                        'username' => $username,
                         'annonce' => $annonce,
                         'name' => $pet
                         ]

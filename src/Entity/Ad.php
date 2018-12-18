@@ -52,7 +52,10 @@ class Ad
      */
     private $animal;
 
-   
+    /**
+     * @oneToOne(targetEntity="Booking", mappedBy="ad")
+     */
+    private $bookings;
 
     public function getId(): ?int
     {
@@ -119,6 +122,18 @@ class Ad
     public function setAnimal(Animal $animal): self
     {
         $this->animal = $animal;
+
+        return $this;
+    }
+
+    public function getBooking(): ?Booking
+    {
+        return $this->booking;
+    }
+
+    public function setBooking(Booking $booking): self
+    {
+        $this->booking = $booking;
 
         return $this;
     }

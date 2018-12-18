@@ -2,36 +2,37 @@
 
 namespace App\Controller;
 
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\Finder\Exception\AccessDeniedException;
+use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\Routing\Annotation\Route;
+use Doctrine\ORM\Query;
+use Symfony\Component\Security\Core\Authorization\AuthorizationCheckerInterface;
+
 use App\Entity\Ad;
 use App\Entity\Animal;
 use App\Entity\Booking;
 use App\Entity\User;
 use App\Form\BookingType;
-use Doctrine\ORM\Query;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\Routing\Annotation\Route;
 
 
  /**
   * Require ROLE_ADMIN for *every* controller method in this class.
   *
-  * @IsGranted("ROLE_ADMIN")
+  * @Security("has_role('ROLE_ADMIN')")
   */
 class AdminController extends Controller
 {
     /**
-     * Require ROLE_ADMIN for only this controller method.
-     *
-     * @IsGranted("ROLE_ADMIN")
-     *
      * @Route("/admin", name="admin")
      */
-    public function admin()
+    public function admin(AuthorizationCheckerInterface $authChecker)
     {
-    	$this->denyAccessUnlessGranted('IS_AUTHENTICATED_FULLY');
+    	if (false === $authChecker->isGranted('ROLE_ADMIN')) {
+        throw new AccessDeniedException('Unable to access this page!');
+    }
 
 	    // or add an optional message - seen by developers
 	    $this->denyAccessUnlessGranted('ROLE_ADMIN', null, 'User tried to access a page without having ROLE_ADMIN');
@@ -108,7 +109,7 @@ class AdminController extends Controller
     {    
         $repo = $this->getDoctrine()->getRepository(Booking::class);
         $bookings = $repo->findAll(); 
-
+        
         return $this->render('admin/reservation.html.twig', [
             'bookings' => $bookings, 
         ]);
