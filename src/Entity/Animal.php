@@ -2,8 +2,10 @@
 
 namespace App\Entity;
 
-use App\Entity\Region;
+use App\Entity\Ad;
 use App\Entity\Booking;
+use App\Entity\Region;
+
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\ORM\Mapping\JoinColumn;
 use Doctrine\ORM\Mapping\ManyToOne;

@@ -2,9 +2,6 @@
 
 namespace App\Controller;
 
-use App\Entity\Ad;
-use App\Form\AdType;
-use App\Service\FileUploader;
 use Doctrine\Common\Persistence\ObjectManager;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -12,6 +9,10 @@ use Symfony\Component\HttpFoundation\File\File;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Validator\Constraints\DateTime;
+
+use App\Entity\Ad;
+use App\Form\AdType;
+use App\Service\FileUploader;
 
  /**
   * Require ROLE_ADMIN for *every* controller method in this class.
@@ -77,8 +78,8 @@ class AdController extends AbstractController
     		$annonce = new Ad();
     	};
 
-		$repo = $this->getDoctrine()->getRepository(Ad::class);
-        $annonce = $repo->find($id);
+		  $repo = $this->getDoctrine()->getRepository(Ad::class);
+      $annonce = $repo->find($id);
 
     	$manager->remove($annonce);
     	$manager->flush();

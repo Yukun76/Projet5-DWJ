@@ -1,17 +1,19 @@
 <?php
 
 namespace App\Controller;
-use App\Entity\Ad;
-use App\Entity\Animal;
-use App\Entity\Booking;
-use App\Entity\User;
-use App\Form\BookingType;
-use App\Form\SearchAnimalType;
+
 use Doctrine\Common\Persistence\ObjectManager;
 use Doctrine\ORM\Query;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
+
+use App\Entity\Ad;
+use App\Entity\User;
+use App\Entity\Animal;
+use App\Entity\Booking;
+use App\Form\BookingType;
+use App\Form\SearchAnimalType;
 
 class HomeController extends Controller
 {
@@ -21,13 +23,17 @@ class HomeController extends Controller
      */
     public function accueil(request $request)
     {
-        $search = $this->createForm(SearchAnimalType::class);        
+        $search = $this->createForm(SearchAnimalType::class);  
+              
         $repo = $this->getDoctrine()->getRepository(Ad::class);
         $ads = $repo->findAll();
 
-    /**
-     *  @var $paginator \Knp Component\Pager\Paginator
-     */
+        $repository = $this->getDoctrine()->getRepository(Booking::class);
+        $booking = $repository->findOneBy(array('ad' => $ads));
+
+        /**
+         *  @var $paginator \Knp Component\Pager\Paginator
+         */
         $paginator = $this->get('knp_paginator');
         $result = $paginator->paginate(
             $ads,
@@ -44,6 +50,7 @@ class HomeController extends Controller
         return $this->render('home/accueil.html.twig', [
             'search' => $search->createView(),
             'ads' => $result,
+            'booking' => $booking
         ]);
     }
 
@@ -51,7 +58,7 @@ class HomeController extends Controller
      * @Route("/search", name="search")
      */
     public function search(request $request)
-    {
+    {   
         $searchAnimal = $request->get('animal');
         $search = $this->createForm(SearchAnimalType::class, $searchAnimal);  
 
@@ -96,15 +103,22 @@ class HomeController extends Controller
         $booking = new Booking();
         $form = $this->createForm(BookingType::class, $booking);
 
+        if (!$annonce) {
+            throw $this->createNotFoundException(
+                "Aucune annonce n'a été trouvée pour l'id ".$id
+            );
+        }
+
         $form->handleRequest($request);
         if($form->isSubmitted() && $form->isValid()) {           
            
             if(!$booking->getId()){
-                $booking->setCreatedAt(new \DateTime());
+                 $booking->setCreatedAt(new \DateTime());
             }
+
             $user = $this->getUser();
             $booking->setUser($user);
-  
+      
             $booking->setAd($annonce);
 
             $manager->persist($booking);
@@ -126,8 +140,8 @@ class HomeController extends Controller
                         'annonce' => $annonce,
                         'name' => $pet
                         ]
-                    ),
-                    'text/html'
+                    ),                
+                        'text/html'
                 )
             ;
 

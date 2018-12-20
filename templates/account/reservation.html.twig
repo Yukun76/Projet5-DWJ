@@ -1,0 +1,62 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}PetAdopt' : Mes réservations{% endblock %}
+
+{% block body %}
+<br/><br/><br/><br/><br/><br/>
+
+<h1> Liste de mes réservations : </h1><br/>
+	{% if booking.user ==  app.user.getUsername()  %}	
+		<div class="card" id="card_accueil" style="width:400px">
+			<img class="card-img-top" src="{{ asset('uploads/animals/' ~ booking.ad.image) }}" alt="Card image" style="width:100%">
+			<div class="card-body">
+				<h4 class="card-title">{{ booking.ad.title }}</h4>
+				<div class="metadata">
+					Réservé le {{ booking.createdAt | date('d/m/Y') }} à {{ booking.createdAt | date('H:i') }}
+				</div><br/>
+				<a href="{{path('ad_show', { 'id': booking.ad.id})}}" class="btn btn-primary">Afficher</a>
+				<a href="#" data-toggle="modal" data-target="#myModal" class="btn btn-danger" id="del-billet" data-billet-title="{{ booking.ad.animal.name }}" data-modal-confirm-url="{{ path('del_reservation', { 'id': booking.ad.id}) }}">Annuler la réservation</a>
+			</div>
+		</div>				
+	{% endif %}
+{% endblock %}
+{% block footer %}
+    <!-- Modal -->
+    <div class="modal fade" id="myModal" role="dialog">
+        <div class="modal-dialog">
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3>Demande de confirmation</h3>
+                    <a href="#" data-dismiss="modal" aria-hidden="true" class="close">×</a>
+                </div>
+                <div class="modal-body">
+                    <p>Etes-vous sur de vouloir supprimer l'annonce concernée ?</p>
+                </div>
+                <div class="modal-footer">
+                    <a href="" id="btnYes" class="btn btn-default">Oui, je confirme</a>
+                    <a href="#" data-dismiss="modal" aria-hidden="true" class="btn btn-secondary">Non, j'annule</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(function(){
+        $modal = $('.modal');
+        $('a.btn-danger').on('click',function(e){
+            e.preventDefault();
+            $modal.find('a#btnYes').attr('href',$(this).data('modalConfirmUrl'));
+            $modal.find('.modal-body p').text("Êtes-vous sûr de vouloir annuler la réservation de " + $(this).data('billetTitle'));
+            $modal.modal("show");
+        })
+    });
+    
+    $(document).ready(function(){
+        $('a#btnYes').click(function(){
+            $('.alert').show()
+        })
+    });
+</script>
+{% endblock %}

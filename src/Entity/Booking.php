@@ -2,11 +2,12 @@
 
 namespace App\Entity;
 
+use App\Entity\Ad;
+use App\Entity\User;
+
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\ORM\Mapping\JoinColumn;
 use Doctrine\ORM\Mapping\OneToOne;
-
-use App\Entity\User;
 
 
 /**
@@ -40,6 +41,7 @@ class Booking
      * @JoinColumn(name="ad_id", referencedColumnName="id")
      */
     private $ad;
+    
 
     public function getId(): ?int
     {

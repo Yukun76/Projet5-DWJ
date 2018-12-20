@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Entity\Animal;
+use App\Entity\Booking;
+
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\ORM\Mapping\JoinColumn;
 use Doctrine\ORM\Mapping\OneToOne;
@@ -56,6 +58,7 @@ class Ad
      * @oneToOne(targetEntity="Booking", mappedBy="ad")
      */
     private $bookings;
+    
 
     public function getId(): ?int
     {

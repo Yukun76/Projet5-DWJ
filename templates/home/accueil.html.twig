@@ -7,30 +7,30 @@
 		<article>
 			<hr class="hr_liste"><br/>
 			<div class="zoomInUp">
-				<div class="flex-container">
+				<div class="flex-container">					
 					{% for ad in ads %}
-						<div class="card" id="card_accueil" style="width:400px">
-							<img class="card-img-top" src="{{ asset('uploads/animals/' ~ ad.image) }}" alt="Card image" style="width:100%">
-							<div class="card-body">
-								<h4 class="card-title">{{ ad.title }}</h4>
-								<div class="metadata">
-									Publié le {{ ad.createdAt | date('d/m/Y') }} à {{ ad.createdAt | date('H:i') }}
-								</div><br/>
-								<p class="card-text">{{ ad.content[:100] ~ '...'  }}</p>
-								<a href="{{path('ad_show', { 'id': ad.id})}}" class="btn btn-primary">Lire la suite</a>
+						{% if booking.ad.id != ad.id %}							
+							<div class="card" id="card_accueil" style="width:400px">
+								<img class="card-img-top" src="{{ asset('uploads/animals/' ~ ad.image) }}" alt="Card image" style="width:100%">
+								<div class="card-body">
+									<h4 class="card-title">{{ ad.title }}</h4>
+									<div class="metadata">
+										Publié le {{ ad.createdAt | date('d/m/Y') }} à {{ ad.createdAt | date('H:i') }}
+									</div><br/>
+									<p class="card-text">{{ ad.content[:100] ~ '...'  }}</p>
+									<a href="{{path('ad_show', { 'id': ad.id})}}" class="btn btn-primary">Lire la suite</a>
+								</div>
 							</div>
-						</div>
-					{% endfor %}
+						{% endif %}
+					{% endfor %}					
 				</div>
 				<br/>
 			</div>
 			<div class="navigation">
-		    	{{ knp_pagination_render(ads) }}
+				{{ knp_pagination_render(ads) }}
 			</div>
 			<hr class="hr_liste">
-		</article>		
+		</article>
 	</div>
 {% endblock %}
-
 {% block javascripts %}{% endblock %}
-
