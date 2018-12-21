@@ -29,7 +29,9 @@ class HomeController extends Controller
         $ads = $repo->findAll();
 
         $repository = $this->getDoctrine()->getRepository(Booking::class);
-        $booking = $repository->findOneBy(array('ad' => $ads));
+        $booking = $repository->findOneBy(array(
+            'ad' => $ads,
+        ));
 
         /**
          *  @var $paginator \Knp Component\Pager\Paginator
@@ -150,7 +152,7 @@ class HomeController extends Controller
             return $this->redirectToRoute("accueil");
         }
 
-        return $this->render('ad/show.html.twig',[
+        return $this->render('infoReservation/show.html.twig',[
             'annonce' => $annonce,
             'formBook' => $form->createView()
         ]);

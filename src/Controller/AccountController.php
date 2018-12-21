@@ -4,7 +4,7 @@ namespace App\Controller;
 
 use App\Entity\Ad;
 use App\Entity\Booking;
-
+use App\Entity\User;
 use Doctrine\Common\Persistence\ObjectManager;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
@@ -16,15 +16,16 @@ class AccountController extends AbstractController
      */
     public function reservation()
     {       
-              
+
         $repo = $this->getDoctrine()->getRepository(Ad::class);
         $ads = $repo->findAll();
 
         $repository = $this->getDoctrine()->getRepository(Booking::class);
-        $booking = $repository->findOneBy(array('ad' => $ads));
+        $booking = $repository->findOneBy(array(
+            'ad' => $ads
+        ));
 
         return $this->render('account/reservation.html.twig', [
-            'ads' => $ads,
             'booking' => $booking
         ]);
     }
@@ -42,5 +43,15 @@ class AccountController extends AbstractController
         $manager->flush();
 
         return $this->redirectToRoute('acc_reservation');
+    }
+
+
+    /**
+     * @Route("/profile", name="profile") 
+     */
+
+    public function profile() {
+
+         return $this->render('account/profile.html.twig');
     }
 }

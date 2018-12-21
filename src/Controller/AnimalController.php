@@ -41,7 +41,7 @@ class AnimalController extends AbstractController
     		return $this->redirectToRoute('animal');
     	}
 
-        return $this->render('animal/create.html.twig', [
+        return $this->render('admin/animal/create.html.twig', [
         	'formAnimal' => $form->createView(),
         	'edit' => $animal->getId() !== null
         ]);

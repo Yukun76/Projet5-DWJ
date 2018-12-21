@@ -37,7 +37,7 @@ class AdminController extends Controller
 	    // or add an optional message - seen by developers
 	    $this->denyAccessUnlessGranted('ROLE_ADMIN', null, 'User tried to access a page without having ROLE_ADMIN');
 
-        return $this->render('admin/admin.html.twig');
+        return $this->render('admin/index.html.twig');
     }
 
 
@@ -74,7 +74,7 @@ class AdminController extends Controller
             3
         ); 
 
-        return $this->render('admin/annonce.html.twig', [
+        return $this->render('admin/ad/annonce.html.twig', [
             'ads' => $result            
         ]);
     }
@@ -97,7 +97,7 @@ class AdminController extends Controller
             3
         );  
 
-        return $this->render('admin/animal.html.twig', [
+        return $this->render('admin/animal/animal.html.twig', [
             'animals' => $result           
         ]);
     }

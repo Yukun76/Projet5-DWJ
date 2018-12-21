@@ -6,7 +6,8 @@
 <br/><br/><br/><br/><br/><br/>
 
 <h1> Liste de mes réservations : </h1><br/>
-	{% if booking.user ==  app.user.getUsername()  %}	
+	{% if  booking == null  %}	
+	{% elseif  app.user.getUsername() == booking.user.username  %}	
 		<div class="card" id="card_accueil" style="width:400px">
 			<img class="card-img-top" src="{{ asset('uploads/animals/' ~ booking.ad.image) }}" alt="Card image" style="width:100%">
 			<div class="card-body">
@@ -17,7 +18,7 @@
 				<a href="{{path('ad_show', { 'id': booking.ad.id})}}" class="btn btn-primary">Afficher</a>
 				<a href="#" data-toggle="modal" data-target="#myModal" class="btn btn-danger" id="del-billet" data-billet-title="{{ booking.ad.animal.name }}" data-modal-confirm-url="{{ path('del_reservation', { 'id': booking.ad.id}) }}">Annuler la réservation</a>
 			</div>
-		</div>				
+		</div>			
 	{% endif %}
 {% endblock %}
 {% block footer %}
