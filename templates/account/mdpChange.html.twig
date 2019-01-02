@@ -1,0 +1,57 @@
+{% extends 'base.html.twig' %}
+{% block title %}PetAdopt' : Modification du mot de passe{% endblock %}
+{% block stylesheets %}
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" type="text/css" href="../css/profile.css" />
+	<link rel="shortcut icon" href="../img/patte2.png" type="image/x-icon">
+	<link href="https://fonts.googleapis.com/css?family=Cormorant+Garamond|Crimson+Text|Indie+Flower|Lato|Berkshire+Swash|Tangerine|Roboto|Roboto+Slab|Ubuntu|Sail|Zilla+Slab+Highlight" rel="stylesheet">
+	<link rel="stylesheet" href="https://bootswatch.com/4/litera/bootstrap.min.css" />
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
+	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/2.0.2/anime.min.js"></script>
+{% endblock %}
+{% block body %}
+	<br/><br/><br/>
+	<div class="container emp-profile">
+		<div class="row">
+			<div class="container">
+				<div class="fb-profile">
+					<img align="left" class="fb-image-lg" src="{{ asset('img/banchat.jpg') }}" alt="Profile image example"/>
+					<img align="left" class="fb-image-profile thumbnail" src="{{ asset('img/toutou.jpg') }}" alt="Profile image example"/>
+					<div class="fb-profile-text">
+						<h1>Modification du mot de passe</h1>
+						<hr>
+					</div>
+				</div>
+				</div> <!-- /container -->
+				<div class="col-md-6">
+				</div>
+			</div>
+		</div>
+		<div class="col-md-8">
+			<div class="tab-content profile-tab" id="myTabForm">
+				<div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+					{{ form_start(form) }}
+					{{form_errors(form)}}
+					<div class="row">
+						<div class="col-md-6">
+							{{ form_row(form.oldPassword) }}
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-md-6">
+							{{ form_row(form.password) }}
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-md-6">
+							{{ form_end(form) }}
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>	
+{% endblock %}
+{% block footer %}{% endblock %}

@@ -20,6 +20,47 @@ class AdRepository extends ServiceEntityRepository
         parent::__construct($registry, Ad::class);
     }
 
+
+     /**
+     * @return Booking[]
+     * @return Ad[]
+     */
+    public function findAllAdExceptBooking(): array
+    {
+        $qb = $this->createQueryBuilder('id')
+            ->select('id')
+            ->From('App\Entity\Ad', 'a')
+            ->leftJoin('App\Entity\Booking', 'b', 'WITH', 'id = b.ad')
+            ->Where('b.ad IS NULL')
+            ->getQuery();
+
+        return $qb->execute();
+    }
+
+
+    /**
+     * @param string $type
+     * @param string $sexe
+     * @param string $region
+     * @return Ad[]
+     */
+    public function findAdWithSearch($type, $sexe, $region): array
+    {
+        $qb = $this->createQueryBuilder('animal')
+            ->select('animal')
+            ->from('App\Entity\Ad' , 'a')
+            ->leftJoin('App\Entity\Animal', 'an', 'WITH', 'animal = an.id')
+            ->where('an.type = :type')
+            ->andWhere('an.sexe = :sexe')
+            ->andWhere('an.region = :region')
+            ->setParameter(':type' , $type)
+            ->setParameter(':sexe' , $sexe)
+            ->setParameter(':region' , $region)
+            ->getQuery();
+
+        return $qb->execute();
+    }
+
     // /**
     //  * @return Ad[] Returns an array of Ad objects
     //  */

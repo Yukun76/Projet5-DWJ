@@ -26,12 +26,8 @@ class HomeController extends Controller
         $search = $this->createForm(SearchAnimalType::class);  
               
         $repo = $this->getDoctrine()->getRepository(Ad::class);
-        $ads = $repo->findAll();
+        $ads = $repo->findAllAdExceptBooking();
 
-        $repository = $this->getDoctrine()->getRepository(Booking::class);
-        $booking = $repository->findOneBy(array(
-            'ad' => $ads,
-        ));
 
         /**
          *  @var $paginator \Knp Component\Pager\Paginator
@@ -52,7 +48,6 @@ class HomeController extends Controller
         return $this->render('home/accueil.html.twig', [
             'search' => $search->createView(),
             'ads' => $result,
-            'booking' => $booking
         ]);
     }
 
@@ -61,35 +56,37 @@ class HomeController extends Controller
      */
     public function search(request $request)
     {   
-        $searchAnimal = $request->get('animal');
+        $searchAnimal = $request->get('search_animal');
         $search = $this->createForm(SearchAnimalType::class, $searchAnimal);  
 
-        // $repo = $this->getDoctrine()->getRepository(Ad::class);
-       // $ads = $repo->findAll();
+        $repo = $this->getDoctrine()->getRepository(Ad::class);
+        $type = $repo->findOneBy([
+            'animal' => ':type',
+        ]);
+        $sexe = $repo->findOneBy([
+            'animal' => ':sexe',
+        ]);
+        $region = $repo->findOneBy([
+            'animal' => ':region',
+        ]);
 
-        $repository = $this->getDoctrine()->getRepository(Animal::class);       
+        $ads = $repo->findAdWithSearch($type, $sexe, $region);
 
-        $search->handleRequest($request);
-        if ($search->isSubmitted() && $search->isValid()) {
-            $critera = [];
-            if (isset($searchAnimal['type']) && !empty($searchAnimal['type'])) {
-                $critera['type'] = $searchAnimal['type'];
-            }
-            if (isset($searchAnimal['sexe']) && !empty($searchAnimal['sexe'])) {
-                $critera['sexe'] = $searchAnimal['sexe'];
-            }
-            if (isset($searchAnimal['region']) && !empty($searchAnimal['region'])) {
-                $critera['region'] = $searchAnimal['region'];
-            }
 
-            $animals = $repository->findBy($critera);  
-        }
+        $repository = $this->getDoctrine()->getRepository(Animal::class); 
+
+
+        $paginator = $this->get('knp_paginator');
+        $result = $paginator->paginate(
+            $ads,
+            $request->query->getInt('page', 1),
+            3
+        );      
 
 
         return $this->render('home/search.html.twig', [
-            'animals' => $animals,
-            'search' => $search->createView(),
-            //'ads' => $ads
+            'ads' => $result,
+             'search' => $search->createView(),
         ]);
     }
 

@@ -4,9 +4,9 @@ namespace App\Entity;
 
 use App\Entity\Ad;
 use App\Entity\User;
-
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\ORM\Mapping\JoinColumn;
+use Doctrine\ORM\Mapping\ManyToOne;
 use Doctrine\ORM\Mapping\OneToOne;
 
 
@@ -29,8 +29,8 @@ class Booking
     private $createdAt;
 
     /**
-     * One Booking has One User.
-     * @OneToOne(targetEntity="User")
+     * Many Booking has One User.
+     * @ManyToOne(targetEntity="User")
      * @JoinColumn(name="user_id", referencedColumnName="id")
      */
     private $user;

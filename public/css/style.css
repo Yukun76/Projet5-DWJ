@@ -10,6 +10,7 @@ body {
     padding:0px;
     box-sizing:border-box;
     background:#f0f0f0;
+    overflow-x: hidden;
 }
 
 h1 {
@@ -21,6 +22,7 @@ h2 {
     font-family: Tangerine, sans-serif;
     font-size: 3em;
 }
+
 
 p {
     font-family: Lato, sans-serif;
@@ -34,6 +36,10 @@ td img {
     z-index: 999;
 }
 
+#titre_reserv {
+  font-family:  Cormorant Garamond, sans-serif;
+  text-align: center;
+}
 
 .nav-item {
     padding: 8px; 
@@ -488,6 +494,20 @@ tbody tr {
 .card-body b, .card-body h2 {
     color: #242424;
 }
+
+.card-title {
+  font-family: Cormorant Garamond, sans-serif;
+}
+
+.button_cancel_reserv {
+  display: flex;
+  flex-direction: column;
+}
+
+.button_cancel_reserv a {
+  margin-top: 10px;
+}
+
 
 #title_show {
     margin-top: 50px;

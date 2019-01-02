@@ -3,23 +3,27 @@
 {% block title %}PetAdopt' : Mes réservations{% endblock %}
 
 {% block body %}
-<br/><br/><br/><br/><br/><br/>
-
-<h1> Liste de mes réservations : </h1><br/>
-	{% if  booking == null  %}	
-	{% elseif  app.user.getUsername() == booking.user.username  %}	
-		<div class="card" id="card_accueil" style="width:400px">
-			<img class="card-img-top" src="{{ asset('uploads/animals/' ~ booking.ad.image) }}" alt="Card image" style="width:100%">
-			<div class="card-body">
-				<h4 class="card-title">{{ booking.ad.title }}</h4>
-				<div class="metadata">
-					Réservé le {{ booking.createdAt | date('d/m/Y') }} à {{ booking.createdAt | date('H:i') }}
-				</div><br/>
-				<a href="{{path('ad_show', { 'id': booking.ad.id})}}" class="btn btn-primary">Afficher</a>
-				<a href="#" data-toggle="modal" data-target="#myModal" class="btn btn-danger" id="del-billet" data-billet-title="{{ booking.ad.animal.name }}" data-modal-confirm-url="{{ path('del_reservation', { 'id': booking.ad.id}) }}">Annuler la réservation</a>
-			</div>
-		</div>			
-	{% endif %}
+<br/><br/><br/><br/>
+<img  src="{{ asset('img/reservation.jpg') }}" alt="image reservation" style="width:100%;"><br/><br/>
+<h1 id="titre_reserv"> Liste de mes réservations : </h1>
+<hr class="hr_liste"><br/>
+<div class="flex-container">
+    {% for booking in bookings %}
+        <div class="card" id="card_accueil" style="width:400px">
+            <img class="card-img-top" src="{{ asset('uploads/animals/' ~ booking.ad.image) }}" alt="photo des reservations" style="width:100%; height:100%">
+            <div class="card-body">
+                <h4 class="card-title">{{ booking.ad.title }}</h4>
+                <div class="metadata">
+                    Réservé le {{ booking.createdAt | date('d/m/Y') }} à {{ booking.createdAt | date('H:i') }}
+                </div><br/>
+                <div class = "button_cancel_reserv">
+                    <a href="{{path('ad_show', { 'id': booking.ad.id})}}" class="btn btn-primary">Afficher</a>
+                    <a href="#" data-toggle="modal" data-target="#myModal" class="btn btn-danger" id="del-billet" data-billet-title="{{ booking.ad.animal.name }}" data-modal-confirm-url="{{ path('del_reservation', { 'id': booking.ad.id}) }}">Annuler la réservation</a>
+               </div>
+            </div>
+        </div>  
+    {% endfor %}
+</div><br/><br/><br/>
 {% endblock %}
 {% block footer %}
     <!-- Modal -->

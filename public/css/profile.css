@@ -1,14 +1,12 @@
-body{
-   
-background: rgba(252,218,146,1);
-background: -moz-linear-gradient(left, rgba(252,218,146,1) 0%, rgba(245,245,245,1) 100%);
-background: -webkit-gradient(left top, right top, color-stop(0%, rgba(252,218,146,1)), color-stop(100%, rgba(245,245,245,1)));
-background: -webkit-linear-gradient(left, rgba(252,218,146,1) 0%, rgba(245,245,245,1) 100%);
-background: -o-linear-gradient(left, rgba(252,218,146,1) 0%, rgba(245,245,245,1) 100%);
-background: -ms-linear-gradient(left, rgba(252,218,146,1) 0%, rgba(245,245,245,1) 100%);
-background: linear-gradient(to right, rgba(252,218,146,1) 0%, rgba(245,245,245,1) 100%);
-filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fcda92', endColorstr='#f5f5f5', GradientType=1 );
-Copy text
+
+
+.fb-profile-text h1 {
+    font-family: Cormorant Garamond, sans-serif;
+}
+
+.fb-profile-text h2 {
+    font-family: Tangerine, sans-serif;
+    font-size: 3em;
 }
 
 .navbar-nav {
@@ -42,95 +40,86 @@ Copy text
 .navbar-nav li:hover {
 }
 
-.emp-profile{
-    padding: 3%;
-    margin-top: 3%;
-    margin-bottom: 3%;
-    border-radius: 0.5rem;
-    background: #fff;
-}
-.profile-img{
-    text-align: center;
-}
-.profile-img img{
-    width: 70%;
-    height: 100%;
-}
-.profile-img .file {
-    position: relative;
-    overflow: hidden;
-    margin-top: -20%;
-    width: 70%;
-    border: none;
-    border-radius: 0;
-    font-size: 15px;
-    background: #212529b8;
-}
-.profile-img .file input {
-    position: absolute;
-    opacity: 0;
-    right: 0;
-    top: 0;
-}
-.profile-head h5{
-    color: #333;
-}
-.profile-head h6{
-    color: #0062cc;
-}
-.profile-edit-btn{
-    border: none;
-    border-radius: 1.5rem;
-    width: 70%;
-    padding: 2%;
-    font-weight: 600;
-    color: #6c757d;
-    cursor: pointer;
-}
-.proile-rating{
-    font-size: 12px;
-    color: #818182;
-    margin-top: 5%;
-}
-.proile-rating span{
-    color: #495057;
-    font-size: 15px;
-    font-weight: 600;
-}
-.profile-head .nav-tabs{
-    margin-bottom:5%;
-}
-.profile-head .nav-tabs .nav-link{
-    font-weight:600;
-    border: none;
-}
-.profile-head .nav-tabs .nav-link.active{
-    border: none;
-    border-bottom:2px solid #0062cc;
-}
-.profile-work{
-    padding: 14%;
-    margin-top: -15%;
-}
-.profile-work p{
-    font-size: 12px;
-    color: #818182;
-    font-weight: 600;
-    margin-top: 10%;
-}
-.profile-work a{
-    text-decoration: none;
-    color: #495057;
-    font-weight: 600;
-    font-size: 14px;
-}
-.profile-work ul{
-    list-style: none;
-}
 .profile-tab label{
     font-weight: 600;
 }
+
 .profile-tab p{
     font-weight: 600;
-    color: ;
+    color: #0062cc;
+}
+
+.fb-profile-text {   
+    background: rgba(255,255,255,1);
+    background: -moz-linear-gradient(45deg, rgba(255,255,255,1) 0%, rgba(162,199,255,1) 0%, rgba(179,192,246,1) 18%, rgba(255,162,206,1) 100%);
+    background: -webkit-gradient(left bottom, right top, color-stop(0%, rgba(255,255,255,1)), color-stop(0%, rgba(162,199,255,1)), color-stop(18%, rgba(179,192,246,1)), color-stop(100%, rgba(255,162,206,1)));
+    background: -webkit-linear-gradient(45deg, rgba(255,255,255,1) 0%, rgba(162,199,255,1) 0%, rgba(179,192,246,1) 18%, rgba(255,162,206,1) 100%);
+    background: -o-linear-gradient(45deg, rgba(255,255,255,1) 0%, rgba(162,199,255,1) 0%, rgba(179,192,246,1) 18%, rgba(255,162,206,1) 100%);
+    background: -ms-linear-gradient(45deg, rgba(255,255,255,1) 0%, rgba(162,199,255,1) 0%, rgba(179,192,246,1) 18%, rgba(255,162,206,1) 100%);
+    background: linear-gradient(45deg, rgba(255,255,255,1) 0%, rgba(162,199,255,1) 0%, rgba(179,192,246,1) 18%, rgba(255,162,206,1) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#ffa2ce', GradientType=1 );
+    Copy text
+}
+
+.fb-profile img.fb-image-lg{
+    z-index: 0;
+    width: 100%;  
+    margin-bottom: 10px;
+}
+
+.fb-image-profile
+{
+    margin: -90px 10px 0px 50px;
+    z-index: 9;
+    width: 20%; 
+}
+
+
+#about {
+    border: solid 1px blue;
+    margin-top: 30px;
+    text-align: center;
+    font-size: 2em;
+    color: red;
+}
+
+#myTabContent {
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+}
+
+.modal-header {    
+background: rgb(197,222,234); /* Old browsers */
+background: -moz-linear-gradient(top, rgba(197,222,234,1) 0%, rgba(138,187,215,1) 31%, rgba(6,109,171,1) 100%); /* FF3.6-15 */
+background: -webkit-linear-gradient(top, rgba(197,222,234,1) 0%,rgba(138,187,215,1) 31%,rgba(6,109,171,1) 100%); /* Chrome10-25,Safari5.1-6 */
+background: linear-gradient(to bottom, rgba(197,222,234,1) 0%,rgba(138,187,215,1) 31%,rgba(6,109,171,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#c5deea', endColorstr='#066dab',GradientType=0 ); /* IE6-9 */
+}
+
+#myTabForm {
+    margin-left: 40%;
+    width: 100%;
+}
+
+
+
+
+
+
+
+@media (max-width:768px)
+{
+    
+.fb-profile-text>h1{
+    font-weight: 700;
+    font-size:16px;
+}
+
+.fb-image-profile
+{
+    margin: -45px 10px 0px 25px;
+    z-index: 9;
+    width: 20%; 
+}
 }

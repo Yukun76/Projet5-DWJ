@@ -54,6 +54,11 @@ class User implements UserInterface
     private $repeatPassword;
 
     /**
+     *@Assert\EqualTo(propertyPath="password", message="Vous n'avez pas tapé le même mot de passe")
+     */
+    public $oldPassword;
+
+    /**
      * @ORM\Column(type="array")
      */
     private $roles;
