@@ -3,8 +3,11 @@
 namespace App\Repository;
 
 use App\Entity\Ad;
-use Symfony\Bridge\Doctrine\RegistryInterface;
+use App\Entity\Animal;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use Doctrine\ORM\Query;
+use Doctrine\ORM\QueryBuilder;
+use Symfony\Bridge\Doctrine\RegistryInterface;
 
 
 /**
@@ -20,45 +23,50 @@ class AdRepository extends ServiceEntityRepository
         parent::__construct($registry, Ad::class);
     }
 
+    public function getQueryExceptBooking(): QueryBuilder {
+        return $this->createQueryBuilder('ad')
+            ->leftJoin('ad.bookings', 'booking')
+            ->where('booking.id IS NULL');
+    }
 
      /**
-     * @return Booking[]
      * @return Ad[]
      */
     public function findAllAdExceptBooking(): array
     {
-        $qb = $this->createQueryBuilder('id')
-            ->select('id')
-            ->From('App\Entity\Ad', 'a')
-            ->leftJoin('App\Entity\Booking', 'b', 'WITH', 'id = b.ad')
-            ->Where('b.ad IS NULL')
-            ->getQuery();
-
-        return $qb->execute();
+        return $this->getQueryExceptBooking()
+            ->getQuery()
+            ->getResult();
     }
 
 
     /**
-     * @param string $type
-     * @param string $sexe
-     * @param string $region
      * @return Ad[]
      */
     public function findAdWithSearch($type, $sexe, $region): array
     {
-        $qb = $this->createQueryBuilder('animal')
-            ->select('animal')
-            ->from('App\Entity\Ad' , 'a')
-            ->leftJoin('App\Entity\Animal', 'an', 'WITH', 'animal = an.id')
-            ->where('an.type = :type')
-            ->andWhere('an.sexe = :sexe')
-            ->andWhere('an.region = :region')
-            ->setParameter(':type' , $type)
-            ->setParameter(':sexe' , $sexe)
-            ->setParameter(':region' , $region)
-            ->getQuery();
+        $query = $this->getQueryExceptBooking()
+            ->innerJoin('ad.animal' , 'animal');
+            
+        if ($type) {
+            $query
+               ->andWhere('animal.type = :type')
+               ->setParameter('type' , $type);
+        }
 
-        return $qb->execute();
+       if ($sexe) {
+            $query
+               ->andWhere('animal.sexe = :sexe')
+               ->setParameter('sexe' , $sexe);
+        }
+
+        if ($region) {
+            $query
+               ->andWhere('animal.region = :region')
+               ->setParameter('region' , $region);
+        }
+
+        return $query->getQuery()->getResult();
     }
 
     // /**

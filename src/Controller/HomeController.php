@@ -23,11 +23,11 @@ class HomeController extends Controller
      */
     public function accueil(request $request)
     {
-        $search = $this->createForm(SearchAnimalType::class);  
+        $animal = new Animal;
+        $search = $this->createForm(SearchAnimalType::class, $animal);  
               
         $repo = $this->getDoctrine()->getRepository(Ad::class);
         $ads = $repo->findAllAdExceptBooking();
-
 
         /**
          *  @var $paginator \Knp Component\Pager\Paginator
@@ -60,33 +60,26 @@ class HomeController extends Controller
         $search = $this->createForm(SearchAnimalType::class, $searchAnimal);  
 
         $repo = $this->getDoctrine()->getRepository(Ad::class);
-        $type = $repo->findOneBy([
-            'animal' => ':type',
-        ]);
-        $sexe = $repo->findOneBy([
-            'animal' => ':sexe',
-        ]);
-        $region = $repo->findOneBy([
-            'animal' => ':region',
-        ]);
 
-        $ads = $repo->findAdWithSearch($type, $sexe, $region);
+        $search->handleRequest($request);
+        if ($search->isSubmitted() && $search->isValid()) {
+            $type = $searchAnimal['type'] ?? null;
+            $sexe = $searchAnimal['sexe'] ?? null;
+            $region = $searchAnimal['region'] ?? null;
 
-
-        $repository = $this->getDoctrine()->getRepository(Animal::class); 
-
+            $ads = $repo->findAdWithSearch($type, $sexe, $region);
+        } 
 
         $paginator = $this->get('knp_paginator');
         $result = $paginator->paginate(
             $ads,
             $request->query->getInt('page', 1),
             3
-        );      
-
+        );     
 
         return $this->render('home/search.html.twig', [
             'ads' => $result,
-             'search' => $search->createView(),
+            'search' => $search->createView(),
         ]);
     }
 

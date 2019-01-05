@@ -6,15 +6,15 @@ use App\Entity\Ad;
 use App\Entity\Booking;
 use App\Entity\User;
 use App\Form\ProfileType;
+
 use Doctrine\Common\Persistence\ObjectManager;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\Form\FormError;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 
-class AccountController extends Controller
+class AccountController extends AbstractController
 {
 
     /**
@@ -31,7 +31,7 @@ class AccountController extends Controller
     /**
      * @Route("/modification-du-mot-de-passe", name="mdp_change") 
      */
-    public function mpdChange(request $request) {
+    public function mpdChange(request $request, UserPasswordEncoderInterface $encoder, ObjectManager $manager) {
 
         $this->denyAccessUnlessGranted('IS_AUTHENTICATED_FULLY');
 
@@ -42,19 +42,19 @@ class AccountController extends Controller
         $form->handleRequest($request);
         if($form->isSubmitted() && $form->isValid()) {
 
-            $passwordEncoder = $this->get('security.password_encoder');
             $oldPassword = $request->request->get('profile')['oldPassword'];
+            dump($encoder->isPasswordValid($user, $oldPassword)); die;
 
             // Si l'ancien mot de passe est bon
-            if ($passwordEncoder->isPasswordValid($user, $oldPassword)) {
-                $newEncodedPassword = $passwordEncoder->encodePassword($user, $user->getPassword());
+            if ($encoder->isPasswordValid($user, $oldPassword)) {
+                $newEncodedPassword = $encoder->encodePassword($user, $user->getPassword());
                 $user->setPassword($newEncodedPassword);
                 
-                $em->persist($user);
-                $em->flush();
+                $manager->persist($user);
+                $manager->flush();
 
 
-                $this->addFlash('notice', 'Votre mot de passe à bien été changé !');
+                $this->addFlash('notice', 'Votre mot de passe a bien été changé !');
 
                 return $this->redirectToRoute('profile');
 

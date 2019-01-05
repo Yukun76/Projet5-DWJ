@@ -29,9 +29,9 @@
 		</div><br/>
 		<div class="center">
 			{% if is_granted('IS_AUTHENTICATED_FULLY') %}
-			<button href="#" data-toggle="modal" data-target="#myModal" class="btn btn-info center-block" id="reserve" data-billet-title="{{ annonce.animal.name }}" data-modal-confirm-url="{{ path('ad_show', { 'id': annonce.id}) }}">Reserver</button>
+				<button href="#" data-toggle="modal" data-target="#myModal" class="btn btn-info center-block" id="reserve" data-billet-title="{{ annonce.animal.name }}" data-modal-confirm-url="{{ path('ad_show', { 'id': annonce.id}) }}">Reserver</button>
 			{% else %}
-			<a  href="{{ path("login") }}" class="btn btn-info center-block">Reserver</a>
+				<a  href="{{ path("login") }}" class="btn btn-info center-block">Reserver</a>
 			{% endif %}
 			<a class="btn btn-info" href="{{ path("admin_contact") }}"> Plus d'infos </a>
 		</div>
