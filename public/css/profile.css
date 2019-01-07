@@ -89,6 +89,10 @@
     display: block;
 }
 
+#change_mdp_alert {
+    margin-top: 20px;
+}
+
 .modal-header {    
 background: rgb(197,222,234); /* Old browsers */
 background: -moz-linear-gradient(top, rgba(197,222,234,1) 0%, rgba(138,187,215,1) 31%, rgba(6,109,171,1) 100%); /* FF3.6-15 */

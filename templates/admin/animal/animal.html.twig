@@ -2,11 +2,41 @@
 
 
 {% block title %}PetAdopt' : Home - Adopter un animal de compagnie !{% endblock %}
-{% block body %}
-
+{% block body %}<br/>
+        {% for message in app.flashes('notice') %}
+            <div id="change_mdp_alert" class="alert alert-success">
+                 {{ message }}
+            </div>
+        {% endfor %}
+        {% for message in app.flashes('notice_del') %}
+            <div id="change_mdp_alert" class="alert alert-danger">
+                 {{ message }}
+            </div>
+        {% endfor %}
  <h1> Liste des animaux à adopter </h1>
-    <p><a href="{{ path('pet_new') }}" class="btn btn-success" id="btn-success">Ajouter</a></p>
+    <p><a href="{{ path('pet_new') }}" class="btn btn-outline-primary" id="btn-success">Ajouter</a></p>
     <table class="table">
+        <button class="btn btn-outline-dark">Recherche avancée</button>
+        <form  action="/animal" method="get">
+            <div id="admin_animal_search" class="form-group" style="display:none;">
+                {{ form_start(search) }}
+                <div class="form-row">
+                    <div class="col-md-6">                   
+                        {{ form_row(search.type) }}
+                    </div>
+                    <div class="col-md-6">
+                        {{ form_row(search.sexe) }}
+                    </div>
+                    <div class="col-md-12">
+                        {{ form_row(search.region) }}
+                    </div>
+                    <div id="animal_button_admin" class="col-md-12">
+                        {{ form_row(search.save) }}
+                    </div>
+                </div>
+                {{ form_end(search) }}      
+            </div>
+        </form>
         <thead>
             <tr>
                 <th class="title-id">Nom</th>
@@ -43,7 +73,7 @@
                 {% endfor %} 
         </tbody>
     </table>
-    <div class="navigation">
+    <div class="navigation_admin">
          {{ knp_pagination_render(animals) }}
     </div>
 {% endblock %}
@@ -85,5 +115,13 @@
             $('.alert').show()
         })
     });
+</script>
+
+<script>
+$(document).ready(function(){
+  $("button").click(function(){
+    $("#admin_animal_search").toggle();
+  });
+});
 </script>
 {% endblock %}

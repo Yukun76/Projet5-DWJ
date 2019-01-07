@@ -54,6 +54,8 @@ class AdController extends AbstractController
             $manager->persist($annonce);
             $manager->flush();
 
+            $this->addFlash('notice', 'Annonce ajoutée avec succès !');
+
             return $this->redirectToRoute('annonce');
         }
 
@@ -75,7 +77,7 @@ class AdController extends AbstractController
     public function delete(Ad $annonce, ObjectManager $manager, $id) {
 
     	if($annonce == NULL) {
-    		$annonce = new Ad();
+          $annonce = new Ad();
     	};
 
 		  $repo = $this->getDoctrine()->getRepository(Ad::class);
@@ -83,6 +85,8 @@ class AdController extends AbstractController
 
     	$manager->remove($annonce);
     	$manager->flush();
+
+      $this->addFlash('notice_del', 'L\'annonce à été supprimée avec succès !');
 
     	return $this->redirectToRoute('annonce');
     }

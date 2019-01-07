@@ -38,6 +38,8 @@ class AnimalController extends AbstractController
     		$manager->persist($animal);
     		$manager->flush();
 
+        $this->addFlash('notice', 'Animal ajouté avec succès !');
+
     		return $this->redirectToRoute('animal');
     	}
 
@@ -64,6 +66,8 @@ class AnimalController extends AbstractController
 
         $manager->remove($animal);
         $manager->flush();
+
+        $this->addFlash('notice_del', 'L\'animal à été supprimé avec succès !');
 
         return $this->redirectToRoute('animal');
     }

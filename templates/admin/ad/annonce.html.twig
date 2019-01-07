@@ -3,7 +3,16 @@
 
 {% block title %}PetAdopt' : Liste des annonces !{% endblock %}
 {% block body %}
-
+        {% for message in app.flashes('notice') %}
+            <div id="change_mdp_alert" class="alert alert-success">
+                 {{ message }}
+            </div>
+        {% endfor %}
+        {% for message in app.flashes('notice_del') %}
+            <div id="change_mdp_alert" class="alert alert-danger">
+                 {{ message }}
+            </div>
+        {% endfor %}
  <h1> Liste des annonces </h1>
     <p><a href="{{ path('ad_new') }}" class="btn btn-success" id="btn-success">Ajouter</a></p>
     <table class="table">

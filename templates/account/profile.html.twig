@@ -13,6 +13,11 @@
 {% endblock %}
 {% block body %}
 	<br/><br/><br/>
+		{% for message in app.flashes('notice') %}
+    		<div id="change_mdp_alert"class="alert alert-success">
+       			 {{ message }}
+   			</div>
+		{% endfor %}
 	<div class="container emp-profile">
 		<form method="post">
 			<div class="row">

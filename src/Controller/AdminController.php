@@ -2,20 +2,20 @@
 
 namespace App\Controller;
 
+use App\Entity\Ad;
+use App\Entity\Animal;
+use App\Entity\Booking;
+use App\Entity\User;
+use App\Form\BookingType;
+use App\Form\SearchAnimalType;
+use Doctrine\ORM\Query;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\Finder\Exception\AccessDeniedException;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
-use Doctrine\ORM\Query;
 use Symfony\Component\Security\Core\Authorization\AuthorizationCheckerInterface;
-
-use App\Entity\Ad;
-use App\Entity\Animal;
-use App\Entity\Booking;
-use App\Entity\User;
-use App\Form\BookingType;
 
 
  /**
@@ -84,8 +84,27 @@ class AdminController extends Controller
      */
     public function animal(request $request) 
     {    
-        $repo = $this->getDoctrine()->getRepository(Animal::class);
-        $animals = $repo->findAll(); 
+        $searchAnimal = $request->get('search_animal');
+        $search = $this->createForm(SearchAnimalType::class, $searchAnimal);  
+
+        $repository = $this->getDoctrine()->getRepository(Animal::class); 
+        $animals = $repository->findAll(); 
+
+        $search->handleRequest($request);
+        if ($search->isSubmitted() && $search->isValid()) {
+            $critera = [];
+            if (isset($searchAnimal['type']) && !empty($searchAnimal['type'])) {
+                $critera['type'] = $searchAnimal['type'];
+            }
+            if (isset($searchAnimal['sexe']) && !empty($searchAnimal['sexe'])) {
+                $critera['sexe'] = $searchAnimal['sexe'];
+            }
+            if (isset($searchAnimal['region']) && !empty($searchAnimal['region'])) {
+                $critera['region'] = $searchAnimal['region'];
+            }
+
+            $animals = $repository->findBy($critera);  
+        }
 
         /**
          *  @var $paginator \Knp Component\Pager\Paginator
@@ -97,8 +116,11 @@ class AdminController extends Controller
             3
         );  
 
+
+
         return $this->render('admin/animal/animal.html.twig', [
-            'animals' => $result           
+            'animals' => $result,
+            'search' => $search->createView(),           
         ]);
     }
 

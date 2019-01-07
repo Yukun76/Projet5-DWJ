@@ -6,6 +6,8 @@ body {
 }
 
 .admin_body {
+      height: 1150px;
+    width: 100%;
     margin:0px;
     padding:0px;
     box-sizing:border-box;
@@ -39,6 +41,11 @@ td img {
 #titre_reserv {
   font-family:  Cormorant Garamond, sans-serif;
   text-align: center;
+}
+
+#change_mdp_alert {
+    margin-top: 30px;
+    position: relative;
 }
 
 .nav-item {
@@ -210,6 +217,11 @@ td img {
     margin-left: 40%;
 }
 
+.navigation_admin {
+    position: relative;
+    margin-left: 20%;
+}
+
 
 #titre_principal {
     font-family: Sail, sans-serif;
@@ -278,6 +290,16 @@ td img {
     margin-top: 25px;
 }
 
+#admin_animal_search {
+    padding: 10px;
+    margin-top: 50px;
+    height: 300px;
+    z-index: 2;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
 #renseignement {
     margin-top: -300px;
     box-shadow: 3px 3px 25px 5px #FFDAB9;
@@ -286,6 +308,7 @@ td img {
     width: 100%;
     border: groove 2px #000;
 }
+
 
 label {
     font-weight: bold;
@@ -296,7 +319,6 @@ label {
 #logo_text {
     margin-top: 100px;
     box-shadow: 3px 3px 25px 5px #000;
-
 }
 
 .ml2 {

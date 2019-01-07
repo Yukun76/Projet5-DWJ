@@ -6,13 +6,14 @@ use App\Entity\Ad;
 use App\Entity\Booking;
 use App\Entity\User;
 use App\Form\ProfileType;
-
 use Doctrine\Common\Persistence\ObjectManager;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\Config\Definition\Exception\Exception;
 use Symfony\Component\Form\FormError;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
+
 
 class AccountController extends AbstractController
 {
@@ -35,7 +36,6 @@ class AccountController extends AbstractController
 
         $this->denyAccessUnlessGranted('IS_AUTHENTICATED_FULLY');
 
-        $em = $this->getDoctrine()->getManager();
         $user = $this->getUser();
         $form = $this->createForm(ProfileType::class, $user);  
 
@@ -43,22 +43,21 @@ class AccountController extends AbstractController
         if($form->isSubmitted() && $form->isValid()) {
 
             $oldPassword = $request->request->get('profile')['oldPassword'];
-            dump($encoder->isPasswordValid($user, $oldPassword)); die;
 
             // Si l'ancien mot de passe est bon
-            if ($encoder->isPasswordValid($user, $oldPassword)) {
+            try {
+
                 $newEncodedPassword = $encoder->encodePassword($user, $user->getPassword());
                 $user->setPassword($newEncodedPassword);
                 
                 $manager->persist($user);
                 $manager->flush();
 
-
                 $this->addFlash('notice', 'Votre mot de passe a bien été changé !');
 
                 return $this->redirectToRoute('profile');
 
-            } else {
+            } catch (Exception $e){
                 $form->addError(new FormError('Ancien mot de passe incorrect'));
             }
         }
@@ -95,14 +94,13 @@ class AccountController extends AbstractController
     /**
      * @Route("/deleteReservation/{id}", name="del_reservation") 
      */
-    public function delete(Booking $booking, ObjectManager $manager, $id) {
+    public function delete(Booking $booking, ObjectManager $manager, int $id) {
 
         $this->denyAccessUnlessGranted('IS_AUTHENTICATED_FULLY');
 
-        if($booking == NULL) {
+        if($booking == null) {
             $booking = new Booking();
         };
-
 
         $repo = $this->getDoctrine()->getRepository(Booking::class);
         $booking = $repo->find($id);

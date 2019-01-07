@@ -47,14 +47,14 @@ class AdRepository extends ServiceEntityRepository
     {
         $query = $this->getQueryExceptBooking()
             ->innerJoin('ad.animal' , 'animal');
-            
+
         if ($type) {
             $query
                ->andWhere('animal.type = :type')
                ->setParameter('type' , $type);
         }
 
-       if ($sexe) {
+        if ($sexe) {
             $query
                ->andWhere('animal.sexe = :sexe')
                ->setParameter('sexe' , $sexe);
