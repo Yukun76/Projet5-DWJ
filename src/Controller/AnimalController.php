@@ -67,7 +67,7 @@ class AnimalController extends AbstractController
         $manager->remove($animal);
         $manager->flush();
 
-        $this->addFlash('notice_del', 'L\'animal à été supprimé avec succès !');
+        $this->addFlash('notice_del', 'L\'animal a été supprimé avec succès !');
 
         return $this->redirectToRoute('animal');
     }

@@ -1,0 +1,32 @@
+{% extends('base.html.twig') %}
+{% block head %}
+    <header class="header banner" id="header-perso3">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <a href=""><img src="Public/img/logo.png" alt="" id="logo2"></a>
+                </div>
+            </div>
+        </div>
+    </header>
+{% endblock %}
+{% block body %}
+        {% for message in app.flashes('warning') %}
+            <div id="change_mdp_alert" class="alert alert-danger">
+                 {{ message }}
+            </div>
+        {% endfor %}
+    <div class="grid-container">
+        <div class="grid-x grid-padding-x">
+            <div class="small-12 medium-8 medium-offset-2 large-6 large-offset-3 cell"><br/>
+
+                <p>Demandez à réinitialiser votre mot de passe en renseignant votre mail.</p>
+
+                {{form_start(form)}}
+                {{form_row(form.email)}}
+                <button class="btn btn-success" type="submit">Envoyer</button>
+                {{form_end(form)}}
+            </div>
+        </div>
+    </div>
+{% endblock %}

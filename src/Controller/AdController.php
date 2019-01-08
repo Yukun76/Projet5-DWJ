@@ -86,7 +86,7 @@ class AdController extends AbstractController
     	$manager->remove($annonce);
     	$manager->flush();
 
-      $this->addFlash('notice_del', 'L\'annonce à été supprimée avec succès !');
+      $this->addFlash('notice_del', 'L\'annonce a été supprimée avec succès !');
 
     	return $this->redirectToRoute('annonce');
     }
