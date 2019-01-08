@@ -17,6 +17,7 @@ use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 
 class AccountController extends AbstractController
 {
+    private $encoder;
 
     /**
      * @Route("/profile", name="profile") 
@@ -38,14 +39,14 @@ class AccountController extends AbstractController
 
         $user = $this->getUser();
         $form = $this->createForm(ProfileType::class, $user);  
+        $oldPassword = $request->request->get('profile')['oldPassword'];
+        $passwordValid = $encoder->isPasswordValid($user, $oldPassword);
 
         $form->handleRequest($request);
         if($form->isSubmitted() && $form->isValid()) {
 
-            $oldPassword = $request->request->get('profile')['oldPassword'];
-
             // Si l'ancien mot de passe est bon
-            try {
+            if ($passwordValid === true) {
 
                 $newEncodedPassword = $encoder->encodePassword($user, $user->getPassword());
                 $user->setPassword($newEncodedPassword);
@@ -57,7 +58,8 @@ class AccountController extends AbstractController
 
                 return $this->redirectToRoute('profile');
 
-            } catch (Exception $e){
+
+            } else {
                 $form->addError(new FormError('Ancien mot de passe incorrect'));
             }
         }
