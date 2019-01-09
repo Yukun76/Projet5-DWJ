@@ -1,11 +1,11 @@
 {% extends 'base.html.twig' %}
 {% block title %}PetAdopt' : Home - Adopter un animal de compagnie !{% endblock %}
-{% block body %}<br/><br/><br/><br/>
+{% block body %}
 	<article>
 		<div class="card-header" id="title_show">
 			<h3>{{ annonce.title }}</h3>
 			<div class="metadata">Ecrit le {{ annonce.createdAt | date('d/m/Y') }} à {{ annonce.createdAt | date('H:i')}}</div>
-		</div><br/>
+		</div>
 		<div class="card bg-info text-white">
 			<div class="card-body">
 				<img  class="card bg-light text-dark" id="show_image" src="{{ asset('uploads/animals/' ~ annonce.image) }}" alt=""></img>
@@ -16,17 +16,16 @@
 					<p><b>Sexe :</b> Femelle</p>
 				{% else %}
 					<p><b>Sexe :</b> Mâle</p>
-				{% endif %}
-				
+				{% endif %}				
 				<p><b>Region :</b> {{ annonce.animal.region }}</p>
 			</div>
-		</div><br/>
+		</div>
 		<div class="card bg-success text-white">
 			<div class="card-body">
 				<h2><u>Description</u> :</h2>
 				{{ annonce.content | raw }}
 			</div>
-		</div><br/>
+		</div>
 		<div class="center">
 			{% if is_granted('IS_AUTHENTICATED_FULLY') %}
 				<button href="#" data-toggle="modal" data-target="#myModal" class="btn btn-info center-block" id="reserve" data-billet-title="{{ annonce.animal.name }}" data-modal-confirm-url="{{ path('ad_show', { 'id': annonce.id}) }}">Reserver</button>
@@ -36,9 +35,8 @@
 			<a class="btn btn-info" href="{{ path("admin_contact") }}"> Plus d'infos </a>
 		</div>
 		<!-- line modal -->
-	    <br/>
 	</article>
-	<br/>
+
 {% endblock %}
 {% block footer %}
 

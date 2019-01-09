@@ -1,6 +1,4 @@
 {% extends 'adminBase.html.twig' %}
-
-
 {% block title %}PetAdopt' : Liste des annonces !{% endblock %}
 {% block body %}
         {% for message in app.flashes('notice') %}
@@ -46,7 +44,7 @@
                 {% endfor %} 
         </tbody>
     </table>
-    <div class="navigation">
+    <div class="navigation_admin">
          {{ knp_pagination_render(ads) }}
     </div>
 {% endblock %}

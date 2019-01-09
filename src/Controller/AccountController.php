@@ -6,7 +6,9 @@ use App\Entity\Ad;
 use App\Entity\Booking;
 use App\Entity\User;
 use App\Form\ProfileType;
+
 use Doctrine\Common\Persistence\ObjectManager;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Config\Definition\Exception\Exception;
 use Symfony\Component\Form\FormError;
@@ -14,7 +16,11 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 
-
+ /**
+  * Require ROLE_USER for *every* controller method in this class.
+  *
+  * @IsGranted("ROLE_USER")
+  */
 class AccountController extends AbstractController
 {
     private $encoder;
@@ -23,8 +29,6 @@ class AccountController extends AbstractController
      * @Route("/profile", name="profile") 
      */
     public function profile() {
-
-        $this->denyAccessUnlessGranted('IS_AUTHENTICATED_FULLY');
 
         return $this->render('account/profile.html.twig');
     }

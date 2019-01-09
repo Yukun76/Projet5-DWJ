@@ -6,6 +6,7 @@
 		{% block stylesheets %}
 			<meta name="viewport" content="width=device-width, initial-scale=1">
 			<link rel="stylesheet" type="text/css" href="../css/style.css" />
+						<link rel="stylesheet" type="text/css" href="../css/profile.css" />
 			<link rel="shortcut icon" href="../img/patte2.png" type="image/x-icon">
 			<link href="https://fonts.googleapis.com/css?family=Cormorant+Garamond|Crimson+Text|Indie+Flower|Lato|Berkshire+Swash|Tangerine|Roboto|Roboto+Slab|Ubuntu|Sail|Zilla+Slab+Highlight" rel="stylesheet">
 			<link rel="stylesheet" href="https://bootswatch.com/4/litera/bootstrap.min.css" />
@@ -18,13 +19,9 @@
 	{% block head %}
 	{% endblock %}
 	<body id = 'reserv'>
-
 		<nav class="navbar navbar-expand-lg navbar navbar-light bg-light fixed-top" id="nav_admin">
-			<a class="navbar-brand" href="/"><img src="{{ asset('img/patte.png') }}" alt="image_paw" style="width:7%";> PetAdopt'</a>
-			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor03" aria-controls="navbarColor03" aria-expanded="false" aria-label="Toggle navigation">
-			<span class="navbar-toggler-icon"></span>
-			</button>
-			<div class="collapse navbar-collapse justify-content-end" id="navbarColor03">
+			<a class="navbar-brand" href="/"><img src="{{ asset('img/patte.png') }}" alt="image_paw" style="width:7%";> PetAdopt'</a>			
+			<div class="navbar-nav ml-auto" id="navbarColor03">
 				<ul class="navbar-nav">
 					{% if not app.user %}
 						<li class="nav-item">

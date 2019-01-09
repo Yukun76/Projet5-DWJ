@@ -2,7 +2,7 @@
 
 
 {% block title %}PetAdopt' : Home - Adopter un animal de compagnie !{% endblock %}
-{% block body %}<br/>
+{% block body %}
         {% for message in app.flashes('notice') %}
             <div id="change_mdp_alert" class="alert alert-success">
                  {{ message }}
@@ -14,7 +14,9 @@
             </div>
         {% endfor %}
  <h1> Liste des animaux à adopter </h1>
-    <p><a href="{{ path('pet_new') }}" class="btn btn-outline-primary" id="btn-success">Ajouter</a></p>
+    <p>
+        <a href="{{ path('pet_new') }}" class="btn btn-outline-primary" id="btn-success">Ajouter</a>
+    </p>
     <table class="table">
         <button class="btn btn-outline-dark">Recherche avancée</button>
         <form  action="/animal" method="get">

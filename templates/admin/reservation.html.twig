@@ -1,9 +1,7 @@
 {% extends 'adminBase.html.twig' %}
-
-
 {% block title %}PetAdopt' : Home - Adopter un animal de compagnie !{% endblock %}
 {% block body %}
- <table class="table">
+    <table class="table">
         <thead>
             <tr>
                 <th class="title-id">Date de la réservation</th>
@@ -15,28 +13,31 @@
         </thead>
         <tbody>
             {% for booking in bookings %}
-                    <tr>  
-                        <td>
-                            {{ booking.createdAt | date('d/m/Y') }}              
-                        </td> 
-                                                
-                        <td>
-                            {{ booking.user.username }}                 
-                        </td>                      
-                        <td>
-                            {{ booking.user.email }}                 
-                        </td>
-                        <td>
-                            <a href="{{path('ad_show', { 'id': booking.ad.id})}}"> {{ booking.ad.animal.name }}</a>
-                           
-                        </td> 
-                        <td>
-                            <a href="#" data-toggle="modal" data-target="#myModal" class="btn btn-danger" id="del-billet" data-billet-title="" data-modal-confirm-url="">Supprimer</a>
-                        </td>
-                    </tr>
-                {% endfor %} 
+                <tr>
+                    <td>
+                        {{ booking.createdAt | date('d/m/Y') }}
+                    </td>
+                    
+                    <td>
+                        {{ booking.user.username }}
+                    </td>
+                    <td>
+                        {{ booking.user.email }}
+                    </td>
+                    <td>
+                        <a href="{{path('ad_show', { 'id': booking.ad.id})}}"> {{ booking.ad.animal.name }}</a>
+                        
+                    </td>
+                    <td>
+                        <a href="#" data-toggle="modal" data-target="#myModal" class="btn btn-danger" id="del-billet" data-billet-title="" data-modal-confirm-url="">Supprimer</a>
+                    </td>
+                </tr>
+            {% endfor %}
         </tbody>
     </table>
+    <div class="navigation_admin">
+         {{ knp_pagination_render(bookings) }}
+    </div>
 {% endblock %}
 {% block footer %}
 {% endblock %}

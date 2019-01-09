@@ -1,4 +1,5 @@
 {% extends('base.html.twig') %}
+{% block title %}PetAdopt' : Renouvellement du mot de passe{% endblock %}
 {% block head %}
 	<header class="header banner" id="header-perso3">
 		<div class="container">
@@ -10,10 +11,10 @@
 		</div>
 	</header>
 {% endblock %}
-{% block body %}<br/>
-	<div class="container">
+{% block body %}
+	<div class="container"><br/>
 		<div class="card card-register mx-auto mt-5">
-			<div class="card-header"><h2>Renouvellement du mot de passe</h2></div>
+			<div  class="card-header"><h2>Renouvellement du mot de passe</h2></div>
 			<div class="card-body">
 				{{ form_start(form) }}
 				<?php include('errors.php'); ?>

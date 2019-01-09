@@ -1,7 +1,7 @@
 {% extends 'base.html.twig' %}
 {% form_theme formAd 'bootstrap_4_layout.html.twig'%}
 	{% block title %}PetAdopt' : Ajout/Modification d'une annonce !{% endblock %}
-	{% block body %}<br/><br/><br/>
+	{% block body %}
 		<div class="container">
 			<nav aria-label="navigation">
 				<ul class="pager">
@@ -17,10 +17,8 @@
 					{% endif %}
 				</div>
 				<div class="card-body">
-					<br/>
 					{{ form_start(formAd) }}
-					{{ form_row(formAd.animal) }}
-					<br/>
+					<div id="animal_in_ad">{{ form_row(formAd.animal) }}</div>
 					{{ form_row(formAd.title, {'attr' : {'placeholder' : "Titre de l'annonce"}}) }}
 					{{ form_row(formAd.content, {'attr' : {'placeholder' : "Contenu de l'annonce"}}) }}
 					{{ form_row(formAd.image) }}

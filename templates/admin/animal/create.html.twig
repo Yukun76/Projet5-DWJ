@@ -1,7 +1,7 @@
 {% extends 'base.html.twig' %}
 {% form_theme formAnimal 'bootstrap_4_layout.html.twig'%}
 	{% block title %}PetAdopt' : Ajout/Modification d'un animal ! !{% endblock %}
-	{% block body %}<br/><br/><br/>
+	{% block body %}
 		<div class="container">
 			<nav aria-label="navigation">
 				<ul class="pager">
@@ -17,11 +17,10 @@
 					{% endif %}
 				</div>
 				<div class="card-body">
-					<br/>
 					{{ form_start(formAnimal) }}
 					{{ form_row(formAnimal.name, {'attr' : {'placeholder' : "Nom de l'animal"}}) }}
-					{{ form_row(formAnimal.type, {'attr' : {'placeholder' : "Type de l'animal (chien/chat/autre) "}}) }}
-					{{ form_row(formAnimal.sexe, {'attr' : {'placeholder' : "Sexe de l'animal (f/m)"}}) }}
+					{{ form_row(formAnimal.type, {'attr' : {'placeholder' : "Type de l'animal"}}) }}
+					{{ form_row(formAnimal.sexe, {'attr' : {'placeholder' : "Sexe de l'animal"}}) }}
 					{{ form_row(formAnimal.region) }}
 					<button type="submit" class="btn btn-success">
 					{% if edit %}

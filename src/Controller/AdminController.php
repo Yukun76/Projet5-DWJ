@@ -2,20 +2,20 @@
 
 namespace App\Controller;
 
+use Doctrine\ORM\Query;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
+use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\Finder\Exception\AccessDeniedException;
+use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Security\Core\Authorization\AuthorizationCheckerInterface;
+
 use App\Entity\Ad;
 use App\Entity\Animal;
 use App\Entity\Booking;
 use App\Entity\User;
 use App\Form\BookingType;
 use App\Form\SearchAnimalType;
-use Doctrine\ORM\Query;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use Symfony\Component\Finder\Exception\AccessDeniedException;
-use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\Routing\Annotation\Route;
-use Symfony\Component\Security\Core\Authorization\AuthorizationCheckerInterface;
 
 
  /**
@@ -44,17 +44,26 @@ class AdminController extends Controller
     /**
      * @Route("/utilisateurs", name="utilisateurs")
      */
-    public function utilisateurs()
+    public function utilisateurs(request $request)
     {
-
-
         $repo = $this->getDoctrine()->getRepository(User::class);
         $users = $repo->findAll();
 
+        /**
+         *  @var $paginator \Knp Component\Pager\Paginator
+         */
+        $paginator = $this->get('knp_paginator');
+        $result = $paginator->paginate(
+            $users,
+            $request->query->getInt('page', 1),
+            10
+        ); 
+
         return $this->render('admin/utilisateurs.html.twig', [
-            'users' => $users
+            'users' => $result
         ]);
     }
+    
 
     /**
      * @Route("/annonce", name="annonce")
@@ -78,6 +87,7 @@ class AdminController extends Controller
             'ads' => $result            
         ]);
     }
+
 
     /**
      * @Route("/animal", name="animal")
@@ -114,9 +124,7 @@ class AdminController extends Controller
             $animals,
             $request->query->getInt('page', 1),
             3
-        );  
-
-
+        ); 
 
         return $this->render('admin/animal/animal.html.twig', [
             'animals' => $result,
@@ -124,16 +132,27 @@ class AdminController extends Controller
         ]);
     }
 
+
     /**
      * @Route("/reservation", name="reservation")
      */
-    public function reservation() 
+    public function reservation(request $request) 
     {    
         $repo = $this->getDoctrine()->getRepository(Booking::class);
         $bookings = $repo->findAll(); 
+
+        /**
+         *  @var $paginator \Knp Component\Pager\Paginator
+         */
+        $paginator = $this->get('knp_paginator');
+        $result = $paginator->paginate(
+            $bookings,
+            $request->query->getInt('page', 1),
+            10
+        ); 
         
         return $this->render('admin/reservation.html.twig', [
-            'bookings' => $bookings, 
+            'bookings' => $result, 
         ]);
     }
 }

@@ -25,7 +25,6 @@ h2 {
     font-size: 3em;
 }
 
-
 p {
     font-family: Lato, sans-serif;
 }
@@ -38,9 +37,10 @@ td img {
     z-index: 999;
 }
 
-#titre_reserv {
+.titre_reserv {
   font-family:  Cormorant Garamond, sans-serif;
   text-align: center;
+  margin-top: 30px;
 }
 
 #change_mdp_alert {
@@ -67,7 +67,6 @@ td img {
 .navbar-nav a {
     text-decoration: none;
     font-size: 20px;
-    display: block;
     font-family: Sail, sans-serif;
 }
 
@@ -215,6 +214,7 @@ td img {
 .navigation {
     position: relative;
     margin-left: 40%;
+    margin-top: 40px;
 }
 
 .navigation_admin {
@@ -321,6 +321,7 @@ label {
     box-shadow: 3px 3px 25px 5px #000;
 }
 
+
 .ml2 {
     font-weight: 900;
     font-size: 3.5em;
@@ -412,7 +413,8 @@ label {
 
 #titre_principal {
     font-family: Sail, sans-serif;
-    margin-top: 20px;
+    margin-top: 40px;
+    margin-bottom: -20px;
 }
 
 #photo_animal {
@@ -426,6 +428,8 @@ label {
 
 .hr_liste {
     height: 2px;
+    margin-bottom: 50px;
+    margin-top: 50px;
     margin-left: 0;
     color: #F00;
     background-color: #ff8fc7;
@@ -439,8 +443,25 @@ label {
 }
 
 #card_accueil {
-  margin-left: 100px;
+  margin-left: 30px;
+  width: 400px;
 }
+
+#card_reserv {
+  margin-left: 50px;
+  margin-bottom: 100px;
+}
+
+.card img {
+  width: 100%;
+}
+
+.pager { margin-top: 100px; }
+
+#animal_in_ad {
+  padding-bottom: 30px;
+}
+
 
 #name_color {
     height: 2px;
@@ -532,7 +553,8 @@ tbody tr {
 
 
 #title_show {
-    margin-top: 50px;
+    margin-top: 150px;
+    margin-bottom: 30px;
     width: 100%;
     -moz-box-shadow: 10px 10px 5px #656565;
     -webkit-box-shadow: 10px 10px 5px #656565;
@@ -541,17 +563,37 @@ tbody tr {
     filter:progid:DXImageTransform.Microsoft.Shadow(color='#6565', Direction=135, Strength=5); 
 }
 
+#reserv_banner {
+  margin-top: 100px;
+}
+
+.center {
+  margin-top: 20px;
+}
+
+.bg-success {
+  margin-top: 30px; 
+}
+
+.metadata {
+  margin-top: 30px;
+}
+
 .modal-header {    
-background: rgb(197,222,234); /* Old browsers */
-background: -moz-linear-gradient(top, rgba(197,222,234,1) 0%, rgba(138,187,215,1) 31%, rgba(6,109,171,1) 100%); /* FF3.6-15 */
-background: -webkit-linear-gradient(top, rgba(197,222,234,1) 0%,rgba(138,187,215,1) 31%,rgba(6,109,171,1) 100%); /* Chrome10-25,Safari5.1-6 */
-background: linear-gradient(to bottom, rgba(197,222,234,1) 0%,rgba(138,187,215,1) 31%,rgba(6,109,171,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#c5deea', endColorstr='#066dab',GradientType=0 ); /* IE6-9 */
+  background: rgb(197,222,234); /* Old browsers */
+  background: -moz-linear-gradient(top, rgba(197,222,234,1) 0%, rgba(138,187,215,1) 31%, rgba(6,109,171,1) 100%); /* FF3.6-15 */
+  background: -webkit-linear-gradient(top, rgba(197,222,234,1) 0%,rgba(138,187,215,1) 31%,rgba(6,109,171,1) 100%); /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(to bottom, rgba(197,222,234,1) 0%,rgba(138,187,215,1) 31%,rgba(6,109,171,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#c5deea', endColorstr='#066dab',GradientType=0 ); /* IE6-9 */
+}
+
+#myModal {
+  margin-top: 200px;
 }
 
 footer {
     clear: both;
-    margin-top: 100px;
+    margin-top: -50px;
 }
 
 #hr_contact {border-top: 1px solid #000; width:50%;}
@@ -563,7 +605,6 @@ a:link{text-decoration:none;}
 .box1{background: rgb(76, 175, 80, 0.6);}
 .box2{background: rgb(192, 192, 200, 0.6);}
 .box3{background: rgb(255, 0, 0, 0.6);;}
-
 
 
 #author a{
@@ -604,10 +645,16 @@ a:link{text-decoration:none;}
   left: 0;
 }
 
-@media (max-width: 685px) {
-.top-border {   
-  width: 18%;
-    }
+#contatti {
+  margin-top: 70px;
+}
+
+#contact_info {
+  margin-bottom: 80px;
+}
+
+iframe {
+  margin-top: 40px;
 }
 
 .section p {
@@ -645,7 +692,122 @@ a:link{text-decoration:none;}
     width: 100%;
 }
 
-@media (max-width: 500px) {
+
+/* -------------------------------------MEDIA QUERIES 985px-------------------------------------------- */
+
+@media (max-width: 985px) {
+  .top-border {   
+    width: 18%;
+  }
+
+  #header-perso { 
+    background-size: 1000px;
+}
+
+  #titre_principal {
+    font-size: 30px;
+  }
+
+  #header-perso {
+    height: 600px;
+  }
+
+  #logo_text {
+    height: 500px;
+    margin-top: 50px;
+  }
+
+  .barre_recherche {
+    margin-top: -400px;
+  }
+
+  #renseignement {
+    border: none;
+    background: transparent;
+    box-shadow: none;
+  }
+
+  #renseignement form {
+    display: block;
+    height: 350px;
+  }
+
+  .card  {
+    width: 250px;
+  }
+
+  .ml2 {
+    font-size: 40px;
+  }
+
+  .flex-container {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  #card_accueil p, #card_accueil a {
+    font-size: 15px;
+  }
+
+  .card {
+    margin-top: 20px;
+  }
+
+  #card_accueil h4 {
+    font-size: 20px;
+  }
+
+  .navigation {
+    font-size: 15px;
+    margin-left: 35%;
+  }
+
+  footer h6 {
+    font-size: 13px;
+  }
+}
+/* ------------------------------- */
+
+
+/* -------------------------------------MEDIA QUERIES 780px-------------------------------------------- */
+@media (max-width: 780px) {
+  .top-border {   
+    width: 18%;
+  }
+
+  #header-perso { 
+    background-size: 900px;
+  }
+
+  .flex-container {
+    display: block;
+    margin-left: 7%;    
+  }
+
+  .ml2 {
+    font-size: 30px;
+  }
+
+  .navigation {
+    margin-left: 30%;
+  }
+
+  .hr_liste {
+    display: none;
+  }
+
+}
+
+@media (max-width: 710px) {
+
+  .dropdown {
+    margin-top: -50px;
+  }
+}
+
+/* -------------------------------------MEDIA QUERIES 580px-------------------------------------------- */
+
+@media (max-width: 580px) {
   .top-border { 
     display: none;
   }
@@ -654,5 +816,67 @@ a:link{text-decoration:none;}
   }
   .section h1 {
     margin: 20px 6px;
+  }
+
+  .ml2 {
+    font-size: 25px;
+  }
+
+  .hr_liste {
+    display: none;
+  }
+
+  #card_accueil {
+    width: 80%;
+  }
+
+  .card-body a {
+    width: 100%;
+  }
+
+  .card-text {
+    display: none;
+  }
+
+  .card-img-top {
+    width: 100%;
+  }
+
+  .flex-container {
+    display: block;
+  }
+
+  .navigation {
+    margin-left: 25%;
+    font-size: 12px;
+  }
+}
+
+/* -------------------------------------MEDIA QUERIES 380px-------------------------------------------- */
+
+
+@media (max-width: 380px) {
+  .navigation {
+    margin-left: 10%;
+    font-size: 11px;
+  }
+
+  #card_accueil {
+    margin-left: 0%;
+    width: 100%;
+  }
+
+  #search_animal_save {
+    font-size: 12px;
+  }
+
+  #renseignement form {
+    width: 250px;
+  }
+
+  .barre_recherche {
+    display: block;
+    height: 100px;
+    margin-left: -20%;
   }
 }
