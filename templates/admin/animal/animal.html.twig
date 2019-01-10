@@ -13,12 +13,12 @@
                  {{ message }}
             </div>
         {% endfor %}
- <h1> Liste des animaux à adopter </h1>
+ <h1 class="admin_title"> Liste des animaux</h1>
     <p>
-        <a href="{{ path('pet_new') }}" class="btn btn-outline-primary" id="btn-success">Ajouter</a>
+        <a href="{{ path('pet_new') }}" class="btn btn-outline-primary" id="pet-btn-success">Ajouter</a>
     </p>
     <table class="table">
-        <button class="btn btn-outline-dark">Recherche avancée</button>
+        <button id="pet-search" class="btn btn-outline-dark">Recherche avancée</button>
         <form  action="/animal" method="get">
             <div id="admin_animal_search" class="form-group" style="display:none;">
                 {{ form_start(search) }}

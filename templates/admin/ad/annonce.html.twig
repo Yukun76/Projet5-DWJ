@@ -11,8 +11,8 @@
                  {{ message }}
             </div>
         {% endfor %}
- <h1> Liste des annonces </h1>
-    <p><a href="{{ path('ad_new') }}" class="btn btn-success" id="btn-success">Ajouter</a></p>
+ <h1 class="admin_title"> Liste des annonces </h1>
+    <p><a href="{{ path('ad_new') }}" class="btn btn-success" id="add-btn-success">Ajouter</a></p>
     <table class="table">
         <thead>
             <tr>
@@ -33,7 +33,7 @@
                         </td>
 
                         <td id="td_content">
-                           {{ ad.content[:100] ~ '...' }}
+                           {{ ad.content[:50] ~ '...' }}
                         </td>
                         <td>
                             <a class="btn btn-secondary" href="{{ path('ad_show', { 'id': ad.id}) }}">Afficher</a>

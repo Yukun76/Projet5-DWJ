@@ -497,7 +497,7 @@ tbody tr {
 }
 
 #td_title {
-    width: 20%;
+    width: 25%;
 }
 
 #td_content {
@@ -505,7 +505,7 @@ tbody tr {
 }
 
 #td_image {
-    width: 25%;
+    width: 40%;
 }
 
 #show_image {
@@ -799,6 +799,41 @@ iframe {
   .box1 {
     height: 100px;
   }
+
+  .table { 
+    margin-top: 80px;
+    margin-left: -150px;
+ }
+
+  .admin_title {
+   margin-left: -150px;
+  }
+
+  #add-btn-success {
+    margin-left: -150px;
+  }
+
+  #pet-btn-success {
+    margin-left: -150px;
+  }
+  
+  #pet-search {
+    margin-left: -150px;
+  }
+
+  .navigation_admin {
+    margin-left: 0px;
+  }
+
+  #admin_animal_search {  
+    width: 80%;
+    margin-left: -150px;
+    font-size: 13px;
+  }
+
+  #animal_button_admin {
+      font-size: 15px;
+  }
 }
 
 /* -------------------------------------MEDIA QUERIES 765px-------------------------------------------- */
@@ -837,6 +872,23 @@ iframe {
   .nav-item {
     border: none;
   }
+
+  #animal_card_header h1 {
+    font-size: 30px;
+  }
+
+  #ad_card_header h1 {
+    font-size: 30px;
+  }
+
+  #pet_precedent {
+    display: none;
+  }
+
+  #ad_precedent {
+    display: none;
+  }
+}
 
 @media (max-width: 710px) {
 
@@ -980,6 +1032,106 @@ iframe {
     margin-right: auto;
     margin-left: auto;
   }
+  /* ------------------------------- */
+
+  #admin_bienvenue {
+    font-size: 40px;
+    margin-left: 0px;
+  }
+
+  thead {
+    display: none;
+  }
+
+  tr,
+    td {
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+        flex-direction: column;
+        text-align: center;
+        margin-left: -4%;
+    }
+
+  tbody tr {
+     padding-top: 50px;
+  }
+
+  #td_image {
+    width : 100%;
+    display: block;
+    margin-right: auto;
+    margin-left: auto;
+  }
+
+  #td_title {
+      width: 100%;
+  }
+
+
+  #td_content {
+      width: 100%;
+  }
+
+  .table {
+    margin-top: -25px;
+  }
+
+  .navigation_admin {
+    margin-left: -3%;
+  }
+}
+
+@media (max-width: 500px) {
+  tr,
+    td {
+        margin-left: 5%;
+    }
+
+  .admin_title {
+   margin-left: -70px;
+   font-size: 30px;
+  }
+
+  #add-btn-success {
+    margin-left: -70px;
+    font-size: 12px;
+  }
+
+  #pet-btn-success {
+    margin-left: -70px;
+  }
+
+  #pet-search {
+    margin-left: -70px;
+  }
+
+  #admin_animal_search {  
+    width: 80%;
+    margin-left: -70px;
+    font-size: 13px;
+    margin-bottom: 70px;
+  }
+
+  .navigation_admin {
+    margin-left: -90px;
+  }
+
+  #animal_card_header h1 {
+    font-size: 20px;
+  }
+
+  #ad_card_header h1 {
+    font-size: 20px;
+  }
+
+  .card-body label {
+    font-size: 18px;
+  }
+
 }
 
 /* -------------------------------------MEDIA QUERIES 380px-------------------------------------------- */
@@ -1083,5 +1235,23 @@ iframe {
 
   .main_sidebar {
     width: 65%;
+  }
+
+  tr,
+    td {
+      margin-left: 20%;
+    }
+
+  .admin_body {
+    height: 1650px;
+  }
+
+  .admin_title {
+    margin-left: -80px;
+  }
+
+  #admin_bienvenue {
+    margin-left: -40px;
+    font-size: 30px;
   }
 }

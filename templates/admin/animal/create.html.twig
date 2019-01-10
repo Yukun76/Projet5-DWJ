@@ -5,11 +5,11 @@
 		<div class="container">
 			<nav aria-label="navigation">
 				<ul class="pager">
-					<a href="{{ path('animal') }}" title="Précédent"><i class="fa fa-arrow-circle-o-left" aria-hidden="true"></i></a>
+					<a id ="pet_precedent" href="{{ path('animal') }}" title="Précédent"><i class="fa fa-arrow-circle-o-left" aria-hidden="true"></i></a>
 				</ul>
 			</nav>
 			<div class="card card-register mx-auto mt-5">
-				<div class="card-header">
+				<div class="card-header" id="animal_card_header">
 					{% if edit %}
 						<h1> Modification des informations sur l'animal </h1>
 					{% else %}
