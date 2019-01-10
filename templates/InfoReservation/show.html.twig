@@ -6,24 +6,26 @@
 			<h3>{{ annonce.title }}</h3>
 			<div class="metadata">Ecrit le {{ annonce.createdAt | date('d/m/Y') }} à {{ annonce.createdAt | date('H:i')}}</div>
 		</div>
-		<div class="card bg-info text-white">
-			<div class="card-body">
+		<div class="card bg-info text-white" id ="card_id">
+			<div class="card-body" id ="card_body_id">
 				<img  class="card bg-light text-dark" id="show_image" src="{{ asset('uploads/animals/' ~ annonce.image) }}" alt=""></img>
-				<div class="vl"></div>
-				<h2><u>Identité</u> :</h2>
-				<p><b>Nom :</b> {{ annonce.animal.name }}</p>
-				{% if annonce.animal.sexe == 'f' %}
-					<p><b>Sexe :</b> Femelle</p>
-				{% else %}
-					<p><b>Sexe :</b> Mâle</p>
-				{% endif %}				
-				<p><b>Region :</b> {{ annonce.animal.region }}</p>
+                <div class="id_pet">
+    				<div class="vl"></div>
+    				<h2><u>Identité :</u></h2>
+    				<p><b>Nom :</b> {{ annonce.animal.name }}</p>
+    				{% if annonce.animal.sexe == 'f' %}
+    					<p><b>Sexe :</b> Femelle</p>
+    				{% else %}
+    					<p><b>Sexe :</b> Mâle</p>
+    				{% endif %}				
+    				<p><b>Region :</b> {{ annonce.animal.region }}</p>
+                </div>
 			</div>
 		</div>
 		<div class="card bg-success text-white">
 			<div class="card-body">
-				<h2><u>Description</u> :</h2>
-				{{ annonce.content | raw }}
+				<h2><u>Description :</u></h2>
+				<p id="annonce_content">{{ annonce.content | raw }}</p>
 			</div>
 		</div>
 		<div class="center">

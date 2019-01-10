@@ -45,7 +45,7 @@
 				<ul class="navbar-nav">
 					{% if not app.user %}
 						<li class="nav-item">
-								<a class="nav-link"  href="{{ path('login') }}">Login</a>
+							<a class="nav-link" id="login_button" href="{{ path('login') }}">Login</a>
 						</li>
 					{% else %}
 					<li class="nav-item dropdown">

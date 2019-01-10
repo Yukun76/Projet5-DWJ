@@ -14,7 +14,7 @@
 						<img align="left" class="fb-image-lg" src="{{ asset('img/banchat.jpg') }}" alt="Profile image example"/>
 						<img align="left" class="fb-image-profile thumbnail" src="{{ asset('img/toutou.jpg') }}" alt="Profile image example"/>
 						<div class="fb-profile-text">
-							<h1>{{ app.user.getUsername() }}</h1>
+							<h1 id="profile_username">{{ app.user.getUsername() }}</h1>
 							<h2>Informations:</h2>
 							<hr>
 						</div>
@@ -61,7 +61,7 @@
 									<div class="col-md-6">
 										<label>Mot de passe</label>
 									</div>
-									<div class="col-md-6">
+									<div class="col-md-6" id ="mdp_change_button">
 										<a href="{{ path('mdp_change') }}" class="btn btn-outline-info">Modifier le mot de passe</a>
 									</div>
 								</div>

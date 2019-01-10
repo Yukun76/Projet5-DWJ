@@ -98,11 +98,11 @@
 }
 
 .modal-header {    
-background: rgb(197,222,234); /* Old browsers */
-background: -moz-linear-gradient(top, rgba(197,222,234,1) 0%, rgba(138,187,215,1) 31%, rgba(6,109,171,1) 100%); /* FF3.6-15 */
-background: -webkit-linear-gradient(top, rgba(197,222,234,1) 0%,rgba(138,187,215,1) 31%,rgba(6,109,171,1) 100%); /* Chrome10-25,Safari5.1-6 */
-background: linear-gradient(to bottom, rgba(197,222,234,1) 0%,rgba(138,187,215,1) 31%,rgba(6,109,171,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#c5deea', endColorstr='#066dab',GradientType=0 ); /* IE6-9 */
+    background: rgb(197,222,234); /* Old browsers */
+    background: -moz-linear-gradient(top, rgba(197,222,234,1) 0%, rgba(138,187,215,1) 31%, rgba(6,109,171,1) 100%); /* FF3.6-15 */
+    background: -webkit-linear-gradient(top, rgba(197,222,234,1) 0%,rgba(138,187,215,1) 31%,rgba(6,109,171,1) 100%); /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(to bottom, rgba(197,222,234,1) 0%,rgba(138,187,215,1) 31%,rgba(6,109,171,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#c5deea', endColorstr='#066dab',GradientType=0 ); /* IE6-9 */
 }
 
 #myTabForm {
@@ -112,22 +112,69 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#c5deea', end
 
 
 
+/* -------------------------------------MEDIA QUERIES 765px-------------------------------------------- */
+@media (max-width: 765px) {
 
+  .nav-item {
+    border: none;
+  }
 
+/* ------------------------------- */
 
+    .profile-work  {
+        display: none;
+    }
 
-@media (max-width:768px)
-{
-    
-.fb-profile-text>h1{
-    font-weight: 700;
-    font-size:16px;
+    .fb-profile img {
+        margin-top: 20px;
+    }
+
+    .fb-profile-text>h1{
+        font-weight: 700;
+        font-size:16px;
+    }
+
+    .fb-image-profile
+    {
+        margin: -45px 10px 0px 25px;
+        z-index: 9;
+        width: 20%;
+    }
 }
 
-.fb-image-profile
-{
-    margin: -45px 10px 0px 25px;
-    z-index: 9;
-    width: 20%; 
-}
+
+/* -------------------------------------MEDIA QUERIES 380px-------------------------------------------- */
+
+
+@media (max-width: 380px) {
+ 
+    .emp-profile {
+        text-align: center;
+    }
+
+    #profile_username {
+        font-size: 2em;
+    }
+
+    .thumbnail {
+        display: none;
+    }
+
+    .dropdown a {
+     font-size: 15px;
+    margin-top: 5px;
+    }
+
+    #mdp_change_button {
+        font-size: 12px;
+    }
+
+    #myTabForm div {
+        width: 100%;
+        margin-left: -20px;
+    }
+
+    #profile_modifier_button {
+        font-size: 12px;
+    }
 }

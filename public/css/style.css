@@ -450,6 +450,7 @@ label {
 #card_reserv {
   margin-left: 50px;
   margin-bottom: 100px;
+  width: 400px;
 }
 
 .card img {
@@ -692,17 +693,33 @@ iframe {
     width: 100%;
 }
 
+/* -------------------------------------MEDIA QUERIES 1200px-------------------------------------------- */
+@media (max-width: 1200px) {
+
+  #card_body_id img {
+    display: block;
+    float: right;
+    width: 60%;
+  }
+
+  .vl { display: none; }
+
+  .id_pet {
+    position: absolute;
+  }
+}
 
 /* -------------------------------------MEDIA QUERIES 985px-------------------------------------------- */
 
 @media (max-width: 985px) {
+
   .top-border {   
     width: 18%;
   }
 
   #header-perso { 
     background-size: 1000px;
-}
+  }
 
   #titre_principal {
     font-size: 30px;
@@ -765,12 +782,33 @@ iframe {
   footer h6 {
     font-size: 13px;
   }
-}
+
 /* ------------------------------- */
 
+  .card {
+    width: 100%;
+  }
 
-/* -------------------------------------MEDIA QUERIES 780px-------------------------------------------- */
-@media (max-width: 780px) {
+  #card_body_id img {
+    display: block;
+    float: right;
+    margin-top: 0px;
+    width: 60%;
+  }
+
+  .box1 {
+    height: 100px;
+  }
+}
+
+/* -------------------------------------MEDIA QUERIES 765px-------------------------------------------- */
+@media (max-width: 765px) {
+
+  #titre_principal {
+    text-align: center;
+    margin-bottom: 15px;
+  }
+
   .top-border {   
     width: 18%;
   }
@@ -796,21 +834,52 @@ iframe {
     display: none;
   }
 
-}
+  .nav-item {
+    border: none;
+  }
 
 @media (max-width: 710px) {
 
   .dropdown {
     margin-top: -50px;
   }
+
+  .modal-header h3 {
+    font-size: 20px;
+  }
+
+  .modal-body p {
+    font-size: 15px
+  }
+
+  .modal-footer {
+    font-size: 15px
+  }
+
+  #contatti p {
+    font-size: 15px;
+  }
+}
+
+@media (max-width: 630px) {
+
+  #login_button {
+    margin-top: -50px;
+  }
+
+  .titre_reserv {
+    font-size:35px;
+  }
 }
 
 /* -------------------------------------MEDIA QUERIES 580px-------------------------------------------- */
 
 @media (max-width: 580px) {
+
   .top-border { 
     display: none;
   }
+
   .section {
   border-top: 2px solid #333;
   }
@@ -850,12 +919,74 @@ iframe {
     margin-left: 25%;
     font-size: 12px;
   }
+
+    /* ------------------------------- */
+
+  .id_pet {
+    display: flex;
+    font-size:15px;
+    margin-top : 20px;
+    text-align: center;
+  }
+
+  #title_show h3{ font-size: 20px; }
+  #title_show div{ font-size: 10px; margin-top: 0px; }
+  .id_pet p { text-indent: 20px; }
+
+  h2 { display: none; }
+
+  #card_body_id img {
+    float: none;
+    height: 80%;
+    width: 270px;
+    margin-right: auto;
+    margin-left: auto;
+    margin-top: 0px;
+  }
+
+  .bg-info {
+    height: 300px;
+  }
+
+  .center {
+    text-align: center;
+  }
+
+  #contatti h1 {
+    font-size: 20px;
+  }
+
+  #contatti p {
+    display: none;
+  }
+
+  #button_contact {
+    display: none;
+  }
+
+  /* ------------------------------- */
+
+  .flex-container {
+    display: block;
+  }
+
+  .titre_reserv {
+    font-size: 30px;
+    text-align: center;
+  }
+
+  #card_reserv {
+    width: 300px;
+    margin-right: auto;
+    margin-left: auto;
+  }
 }
 
 /* -------------------------------------MEDIA QUERIES 380px-------------------------------------------- */
 
 
 @media (max-width: 380px) {
+
   .navigation {
     margin-left: 10%;
     font-size: 11px;
@@ -878,5 +1009,79 @@ iframe {
     display: block;
     height: 100px;
     margin-left: -20%;
+  }
+
+  .dropdown a {
+    font-size: 15px;
+    margin-top: 5px;
+  }
+
+  label {
+    font-size: 15px;
+  }
+
+  #mdp_lost {
+    font-size: 15px;
+  }
+
+  #header-perso3 {
+    display: none;
+  }
+
+  #loginCard {
+    margin-top: 100px;
+  }
+
+  #registerCard {
+    margin-top: 100px;
+  }
+
+  /* ------------------------------- */
+
+  .id_pet {
+    font-size:12px;
+    margin-left: -30px;
+  }
+
+  #annonce_content {
+    font-size:13px;
+    text-align: center;
+  }
+
+  #card_body_id img {
+    width: 215px;
+  }
+
+  .center {
+    font-size:13px;
+    text-align: center;
+  }
+
+  #contatti p {
+    display: none;
+  }
+
+  #button_contact {
+    display: none;
+  }
+
+ /* ------------------------------- */
+
+  .titre_reserv {
+    font-size:25px;
+  }
+
+  #card_reserv {
+    width: 220px;
+  }
+
+ /* ------------------------------- */
+
+  #admin_title {
+    display: none;
+  }
+
+  .main_sidebar {
+    width: 65%;
   }
 }
