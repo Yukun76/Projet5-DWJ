@@ -2,6 +2,13 @@
 
 namespace App\Controller;
 
+use App\Entity\Ad;
+use App\Entity\Animal;
+use App\Entity\Booking;
+use App\Entity\User;
+use App\Form\BookingType;
+use App\Form\SearchAnimalType;
+use Doctrine\Common\Persistence\ObjectManager;
 use Doctrine\ORM\Query;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -9,13 +16,6 @@ use Symfony\Component\Finder\Exception\AccessDeniedException;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Core\Authorization\AuthorizationCheckerInterface;
-
-use App\Entity\Ad;
-use App\Entity\Animal;
-use App\Entity\Booking;
-use App\Entity\User;
-use App\Form\BookingType;
-use App\Form\SearchAnimalType;
 
 
  /**
@@ -31,8 +31,8 @@ class AdminController extends Controller
     public function admin(AuthorizationCheckerInterface $authChecker)
     {
     	if (false === $authChecker->isGranted('ROLE_ADMIN')) {
-        throw new AccessDeniedException('Unable to access this page!');
-    }
+            throw new AccessDeniedException('Unable to access this page!');
+        }
 
 	    // or add an optional message - seen by developers
 	    $this->denyAccessUnlessGranted('ROLE_ADMIN', null, 'User tried to access a page without having ROLE_ADMIN');
@@ -154,5 +154,31 @@ class AdminController extends Controller
         return $this->render('admin/reservation.html.twig', [
             'bookings' => $result, 
         ]);
+    }
+
+    /**
+     * @Route("/deleteUser/{id}", name="del_user") 
+     */
+    public function deleteAdminUser(User $user, ObjectManager $manager, $id)
+    {
+        $manager->remove($user);
+        $manager->flush();
+
+        $this->addFlash('notice_del', 'L\'utilisateur a été supprimé avec succès !');
+
+        return $this->redirectToRoute('utilisateurs');
+    }
+
+    /**
+     * @Route("/deleteAdminReservation/{id}", name="del_admin_reservation") 
+     */
+    public function deleteAdminReservation(Booking $bookings, ObjectManager $manager, $id)
+    {
+        $manager->remove($bookings);
+        $manager->flush();
+
+        $this->addFlash('notice_del', 'La réservation a été supprimée avec succès !');
+
+        return $this->redirectToRoute('reservation');
     }
 }

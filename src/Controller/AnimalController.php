@@ -19,7 +19,6 @@ use App\Form\AnimalType;
   */
 class AnimalController extends AbstractController
 {
-
     /**
      * @Route("/animal/new", name="pet_new")
      * @Route("/animal/{id}", name="pet_edit")
@@ -48,22 +47,13 @@ class AnimalController extends AbstractController
         	'edit' => $animal->getId() !== null
         ]);
     }
+    
 
     /**
      * @Route("/deleteAnimal/{id}", name="del_pet") 
-     *
-     * @return Response
      */
-
-    public function delete(Animal $animal, ObjectManager $manager, $id) {
-
-        if($animal == NULL) {
-            $animal = new Animal();
-        };
-
-        $repo = $this->getDoctrine()->getRepository(Animal::class);
-        $animal = $repo->find($id);
-
+    public function delete(Animal $animal, ObjectManager $manager, $id)
+    {
         $manager->remove($animal);
         $manager->flush();
 

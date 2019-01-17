@@ -1,13 +1,18 @@
 {% extends 'adminBase.html.twig' %}
 {% block title %}PetAdopt' : Administration{% endblock %}
 {% block body %}
+    {% for message in app.flashes('notice_del') %}
+        <div id="change_mdp_alert" class="alert alert-success">
+            {{ message }}
+        </div>
+    {% endfor %}
     <h1 class="admin_title"> Liste des utilisateurs </h1>
     <table class="table">
-        <thead>
+        <thead class="thead-dark">
             <tr>
-                <th class="title-id">Pseudo</th>
-                <th class="title-id">Email</th>
-                <th class="title-id">Actions</th>
+                <th scope="col" class="title-id">Pseudo</th>
+                <th scope="col" class="title-id">Email</th>
+                <th scope="col" class="title-id">Actions</th>
             </tr>
         </thead>
         <tbody>
@@ -15,14 +20,14 @@
             {% if user.id == 1 %}
             {% else %}
                 <tr>
-                    <td>
+                    <td scope="row">
                         {{ user.username }}
                     </td>
-                    <td>
+                    <td scope="row">
                         {{ user.email }}
                     </td>
-                    <td>
-                        <a href="#" data-toggle="modal" data-target="#myModal" class="btn btn-danger" id="del-billet" data-billet-title="" data-modal-confirm-url=""><i class="fa fa-trash" aria-hidden="true"></i> Supprimer</a>
+                    <td scope="row">
+                        <a href="#" data-toggle="modal" data-target="#myModal" class="btn btn-danger" id="del-billet" data-billet-title="{{ user.username }}" data-modal-confirm-url="{{ path('del_user', { 'id': user.id}) }}"><i class="fa fa-trash" aria-hidden="true"></i> Supprimer</a>
                     </td>
                 </tr>
             {% endif %}
@@ -33,4 +38,44 @@
     <div class="navigation_admin">
          {{ knp_pagination_render(users) }}
     </div>
+{% endblock %}
+{% block footer %}
+    <!-- Modal -->
+    <div class="modal fade" id="myModal" role="dialog">
+        <div class="modal-dialog">
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3>Demande de confirmation</h3>
+                    <a href="#" data-dismiss="modal" aria-hidden="true" class="close">×</a>
+                </div>
+                <div class="modal-body">
+                    <p>Etes-vous sur de vouloir supprimer l'annonce concernée ?</p>
+                </div>
+                <div class="modal-footer">
+                    <a href="" id="btnYes" class="btn btn-default">Oui, je confirme</a>
+                    <a href="#" data-dismiss="modal" aria-hidden="true" class="btn btn-secondary">Non, j'annule</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(function(){
+        $modal = $('.modal');
+        $('a.btn-danger').on('click',function(e){
+            e.preventDefault();
+            $modal.find('a#btnYes').attr('href',$(this).data('modalConfirmUrl'));
+            $modal.find('.modal-body p').text("Êtes-vous sûr de vouloir supprimer l'utilisateur " + $(this).data('billetTitle'));
+            $modal.modal("show");
+        })
+    });
+    
+    $(document).ready(function(){
+        $('a#btnYes').click(function(){
+            $('.alert').show()
+        })
+    });
+</script>
 {% endblock %}

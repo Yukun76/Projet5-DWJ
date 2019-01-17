@@ -6,12 +6,11 @@ use Doctrine\Common\Persistence\ObjectManager;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\HttpFoundation\Session\Session;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Security\Core\Authentication\Token\UsernamePasswordToken;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 
-use App\Controller\HomeController;
 use App\Entity\User;
 use App\Form\RegistrationType;
 
@@ -20,8 +19,8 @@ class SecurityController extends AbstractController
 	/**
 	 * @Route("/inscription", name="registration")
 	 */
-	public function registration(request $request, ObjectManager $manager, UserPasswordEncoderInterface $encoder ) {
-
+	public function registration(request $request, ObjectManager $manager, UserPasswordEncoderInterface $encoder) 
+	{
 		$user = new User();
 		$form = $this->createForm(RegistrationType::class, $user);
 
@@ -34,7 +33,13 @@ class SecurityController extends AbstractController
 			$manager->persist($user);
 			$manager->flush();
 
-			return $this->redirectToRoute("login");
+			$user = //Handle getting or creating the user entity likely with a posted form
+	        $token = new UsernamePasswordToken($user, null, 'main', $user->getRoles());
+	        $this->container->get('security.token_storage')->setToken($token);
+	        $this->container->get('session')->set('_security_main', serialize($token));
+	        // The user is now logged in, you can redirect or do whatever.
+
+			return $this->redirectToRoute("accueil");
 		}
 
 		return $this->render('security/registration.html.twig', [
@@ -46,9 +51,8 @@ class SecurityController extends AbstractController
 	/**
 	 * @Route("/connexion", name="login")
 	 */
-	public function login(Session $session, AuthenticationUtils $authenticationUtils): Response
+	public function login(AuthenticationUtils $authenticationUtils): Response
 	{
-
 		// get the login error if there is one
         $error = $authenticationUtils->getLastAuthenticationError();
         // last username entered by the user

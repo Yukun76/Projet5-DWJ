@@ -28,13 +28,12 @@ class AdController extends AbstractController
     public function form(Ad $annonce = null, request $request, FileUploader $fileUploader, ObjectManager $manager)
     {
       if(!$annonce) {
-            $annonce = new Ad();
-
-        } else {
+          $annonce = new Ad();
+      } else {
             $annonce->setImage(
                 new File($this->getParameter('animals_directory').'/'.$annonce->getImage())
             );
-        }
+      }
         
         $form = $this->createForm(AdType::class, $annonce);        
         $form->handleRequest($request);
@@ -66,23 +65,11 @@ class AdController extends AbstractController
         ]);
     }
 
-
-
     /**
      * @Route("/delete/{id}", name="del_ad") 
-     *
-     * @return Response
      */
-
-    public function delete(Ad $annonce, ObjectManager $manager, $id) {
-
-    	if($annonce == NULL) {
-          $annonce = new Ad();
-    	};
-
-		  $repo = $this->getDoctrine()->getRepository(Ad::class);
-      $annonce = $repo->find($id);
-
+    public function delete(Ad $annonce, ObjectManager $manager, $id)
+    {
     	$manager->remove($annonce);
     	$manager->flush();
 

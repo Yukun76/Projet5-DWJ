@@ -39,40 +39,41 @@
                 {{ form_end(search) }}      
             </div>
         </form>
-        <thead>
+        <thead class="thead-dark">
             <tr>
-                <th class="title-id">Nom</th>
-                <th class="title-id">Type</th>
-                <th class="title-id">Sexe</th>
-                <th class="title-id">Region</th>
-                <th class="title-id">Actions</th>
+                <th scope="col" class="title-id">Nom</th>
+                <th scope="col" class="title-id">Type</th>
+                <th scope="col" class="title-id">Sexe</th>
+                <th scope="col" class="title-id">Region</th>
+                <th scope="col" class="title-id">Actions</th>
             </tr>
         </thead>
         <tbody>
             {% for animal in animals %}
-                    <tr>  
-                        <td>
-                            {{ animal.name }}                 
-                        </td>                      
-                        <td>
-                            {{ animal.type }}                 
-                        </td>
-                        <td>
-                            {% if animal.sexe == 'f' %}
-                                Femelle 
-                            {% else %}
-                                Male
-                            {% endif %}              
-                        </td>
-                        <td>
-                            {{ animal.region.name }}
-                        </td>
-                        <td>
-                            <a class="btn btn-primary" href="{{path('pet_edit', { 'id': animal.id})}}">Editer</a>
-                            <a href="#" data-toggle="modal" data-target="#myModal" class="btn btn-danger" id="del-billet" data-billet-title="{{ animal.name }}" data-modal-confirm-url="{{path('del_pet', { 'id': animal.id})}}">Supprimer</a>
-                        </td>
-                    </tr>
-                {% endfor %} 
+                <tr class ="tr_space">              
+                    <td scope="row" >
+                        {{ animal.name }}                 
+                    </td>                      
+                    <td scope="row">
+                        {{ animal.type }}                 
+                    </td>
+                    <td scope="row">
+                        {% if animal.sexe == 'f' %}
+                            Femelle 
+                        {% else %}
+                            Male
+                        {% endif %}              
+                    </td>
+                    <td scope="row">
+                        {{ animal.region.name }}
+                    </td>
+                    <td scope="row">
+                        <a class="btn btn-primary" href="{{path('pet_edit', { 'id': animal.id})}}">Editer</a>
+                        <a href="#" data-toggle="modal" data-target="#myModal" class="btn btn-danger" id="del-billet" data-billet-title="{{ animal.name }}" data-modal-confirm-url="{{path('del_pet', { 'id': animal.id})}}">Supprimer</a>
+                        <hr class="new5">   
+                    </td>
+                </tr>
+            {% endfor %} 
         </tbody>
     </table>
     <div class="navigation_admin">

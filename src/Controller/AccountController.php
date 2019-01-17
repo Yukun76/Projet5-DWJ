@@ -2,11 +2,6 @@
 
 namespace App\Controller;
 
-use App\Entity\Ad;
-use App\Entity\Booking;
-use App\Entity\User;
-use App\Form\ProfileType;
-
 use Doctrine\Common\Persistence\ObjectManager;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -15,6 +10,11 @@ use Symfony\Component\Form\FormError;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
+
+use App\Entity\Ad;
+use App\Entity\Booking;
+use App\Entity\User;
+use App\Form\ProfileType;
 
  /**
   * Require ROLE_USER for *every* controller method in this class.
@@ -37,8 +37,8 @@ class AccountController extends AbstractController
     /**
      * @Route("/modification-du-mot-de-passe", name="mdp_change") 
      */
-    public function mpdChange(request $request, UserPasswordEncoderInterface $encoder, ObjectManager $manager) {
-
+    public function mpdChange(request $request, UserPasswordEncoderInterface $encoder, ObjectManager $manager)
+    {
         $this->denyAccessUnlessGranted('IS_AUTHENTICATED_FULLY');
 
         $user = $this->getUser();
@@ -77,10 +77,8 @@ class AccountController extends AbstractController
     /**
      * @Route("/mes-reservations", name="acc_reservation")
      */
-    public function reservation() {
-
-        $this->denyAccessUnlessGranted('IS_AUTHENTICATED_FULLY'); 
-
+    public function reservation() 
+    {
         $repo = $this->getDoctrine()->getRepository(Ad::class);
         $ads = $repo->findAll();
 
@@ -100,21 +98,13 @@ class AccountController extends AbstractController
     /**
      * @Route("/deleteReservation/{id}", name="del_reservation") 
      */
-    public function delete(Booking $booking, ObjectManager $manager, int $id) {
-
-        $this->denyAccessUnlessGranted('IS_AUTHENTICATED_FULLY');
-
-        if($booking == null) {
-            $booking = new Booking();
-        };
-
-        $repo = $this->getDoctrine()->getRepository(Booking::class);
-        $booking = $repo->find($id);
-
+    public function delete(Booking $booking, ObjectManager $manager, $id)
+    {
         $manager->remove($booking);
         $manager->flush();
 
+        $this->addFlash('notice_del', 'La réservation a été annulée avec succès !');
+
         return $this->redirectToRoute('acc_reservation');
     }
-
 }

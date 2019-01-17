@@ -2,14 +2,14 @@
 
 namespace App\Entity;
 
-use App\Entity\Animal;
-use App\Entity\Booking;
-
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\ORM\Mapping\JoinColumn;
 use Doctrine\ORM\Mapping\OneToOne;
 use Symfony\Component\HttpFoundation\File\File;
 use Symfony\Component\Validator\Constraints as Assert;
+
+use App\Entity\Animal;
+use App\Entity\Booking;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\AdRepository")

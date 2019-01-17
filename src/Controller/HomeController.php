@@ -9,7 +9,6 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 
 use App\Entity\Ad;
-use App\Entity\User;
 use App\Entity\Animal;
 use App\Entity\Booking;
 use App\Form\BookingType;
@@ -142,17 +141,16 @@ class HomeController extends Controller
             return $this->redirectToRoute("accueil");
         }
 
-        return $this->render('infoReservation/show.html.twig',[
+        return $this->render('reservation/show.html.twig',[
             'annonce' => $annonce,
             'formBook' => $form->createView()
         ]);
     }
+    
 
     /**
-     * 
      * @Route("/contact", name="admin_contact")
      */
-
     public function contact()
     {   
         return $this->render('contact/contact.html.twig');

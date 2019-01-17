@@ -49,13 +49,13 @@
 					</div>
 					<div class="form-check"> 
             			 <label for="remember_me" class="form-check-label"> 
-              			 <input class="form-check-input" id="remember_me" name="_remember_me" type="checkbox"> Remember Password</label>
+              			 <input class="form-check-input" id="remember_me" name="_remember_me" type="checkbox"> Remember me</label>
           			</div><br/>
 					<input type="hidden" name="_target_path" value="{{ app.request.headers.get('referer') }}" />
 					<button type="submit" id="connexion" class="btn btn-primary btn-block" name="reg_user">Connexion</button>
 				</form>
 				<div class="text-center">
-					<a href="{{path('request_resetting')}}" id="mdp_lost">Mot de passe oublié ?</a>
+					<a href="{{ path('forgot_password') }}" id="mdp_lost">Mot de passe oublié ?</a>
 					<a class="d-block small mt-3" href="{{ path('registration') }}">Register an Account</a>          		
 				</div>
 			</div>

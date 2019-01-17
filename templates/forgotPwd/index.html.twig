@@ -12,9 +12,11 @@
 	</header>
 {% endblock %}
 {% block body %}
-	<div class="container"><br/>
+	<div class="container" id="renouvellement_header">
 		<div class="card card-register mx-auto mt-5">
-			<div  class="card-header"><h2>Renouvellement du mot de passe</h2></div>
+			<div  class="card-header">
+				<h2 id="renouvellement_mdp_title">Renouvellement du mot de passe</h2>
+			</div>
 			<div class="card-body">
 				{{ form_start(form) }}
 				<?php include('errors.php'); ?>

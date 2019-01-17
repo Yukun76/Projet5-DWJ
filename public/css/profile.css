@@ -1,5 +1,3 @@
-
-
 .fb-profile-text h1 {
     font-family: Cormorant Garamond, sans-serif;
 }
@@ -19,7 +17,7 @@
 
 
 .nav-item {
-    padding: 8px; 
+    padding: 8px;
     border: solid 1px #f3f3f3;
     border-radius: 25% 25% 25% 25%;
 }
@@ -41,41 +39,39 @@
     font-family: Sail, sans-serif;
 }
 
-.navbar-nav li:hover {
-}
+.navbar-nav li:hover {}
 
-.profile-tab label{
+.profile-tab label {
     font-weight: 600;
 }
 
-.profile-tab p{
+.profile-tab p {
     font-weight: 600;
     color: #0062cc;
 }
 
-.fb-profile-text {   
-    background: rgba(255,255,255,1);
-    background: -moz-linear-gradient(45deg, rgba(255,255,255,1) 0%, rgba(162,199,255,1) 0%, rgba(179,192,246,1) 18%, rgba(255,162,206,1) 100%);
-    background: -webkit-gradient(left bottom, right top, color-stop(0%, rgba(255,255,255,1)), color-stop(0%, rgba(162,199,255,1)), color-stop(18%, rgba(179,192,246,1)), color-stop(100%, rgba(255,162,206,1)));
-    background: -webkit-linear-gradient(45deg, rgba(255,255,255,1) 0%, rgba(162,199,255,1) 0%, rgba(179,192,246,1) 18%, rgba(255,162,206,1) 100%);
-    background: -o-linear-gradient(45deg, rgba(255,255,255,1) 0%, rgba(162,199,255,1) 0%, rgba(179,192,246,1) 18%, rgba(255,162,206,1) 100%);
-    background: -ms-linear-gradient(45deg, rgba(255,255,255,1) 0%, rgba(162,199,255,1) 0%, rgba(179,192,246,1) 18%, rgba(255,162,206,1) 100%);
-    background: linear-gradient(45deg, rgba(255,255,255,1) 0%, rgba(162,199,255,1) 0%, rgba(179,192,246,1) 18%, rgba(255,162,206,1) 100%);
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#ffa2ce', GradientType=1 );
+.fb-profile-text {
+    background: rgba(255, 255, 255, 1);
+    background: -moz-linear-gradient(45deg, rgba(255, 255, 255, 1) 0%, rgba(162, 199, 255, 1) 0%, rgba(179, 192, 246, 1) 18%, rgba(255, 162, 206, 1) 100%);
+    background: -webkit-gradient(left bottom, right top, color-stop(0%, rgba(255, 255, 255, 1)), color-stop(0%, rgba(162, 199, 255, 1)), color-stop(18%, rgba(179, 192, 246, 1)), color-stop(100%, rgba(255, 162, 206, 1)));
+    background: -webkit-linear-gradient(45deg, rgba(255, 255, 255, 1) 0%, rgba(162, 199, 255, 1) 0%, rgba(179, 192, 246, 1) 18%, rgba(255, 162, 206, 1) 100%);
+    background: -o-linear-gradient(45deg, rgba(255, 255, 255, 1) 0%, rgba(162, 199, 255, 1) 0%, rgba(179, 192, 246, 1) 18%, rgba(255, 162, 206, 1) 100%);
+    background: -ms-linear-gradient(45deg, rgba(255, 255, 255, 1) 0%, rgba(162, 199, 255, 1) 0%, rgba(179, 192, 246, 1) 18%, rgba(255, 162, 206, 1) 100%);
+    background: linear-gradient(45deg, rgba(255, 255, 255, 1) 0%, rgba(162, 199, 255, 1) 0%, rgba(179, 192, 246, 1) 18%, rgba(255, 162, 206, 1) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#ffa2ce', GradientType=1);
     Copy text
 }
 
-.fb-profile img.fb-image-lg{
+.fb-profile img.fb-image-lg {
     z-index: 0;
-    width: 100%;  
+    width: 100%;
     margin-bottom: 10px;
 }
 
-.fb-image-profile
-{
+.fb-image-profile {
     margin: -90px 10px 0px 50px;
     z-index: 9;
-    width: 20%; 
+    width: 20%;
 }
 
 
@@ -93,16 +89,26 @@
     display: block;
 }
 
+#myTabForm div {
+    width: 400px;
+
+}
+
 #change_mdp_alert {
     margin-top: 100px;
 }
 
-.modal-header {    
-    background: rgb(197,222,234); /* Old browsers */
-    background: -moz-linear-gradient(top, rgba(197,222,234,1) 0%, rgba(138,187,215,1) 31%, rgba(6,109,171,1) 100%); /* FF3.6-15 */
-    background: -webkit-linear-gradient(top, rgba(197,222,234,1) 0%,rgba(138,187,215,1) 31%,rgba(6,109,171,1) 100%); /* Chrome10-25,Safari5.1-6 */
-    background: linear-gradient(to bottom, rgba(197,222,234,1) 0%,rgba(138,187,215,1) 31%,rgba(6,109,171,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#c5deea', endColorstr='#066dab',GradientType=0 ); /* IE6-9 */
+.modal-header {
+    background: rgb(197, 222, 234);
+    /* Old browsers */
+    background: -moz-linear-gradient(top, rgba(197, 222, 234, 1) 0%, rgba(138, 187, 215, 1) 31%, rgba(6, 109, 171, 1) 100%);
+    /* FF3.6-15 */
+    background: -webkit-linear-gradient(top, rgba(197, 222, 234, 1) 0%, rgba(138, 187, 215, 1) 31%, rgba(6, 109, 171, 1) 100%);
+    /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(to bottom, rgba(197, 222, 234, 1) 0%, rgba(138, 187, 215, 1) 31%, rgba(6, 109, 171, 1) 100%);
+    /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#c5deea', endColorstr='#066dab', GradientType=0);
+    /* IE6-9 */
 }
 
 #myTabForm {
@@ -110,44 +116,69 @@
     width: 100%;
 }
 
-
-
 /* -------------------------------------MEDIA QUERIES 765px-------------------------------------------- */
+
 @media (max-width: 765px) {
 
-  .nav-item {
-    border: none;
-  }
+    .nav-item {
+        border: none;
+    }
 
-/* ------------------------------- */
-
-    .profile-work  {
+    /* ------------------------------- */
+    .profile-work {
         display: none;
     }
 
     .fb-profile img {
         margin-top: 20px;
+        margin-bottom: 50px;
     }
 
-    .fb-profile-text>h1{
+    .fb-profile-text > h1 {
         font-weight: 700;
-        font-size:16px;
+        font-size: 16px;
     }
 
-    .fb-image-profile
-    {
+    .fb-image-profile {
         margin: -45px 10px 0px 25px;
         z-index: 9;
         width: 20%;
     }
+
+    #myTabForm div {
+        width: 100%;
+        margin-left: -50px;
+    }
+}
+
+
+/* -------------------------------------MEDIA QUERIES 580px-------------------------------------------- */
+
+@media (max-width: 580px) {
+
+    #myTabForm div {
+        width: 100%;
+        margin-left: -50px;
+    }
+
+}
+
+/* -------------------------------------MEDIA QUERIES 480px-------------------------------------------- */
+
+@media (max-width: 480px) {
+
+    #myTabForm div {
+        width: 100%;
+        margin-left: -35px;
+    }
+
 }
 
 
 /* -------------------------------------MEDIA QUERIES 380px-------------------------------------------- */
 
-
 @media (max-width: 380px) {
- 
+
     .emp-profile {
         text-align: center;
     }
@@ -161,8 +192,8 @@
     }
 
     .dropdown a {
-     font-size: 15px;
-    margin-top: 5px;
+        font-size: 15px;
+        margin-top: 5px;
     }
 
     #mdp_change_button {

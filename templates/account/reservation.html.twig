@@ -4,6 +4,11 @@
 
 {% block body %}
 <img  id="reserv_banner" src="{{ asset('img/reservation.jpg') }}" alt="image reservation" style="width:100%;">
+{% for message in app.flashes('notice_del') %}
+        <div id="change_mdp_alert" class="alert alert-success">
+            {{ message }}
+        </div>
+{% endfor %}
 <h1 class="titre_reserv"> Mes réservations en cours : </h1>
 <hr class="hr_liste">
 <div class="flex-container">
@@ -24,7 +29,7 @@
                     <p>Réservé le {{ booking.createdAt | date('d/m/Y') }} à {{ booking.createdAt | date('H:i') }}</p>
                 </div>
                 <div class = "button_cancel_reserv">
-                    <a href="#" data-toggle="modal" data-target="#myModal" class="btn btn-danger" id="del-billet" data-billet-title="{{ booking.ad.animal.name }}" data-modal-confirm-url="{{ path('del_reservation', { 'id': booking.ad.id}) }}">Annuler la réservation</a>
+                    <a href="#" data-toggle="modal" data-target="#myModal" class="btn btn-danger" id="del-billet" data-billet-title="{{ booking.ad.animal.name }}" data-modal-confirm-url="{{ path('del_reservation', { 'id': booking.id}) }}">Annuler la réservation</a>
                </div>
             </div>
         </div> 

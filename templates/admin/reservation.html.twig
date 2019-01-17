@@ -1,36 +1,41 @@
 {% extends 'adminBase.html.twig' %}
 {% block title %}PetAdopt' : Home - Adopter un animal de compagnie !{% endblock %}
 {% block body %}
+    {% for message in app.flashes('notice_del') %}
+        <div id="change_mdp_alert" class="alert alert-success">
+            {{ message }}
+        </div>
+    {% endfor %}
     <h1 class="admin_title"> Liste des réservations</h1>
     <table class="table">
-        <thead>
+        <thead class="thead-dark">
             <tr>
-                <th class="title-id">Date de la réservation</th>
-                <th class="title-id">Pseudo</th>
-                <th class="title-id">Email</th>
-                <th class="title-id">Nom de l'animal</th>
-                <th class="title-id">Actions</th>
+                <th scope="col"class="title-id">Date de la réservation</th>
+                <th scope="col"class="title-id">Pseudo</th>
+                <th scope="col" class="title-id">Email</th>
+                <th scope="col"class="title-id">Nom de l'animal</th>
+                <th scope="col" class="title-id">Actions</th>
             </tr>
         </thead>
         <tbody>
             {% for booking in bookings %}
                 <tr>
-                    <td>
+                    <td scope="row">
                         {{ booking.createdAt | date('d/m/Y') }}
                     </td>
                     
-                    <td>
+                    <td scope="row">
                         {{ booking.user.username }}
                     </td>
-                    <td>
+                    <td scope="row">
                         {{ booking.user.email }}
                     </td>
-                    <td>
-                        <a href="{{path('ad_show', { 'id': booking.ad.id})}}"> {{ booking.ad.animal.name }}</a>
+                    <td scope="row">
+                        <a href="{{ path('ad_show', { 'id': booking.ad.id}) }}"> {{ booking.ad.animal.name }}</a>
                         
                     </td>
-                    <td>
-                        <a href="#" data-toggle="modal" data-target="#myModal" class="btn btn-danger" id="del-billet" data-billet-title="" data-modal-confirm-url="">Supprimer</a>
+                    <td scope="row">
+                        <a href="#" data-toggle="modal" data-target="#myModal" class="btn btn-danger" id="del-billet" data-billet-title="{{ booking.user.username }}" data-animal-name="{{ booking.ad.animal.name }}" data-modal-confirm-url="{{ path('del_admin_reservation', { 'id': booking.id}) }}">Supprimer</a>
                     </td>
                 </tr>
             {% endfor %}
@@ -41,4 +46,42 @@
     </div>
 {% endblock %}
 {% block footer %}
+    <!-- Modal -->
+    <div class="modal fade" id="myModal" role="dialog">
+        <div class="modal-dialog">
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3>Demande de confirmation</h3>
+                    <a href="#" data-dismiss="modal" aria-hidden="true" class="close">×</a>
+                </div>
+                <div class="modal-body">
+                    <p>Etes-vous sur de vouloir supprimer l'annonce concernée ?</p>
+                </div>
+                <div class="modal-footer">
+                    <a href="" id="btnYes" class="btn btn-default">Oui, je confirme</a>
+                    <a href="#" data-dismiss="modal" aria-hidden="true" class="btn btn-secondary">Non, j'annule</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(function(){
+        $modal = $('.modal');
+        $('a.btn-danger').on('click',function(e){
+            e.preventDefault();
+            $modal.find('a#btnYes').attr('href',$(this).data('modalConfirmUrl'));
+            $modal.find('.modal-body p').text("Êtes-vous sûr de vouloir supprimer la reservation de " + $(this).data('billetTitle') + " pour l'animal " + $(this).data('animalName') );
+            $modal.modal("show");
+        })
+    });
+    
+    $(document).ready(function(){
+        $('a#btnYes').click(function(){
+            $('.alert').show()
+        })
+    });
+</script>
 {% endblock %}
