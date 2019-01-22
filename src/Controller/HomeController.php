@@ -94,6 +94,11 @@ class HomeController extends Controller
         $booking = new Booking();
         $form = $this->createForm(BookingType::class, $booking);
 
+        $repository = $this->getDoctrine()->getRepository(Booking::class);
+        $bookings = $repository->findBy(array(
+            'ad' => $annonce
+        ));
+
         if (!$annonce) {
             throw $this->createNotFoundException(
                 "Aucune annonce n'a été trouvée pour l'id ".$id
@@ -106,6 +111,7 @@ class HomeController extends Controller
 
         return $this->render('reservation/show.html.twig',[
             'annonce' => $annonce,
+            'bookings' => $bookings,
             'formBook' => $form->createView()
         ]);
     }

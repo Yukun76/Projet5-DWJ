@@ -35,8 +35,14 @@
                         
                     </td>
                     <td scope="row">
-                        <a href="#" data-toggle="modal" data-target="#myModal" class="btn btn-danger" id="del-billet" data-billet-title="{{ booking.user.username }}" data-animal-name="{{ booking.ad.animal.name }}" data-modal-confirm-url="{{ path('del_admin_reservation', { 'id': booking.id}) }}">Supprimer</a>
+                        <a href="#" data-toggle="modal" data-target="#myModal" class="btn btn-danger" id="del-reserv" data-billet-title="{{ booking.user.username }}" data-animal-name="{{ booking.ad.animal.name }}" data-modal-confirm-url="{{ path('del_admin_reservation', { 'id': booking.id}) }}">Supprimer</a>
                     </td>
+                </tr>
+            {% else %}
+                <tr>
+                    <th>-</th>
+                    <th>Aucune réservation en cours</th>
+                    <th>-</th>
                 </tr>
             {% endfor %}
         </tbody>
@@ -75,12 +81,6 @@
             $modal.find('.modal-body p').text("Êtes-vous sûr de vouloir supprimer la reservation de " + $(this).data('billetTitle') + " pour l'animal " + $(this).data('animalName') );
             $modal.modal("show");
         })
-    });
-    
-    $(document).ready(function(){
-        $('a#btnYes').click(function(){
-            $('.alert').show()
-        })
-    });
+    });    
 </script>
 {% endblock %}

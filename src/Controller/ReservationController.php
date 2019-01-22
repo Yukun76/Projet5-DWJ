@@ -63,9 +63,5 @@ class ReservationController extends Controller
 
             return $this->redirectToRoute('ad_show', ['id' => $annonce->getId()]);
         }
-
-        return $this->render('reservation/index.html.twig',[
-            'formBook' => $form->createView()
-        ]);
     }
 }

@@ -42,7 +42,7 @@ class AdminController extends Controller
 
 
     /**
-     * @Route("/utilisateurs", name="utilisateurs")
+     * @Route("/liste-des-utilisateurs", name="utilisateurs")
      */
     public function utilisateurs(request $request)
     {
@@ -66,7 +66,7 @@ class AdminController extends Controller
     
 
     /**
-     * @Route("/annonce", name="annonce")
+     * @Route("/liste-des-annonces", name="annonce")
      */
     public function annonce(request $request) 
     {    
@@ -90,7 +90,7 @@ class AdminController extends Controller
 
 
     /**
-     * @Route("/animal", name="animal")
+     * @Route("/liste-des-animaux", name="animal")
      */
     public function animal(request $request) 
     {    
@@ -134,7 +134,7 @@ class AdminController extends Controller
 
 
     /**
-     * @Route("/reservation", name="reservation")
+     * @Route("/liste-des-reservations", name="reservation")
      */
     public function reservation(request $request) 
     {    

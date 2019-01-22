@@ -20,8 +20,8 @@ use App\Form\AnimalType;
 class AnimalController extends AbstractController
 {
     /**
-     * @Route("/animal/new", name="pet_new")
-     * @Route("/animal/{id}", name="pet_edit")
+     * @Route("/ajout-d'un-animal", name="pet_new")
+     * @Route("/modification-d'un-animal/{id}", name="pet_edit")
      */
     public function form(Animal $animal = null, request $request, ObjectManager $manager)
     {

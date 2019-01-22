@@ -22,8 +22,8 @@ use App\Service\FileUploader;
 class AdController extends AbstractController
 {
     /** 
-     * @Route("/annonce/new", name="ad_new")
-     * @Route("/annonce/{id}", name="ad_edit")
+     * @Route("/ajout-d'une-annonce", name="ad_new")
+     * @Route("/modification-d'une-annonce/{id}", name="ad_edit")
      */
     public function form(Ad $annonce = null, request $request, FileUploader $fileUploader, ObjectManager $manager)
     {

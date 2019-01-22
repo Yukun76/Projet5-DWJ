@@ -27,7 +27,7 @@
                             {{ user.email }}
                         </td>
                         <td scope="row">
-                            <a href="#" data-toggle="modal" data-target="#myModal" class="btn btn-danger" id="del-billet" data-billet-title="{{ user.username }}" data-modal-confirm-url="{{ path('del_user', { 'id': user.id}) }}"><i class="fa fa-trash" aria-hidden="true"></i> Supprimer</a>
+                            <a href="#" data-toggle="modal" data-target="#myModal" class="btn btn-danger" id="del-user" data-billet-title="{{ user.username }}" data-modal-confirm-url="{{ path('del_user', { 'id': user.id}) }}"><i class="fa fa-trash" aria-hidden="true"></i> Supprimer</a>
                         </td>
                     </tr>
                 {% endif %}
@@ -69,11 +69,6 @@
             $modal.modal("show");
         })
     });
-    
-    $(document).ready(function(){
-        $('a#btnYes').click(function(){
-            $('.alert').show()
-        })
-    });
+  
 </script>
 {% endblock %}

@@ -38,7 +38,7 @@
                         <td scope="row" id="td_button">
                             <a class="btn btn-secondary" href="{{ path('ad_show', { 'id': ad.id}) }}">Afficher</a>
                             <a class="btn btn-primary" href="{{ path('ad_edit', { 'id': ad.id}) }}">Editer</a>
-                            <a href="#" data-toggle="modal" data-target="#myModal" class="btn btn-danger" id="del-billet" data-billet-title="{{ ad.animal.name }}" data-modal-confirm-url="{{ path('del_ad', { 'id': ad.id}) }}">Supprimer</a>
+                            <a href="#" data-toggle="modal" data-target="#myModal" class="btn btn-danger" id="del-ad" data-billet-title="{{ ad.animal.name }}" data-modal-confirm-url="{{ path('del_ad', { 'id': ad.id}) }}">Supprimer</a>
                             <hr class="new5"> 
                         </td>
                     </tr>
@@ -78,12 +78,6 @@
             $modal.find('a#btnYes').attr('href',$(this).data('modalConfirmUrl'));
             $modal.find('.modal-body p').text("Êtes-vous sûr de vouloir supprimer l'article concernant " + $(this).data('billetTitle'));
             $modal.modal("show");
-        })
-    });
-    
-    $(document).ready(function(){
-        $('a#btnYes').click(function(){
-            $('.alert').show()
         })
     });
 </script>

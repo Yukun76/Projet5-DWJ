@@ -19,9 +19,9 @@ use App\Form\NewPasswordType;
 class ForgotPasswordController extends Controller
 {
     /**
-     * @Route("/renseignement", name="forgot_password")
+     * @Route("/demande-changement-de-mot-de-passe", name="forgot_password")
      */
-    public function request(Request $request, Mailer $mailer, TokenGeneratorInterface $tokenGenerator)
+    public function sendEmailNewPwd(Request $request, Mailer $mailer, TokenGeneratorInterface $tokenGenerator)
     {
         $form = $this->createForm(EmailForForgotPasswordType::class);
         $form->handleRequest($request);
@@ -67,7 +67,7 @@ class ForgotPasswordController extends Controller
  
     // si supérieur à 10min, retourne false
     // sinon retourne false
-    private function isRequestInTime(\Datetime $passwordRequestedAt = null)
+    private function emailTimeValid(\Datetime $passwordRequestedAt = null)
     {
         if ($passwordRequestedAt === null)
         {
@@ -83,16 +83,16 @@ class ForgotPasswordController extends Controller
     }
 
     /**
-     * @Route("reset/{id}/{token}", name="resetting")
+     * @Route("nouveau-mot-de-passe/{id}/{token}", name="resetting")
      */
-    public function resetting(User $user, $token, Request $request, UserPasswordEncoderInterface $passwordEncoder)
+    public function newPwd(User $user, $token, Request $request, UserPasswordEncoderInterface $passwordEncoder)
     {
         
         // interdit l'accès à la page si:
         // le token associé au membre est null
         // le token enregistré en base et le token présent dans l'url ne sont pas égaux
         // le token date de plus de 10 minutes
-        if ($user->getToken() === null || $token !== $user->getToken() || !$this->isRequestInTime($user->getPasswordRequestedAt()))
+        if ($user->getToken() === null || $token !== $user->getToken() || !$this->emailTimeValid($user->getPasswordRequestedAt()))
         {
             throw new AccessDeniedHttpException();
         }

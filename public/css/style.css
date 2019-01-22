@@ -497,7 +497,6 @@ label {
     padding-bottom: 30px;
 }
 
-
 #name_color {
     height: 2px;
     width: 20%;
@@ -601,6 +600,13 @@ tbody tr {
 
 #reserv_banner {
     margin-top: 100px;
+}
+
+#image_reserve {
+    position: absolute;
+    margin-top: -530px;
+    margin-left: 53px;
+    width: 578px;
 }
 
 .center {
@@ -769,6 +775,13 @@ iframe {
     .id_pet {
         position: absolute;
     }
+
+    #image_reserve {
+        position: absolute;
+        margin-top: -480px;
+        margin-left: 387px;
+        width: 510px;
+    }
 }
 
 /* -------------------------------------MEDIA QUERIES 985px-------------------------------------------- */
@@ -813,6 +826,13 @@ iframe {
 
     .card {
         width: 250px;
+    }
+
+    #image_reserve {
+        position: absolute;
+        margin-top: -420px;
+        margin-left: 291px;
+        width: 367px;
     }
 
     .ml2 {
@@ -932,6 +952,13 @@ iframe {
         margin-left: 30%;
     }
 
+    #image_reserve {
+        position: absolute;
+        margin-top: -370px;
+        margin-left: 219px;
+        width: 259px;
+    }
+
     .hr_liste {
         display: none;
     }
@@ -1039,6 +1066,7 @@ iframe {
         width: 100%;
     }
 
+
     .flex-container {
         display: block;
     }
@@ -1114,6 +1142,13 @@ iframe {
         width: 300px;
         margin-right: auto;
         margin-left: auto;
+    }
+
+    #image_reserve {
+        position: absolute;
+        margin-top: -370px;
+        margin-left: -68px;
+        width: 247px;
     }
 
     /* ------------------------------- */
@@ -1220,6 +1255,13 @@ iframe {
         font-size: 18px;
     }
 
+    #image_reserve {
+        position: absolute;
+        margin-top: -380px;
+        margin-left: -68px;
+        width: 248px;
+    }
+
 }
 
 /* -------------------------------------MEDIA QUERIES 380px-------------------------------------------- */
@@ -1310,6 +1352,13 @@ iframe {
 
     #card_reserv {
         width: 220px;
+    }
+
+    #image_reserve {
+        position: absolute;
+        margin-top: -370px;
+        margin-left: -47px;
+        width: 192px;
     }
 
     /* ------------------------------- */
