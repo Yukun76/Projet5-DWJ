@@ -84,7 +84,7 @@ class HomeController extends Controller
 
 
     /**
-     * @Route("/information/{id}", name="ad_show")
+     * @Route("/annonce/{id}", name="ad_show")
      */
     public function show(int $id, request $request, ObjectManager $manager, \Swift_Mailer $mailer)
     {
@@ -100,46 +100,9 @@ class HomeController extends Controller
             );
         }
 
-        $form->handleRequest($request);
-        if($form->isSubmitted() && $form->isValid()) {           
-           
-            if(!$booking->getId()){
-                 $booking->setCreatedAt(new \DateTime());
-            }
+        $this->container->get('session')->set('announce', $annonce->getId());
 
-            $user = $this->getUser();
-            $booking->setUser($user);
-      
-            $booking->setAd($annonce);
-
-            $manager->persist($booking);
-            $manager->flush();
-
-            //Envoie un mail de confirmation à l'utilisateur
-            $email = $this->getUser()->getEmail();
-            $username = $this->getUser()->getUsername();
-            $pet = $annonce->getAnimal()->getName();
-
-
-            $message = (new \Swift_Message('PetAdopt : Confirmation de la révervation'))
-                ->setFrom('YuKunOCR@gmail.com')
-                ->setTo($email)
-                ->setBody(
-                    $this->renderView(
-                        'emails/reservation.html.twig',[ 
-                        'username' => $username,
-                        'annonce' => $annonce,
-                        'name' => $pet
-                        ]
-                    ),                
-                        'text/html'
-                )
-            ;
-
-            $mailer->send($message);
-
-            return $this->redirectToRoute("accueil");
-        }
+        $form->handleRequest($request);       
 
         return $this->render('reservation/show.html.twig',[
             'annonce' => $annonce,

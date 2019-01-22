@@ -15,9 +15,7 @@ use App\Entity\User;
 use App\Form\EmailForForgotPasswordType;
 use App\Form\NewPasswordType;
 
-/**
- * @Route("/renouvellement-mot-de-passe")
- */
+
 class ForgotPasswordController extends Controller
 {
     /**
@@ -32,7 +30,7 @@ class ForgotPasswordController extends Controller
 
             $em = $this->getDoctrine()->getManager();
 
-            $user = $em->getRepository(User::class)->loadUserByUsername($form->getData()['email']);
+            $user = $em->getRepository(User::class)->findOneByEmail($form->getData()['email']);
 
             // aucun email associé à ce compte.
             if (!$user) {
@@ -85,7 +83,7 @@ class ForgotPasswordController extends Controller
     }
 
     /**
-     * @Route("/{id}/{token}", name="resetting")
+     * @Route("reset/{id}/{token}", name="resetting")
      */
     public function resetting(User $user, $token, Request $request, UserPasswordEncoderInterface $passwordEncoder)
     {

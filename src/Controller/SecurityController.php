@@ -37,6 +37,12 @@ class SecurityController extends AbstractController
 	        $token = new UsernamePasswordToken($user, null, 'main', $user->getRoles());
 	        $this->container->get('security.token_storage')->setToken($token);
 	        $this->container->get('session')->set('_security_main', serialize($token));
+	        
+	        $annonceId = $this->container->get('session')->remove('announce');
+
+	        if ($annonceId) {
+	        	return $this->redirectToRoute('ad_show', ['id' => $annonceId]);
+	        }
 	        // The user is now logged in, you can redirect or do whatever.
 
 			return $this->redirectToRoute("accueil");

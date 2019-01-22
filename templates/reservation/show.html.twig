@@ -30,7 +30,7 @@
 		</div>
 		<div class="center">
 			{% if is_granted('IS_AUTHENTICATED_FULLY') %}
-				<button href="#" data-toggle="modal" data-target="#myModal" class="btn btn-info center-block" id="reserve" data-billet-title="{{ annonce.animal.name }}" data-modal-confirm-url="{{ path('ad_show', { 'id': annonce.id}) }}">Reserver</button>
+				<button href="#" data-toggle="modal" data-target="#myModal" class="btn btn-info center-block" id="reserve" data-billet-title="{{ annonce.animal.name }}" data-modal-confirm-url="{{ path('reservation_accepted', { 'id': annonce.id}) }}">Reserver</button>
 			{% else %}
 				<a  href="{{ path("login") }}" class="btn btn-info center-block">Reserver</a>
 			{% endif %}
@@ -64,24 +64,17 @@
             </div>
         </div>
     </div>
-</div>
-
 
 <script>
     $(function(){
         $modal = $('.modal');
         $('button.btn-info').on('click',function(e){
             e.preventDefault();
-            $modal.find('a#btnYes').attr('href',$(this).data('modalConfirmUrl'));
+            $modal.find('form').attr('action',$(this).data('modalConfirmUrl'));
             $modal.find('.modal-body p').text("Vous êtes sur le point de réserver " + $(this).data('billetTitle'));
             $modal.modal("show");
         })
     });
     
-    $(document).ready(function(){
-        $('a#btnYes').click(function(){
-            $('.alert').show()
-        })
-    });
 </script>
 {% endblock %}
