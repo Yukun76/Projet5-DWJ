@@ -2,7 +2,6 @@
 
 namespace App\Controller;
 
-use Doctrine\Common\Persistence\ObjectManager;
 use Doctrine\ORM\Query;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
@@ -18,7 +17,7 @@ class HomeController extends Controller
 {
 
     /**
-     *   @Route("/", name="accueil")
+     * @Route("/", name="accueil")
      */
     public function accueil(request $request)
     {
@@ -29,7 +28,7 @@ class HomeController extends Controller
         $ads = $repo->findAllAdExceptBooking();
 
         /**
-         *  @var $paginator \Knp Component\Pager\Paginator
+         * @var $paginator \Knp Component\Pager\Paginator
          */
         $paginator = $this->get('knp_paginator');
         $result = $paginator->paginate(
@@ -40,7 +39,6 @@ class HomeController extends Controller
 
         $search->handleRequest($request);
         if ($search->isSubmitted() && $search->isValid() ) {
-
             return $this->redirectToRoute("search");
         }
 
@@ -79,6 +77,7 @@ class HomeController extends Controller
         return $this->render('home/search.html.twig', [
             'ads' => $result,
             'search' => $search->createView(),
+            'type' => $type
         ]);
     }
 
@@ -86,13 +85,12 @@ class HomeController extends Controller
     /**
      * @Route("/annonce/{id}", name="ad_show")
      */
-    public function show(int $id, request $request, ObjectManager $manager, \Swift_Mailer $mailer)
+    public function information(int $id, request $request)
     {
         $repo = $this->getDoctrine()->getRepository(Ad::class);
         $annonce = $repo->find($id);
 
-        $booking = new Booking();
-        $form = $this->createForm(BookingType::class, $booking);
+        $form = $this->createForm(BookingType::class, $annonce);
 
         $repository = $this->getDoctrine()->getRepository(Booking::class);
         $bookings = $repository->findBy(array(
@@ -109,7 +107,7 @@ class HomeController extends Controller
 
         $form->handleRequest($request);       
 
-        return $this->render('reservation/show.html.twig',[
+        return $this->render('infoAnnonce/information.html.twig',[
             'annonce' => $annonce,
             'bookings' => $bookings,
             'formBook' => $form->createView()

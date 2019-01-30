@@ -2,8 +2,8 @@
 {% block title %}PetAdopt' : Mes réservations{% endblock %}
 {% block body %}
 		{% for message in app.flashes('notice') %}
-    		<div id="change_mdp_alert"class="alert alert-success">
-       			 {{ message }}
+    		<div class="change_mdp_alert">
+    			<div class="alert alert-success">{{ message }}</div>
    			</div>
 		{% endfor %}
 	<div class="container emp-profile">

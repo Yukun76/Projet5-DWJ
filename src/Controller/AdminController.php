@@ -2,12 +2,6 @@
 
 namespace App\Controller;
 
-use App\Entity\Ad;
-use App\Entity\Animal;
-use App\Entity\Booking;
-use App\Entity\User;
-use App\Form\BookingType;
-use App\Form\SearchAnimalType;
 use Doctrine\Common\Persistence\ObjectManager;
 use Doctrine\ORM\Query;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
@@ -16,6 +10,13 @@ use Symfony\Component\Finder\Exception\AccessDeniedException;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Core\Authorization\AuthorizationCheckerInterface;
+
+use App\Entity\Ad;
+use App\Entity\Animal;
+use App\Entity\Booking;
+use App\Entity\User;
+use App\Form\BookingType;
+use App\Form\SearchAnimalType;
 
 
  /**
@@ -34,7 +35,7 @@ class AdminController extends Controller
             throw new AccessDeniedException('Unable to access this page!');
         }
 
-	    // or add an optional message - seen by developers
+	    // Ou, ajout d'un message optionnel - vu par les développeur.
 	    $this->denyAccessUnlessGranted('ROLE_ADMIN', null, 'User tried to access a page without having ROLE_ADMIN');
 
         return $this->render('admin/index.html.twig');

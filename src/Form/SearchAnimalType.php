@@ -43,7 +43,7 @@ class SearchAnimalType extends AbstractType
                 'Hauts-de-France' => '7',
                 'Île-de-France' => '8',
                 'Normandie' => '9',
-                'Nouvelle-Aquitain' => '10',
+                'Nouvelle-Aquitaine' => '10',
                 'Occitanie : Languedoc-Roussillon-Midi-Pyrénée' => '11',
                 'Pays de la loire' => '12',
                 'Provence-Alpes-Côte d’Azur' => '13',

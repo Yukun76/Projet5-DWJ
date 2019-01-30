@@ -33,7 +33,7 @@
                 <img id="image_reserve" src="{{ asset('img/reserve.png') }}" alt="réservé">
             {% else %}
     			{% if is_granted('IS_AUTHENTICATED_FULLY') %}
-    				<button href="#" data-toggle="modal" data-target="#myModal" class="btn btn-info center-block" id="reserve" data-billet-title="{{ annonce.animal.name }}" data-modal-confirm-url="{{ path('reservation_accepted', { 'id': annonce.id}) }}">Reserver</button>
+    				<button href="#" data-toggle="modal" data-target="#myModal" class="btn btn-info center-block" id="reserve">Reserver</button>
     			{% else %}
     				<a  href="{{ path("login") }}" class="btn btn-info center-block">Reserver</a>
     			{% endif %}
@@ -58,7 +58,7 @@
                 <div class="modal-body">
                 	{{ form_start(formBook) }}
                 	{{form_errors(formBook)}}
-                    <p>Etes-vous sur de vouloir supprimer l'annonce concernée ?</p> 
+                    <p>Vous êtes sur le point de réserver {{ annonce.animal.name }}</p> 
                 </div>
                 <div class="modal-footer">
                 	{{ form_widget(formBook.save) }}
@@ -70,15 +70,25 @@
     </div>
 
 <script>
-    $(function(){
-        $modal = $('.modal');
-        $('button.btn-info').on('click',function(e){
-            e.preventDefault();
-            $modal.find('form').attr('action',$(this).data('modalConfirmUrl'));
-            $modal.find('.modal-body p').text("Vous êtes sur le point de réserver " + $(this).data('billetTitle'));
-            $modal.modal("show");
-        })
-    });
-    
-</script>
+$(document).ready(function(){
+    $modal = $('.modal');
+    $modal.find('form').on('submit', function(e) {
+        e.preventDefault();
+
+        $.ajax({
+            type: "POST",
+            url: "{{ path('reservation_accepted', { 'id': annonce.id}) }}",
+            data: $(this).serialize(),
+            success: function(message){
+                $("#reserve").replaceWith(message)
+                $("#myModal").modal('hide');
+                $('#show_image').attr('src', "{{ asset('img/reserve.png') }}")
+            },
+            error: function(){
+                alert("Une erreur s'est produite, veuillez réessayer");
+            }
+        });
+    })
+}); 
+ </script>
 {% endblock %}

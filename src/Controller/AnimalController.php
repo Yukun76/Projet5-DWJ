@@ -25,26 +25,31 @@ class AnimalController extends AbstractController
      */
     public function form(Animal $animal = null, request $request, ObjectManager $manager)
     {
-    	if(!$animal) {
-    		$animal = new Animal();
-    	}
+      	if(!$animal) {
+      		$animal = new Animal();
+      	}
 
-    	$form = $this->createForm(AnimalType::class, $animal);
-    	$form->handleRequest($request);
+      	$form = $this->createForm(AnimalType::class, $animal);
+      	$form->handleRequest($request);
 
-    	if($form->isSubmitted() && $form->isValid()) {
+      	if($form->isSubmitted() && $form->isValid()) {
 
-    		$manager->persist($animal);
-    		$manager->flush();
+          if(!$animal->getId()){
+              $this->addFlash('notice', 'Animal ajouté avec succès !');
+          } else {
+              $this->addFlash('notice', 'Animal modifié avec succès !');
+          }
 
-        $this->addFlash('notice', 'Animal ajouté avec succès !');
+      		$manager->persist($animal);
+      		$manager->flush();
+       
 
-    		return $this->redirectToRoute('animal');
-    	}
+      		return $this->redirectToRoute('animal');
+      	}
 
         return $this->render('admin/animal/create.html.twig', [
-        	'formAnimal' => $form->createView(),
-        	'edit' => $animal->getId() !== null
+          'formAnimal' => $form->createView(),
+          'edit' => $animal->getId() !== null
         ]);
     }
     

@@ -58,7 +58,7 @@ td img {
     margin-top: 30px;
 }
 
-#change_mdp_alert {
+.change_mdp_alert {
     margin-top: 30px;
     position: relative;
 }
@@ -253,7 +253,7 @@ td img {
 }
 
 
-#titre_principal {
+.titre_principal {
     font-family: Sail, sans-serif;
     margin-top: 20px;
 }
@@ -443,7 +443,7 @@ label {
     margin-top: 30px;
 }
 
-#titre_principal {
+.titre_principal {
     font-family: Sail, sans-serif;
     margin-top: 40px;
     margin-bottom: -20px;
@@ -548,7 +548,13 @@ tbody tr {
     margin-left: 2%;
     margin-right: auto;
     display: block;
+}
 
+#image_reserve {
+    position: absolute;
+    margin-top: -530px;
+    margin-left: 53px;
+    width: 578px;
 }
 
 #animal_information_show {
@@ -600,13 +606,6 @@ tbody tr {
 
 #reserv_banner {
     margin-top: 100px;
-}
-
-#image_reserve {
-    position: absolute;
-    margin-top: -530px;
-    margin-left: 53px;
-    width: 578px;
 }
 
 .center {
@@ -796,7 +795,7 @@ iframe {
         background-size: 1000px;
     }
 
-    #titre_principal {
+    .titre_principal {
         font-size: 30px;
     }
 
@@ -922,7 +921,7 @@ iframe {
 
 @media (max-width: 765px) {
 
-    #titre_principal {
+    .titre_principal {
         text-align: center;
         margin-bottom: 15px;
     }

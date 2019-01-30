@@ -27,13 +27,13 @@ class AdController extends AbstractController
      */
     public function form(Ad $annonce = null, request $request, FileUploader $fileUploader, ObjectManager $manager)
     {
-      if(!$annonce) {
-          $annonce = new Ad();
-      } else {
-            $annonce->setImage(
-                new File($this->getParameter('animals_directory').'/'.$annonce->getImage())
-            );
-      }
+        if(!$annonce) {
+            $annonce = new Ad();
+        } else {
+              $annonce->setImage(
+                  new File($this->getParameter('animals_directory').'/'.$annonce->getImage())
+              );
+        }
         
         $form = $this->createForm(AdType::class, $annonce);        
         $form->handleRequest($request);
@@ -48,12 +48,13 @@ class AdController extends AbstractController
 
             if(!$annonce->getId()){
                 $annonce->setCreatedAt(new \DateTime());
+                $this->addFlash('notice', 'Annonce ajoutée avec succès !');
+            } else {
+                $this->addFlash('notice', 'Annonce modifiée avec succès !');
             }
 
             $manager->persist($annonce);
             $manager->flush();
-
-            $this->addFlash('notice', 'Annonce ajoutée avec succès !');
 
             return $this->redirectToRoute('annonce');
         }

@@ -51,7 +51,7 @@ class ForgotPasswordController extends Controller
             
             $mailer->sendMessage(
                 'from@email.com', $user->getEmail(),
-                'renouvellement du mot de passe',
+                'PetAdopt: Renouvellement du mot de passe',
                  $bodyMail
             );
 

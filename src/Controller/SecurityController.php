@@ -33,17 +33,16 @@ class SecurityController extends AbstractController
 			$manager->persist($user);
 			$manager->flush();
 
-			$user = //Handle getting or creating the user entity likely with a posted form
+			$user = // Gère l'obtention ou la création de l'entité utilisateur avec un formulaire.
 	        $token = new UsernamePasswordToken($user, null, 'main', $user->getRoles());
 	        $this->container->get('security.token_storage')->setToken($token);
-	        $this->container->get('session')->set('_security_main', serialize($token));
-	        
+	        $this->container->get('session')->set('_security_main', serialize($token));	        
 	        $annonceId = $this->container->get('session')->remove('announce');
+	        // L'utilisateur est maintenant connecté, il peut maintenant être rédirigé.
 
 	        if ($annonceId) {
 	        	return $this->redirectToRoute('ad_show', ['id' => $annonceId]);
 	        }
-	        // The user is now logged in, you can redirect or do whatever.
 
 			return $this->redirectToRoute("accueil");
 		}
@@ -59,9 +58,9 @@ class SecurityController extends AbstractController
 	 */
 	public function login(AuthenticationUtils $authenticationUtils): Response
 	{
-		// get the login error if there is one
+		// Obtient l'erreur de connexion s'il y en a une
         $error = $authenticationUtils->getLastAuthenticationError();
-        // last username entered by the user
+        // Dernier nom entré par l'utilisateur
         $lastUsername = $authenticationUtils->getLastUsername();
 
 		return $this->render('security/login.html.twig', [

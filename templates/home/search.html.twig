@@ -1,8 +1,14 @@
-{% extends 'homeShowBase.html.twig' %}
+{% extends 'homeSearchBase.html.twig' %}
 {% block title %} PetAdopt' : Liste d'adoption{% endblock %}
 {% block head %}{% endblock %}
 {% block body %}
-	<h1 id="titre_principal"> Adopter en un. </h1>
+{% if type == 'chien' %}
+	<h1 class="titre_principal"> Adopter un chien. </h1>
+{% elseif type == 'chat' %}
+	<h1 class="titre_principal"> Adopter un chat. </h1>
+{% else %}
+	<h1 class="titre_principal"> Adopter en un. </h1>
+{% endif %}
 	<div class="Liste_adoption">
 		<article>
 			<hr class="hr_liste">
@@ -17,7 +23,7 @@
 									<p><b>Publié le {{ ad.createdAt | date('d/m/Y') }} à {{ ad.createdAt | date('H:i') }}</b></p>
 								</div>
 								<p class="card-text">{{ ad.content[:100] ~ '...'  }}</p>
-								<a href="{{path('ad_show', { 'id': ad.id})}}" class="btn btn-primary">Lire la suite</a>
+								<a href="{{ path('ad_show', { 'id': ad.id}) }}" class="btn btn-primary">Lire la suite</a>
 							</div>
 						</div>
 					{% endfor %}

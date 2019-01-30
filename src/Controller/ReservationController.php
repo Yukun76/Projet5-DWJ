@@ -8,6 +8,7 @@ use App\Form\BookingType;
 use Doctrine\Common\Persistence\ObjectManager;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 class ReservationController extends Controller
@@ -15,25 +16,12 @@ class ReservationController extends Controller
    /**
      * @Route("/reserve/{id}", name="reservation_accepted")
      */
-    public function reservationPopUp($id, request $request, ObjectManager $manager, \Swift_Mailer $mailer)
-    {
-    	$repo = $this->getDoctrine()->getRepository(Ad::class);
-        $annonce = $repo->find($id);
-
-        $booking = new Booking();
-        $form = $this->createForm(BookingType::class, $booking);
-
-        $form->handleRequest($request);
-        if($form->isSubmitted() && $form->isValid()) {           
-           
-            if(!$booking->getId()){
-                $booking->setCreatedAt(new \DateTime());
-            }
-
-            $user = $this->getUser();
-            $booking->setUser($user);
-      
-            $booking->setAd($annonce);
+    public function reservationPopUp(Ad $annonce, request $request, ObjectManager $manager, \Swift_Mailer $mailer)
+    {               
+            $booking = (New Booking())   
+                ->setCreatedAt(new \DateTime())
+                ->setUser($this->getUser())      
+                ->setAd($annonce);
 
             $manager->persist($booking);
             $manager->flush();
@@ -42,7 +30,6 @@ class ReservationController extends Controller
             $email = $this->getUser()->getEmail();
             $username = $this->getUser()->getUsername();
             $pet = $annonce->getAnimal()->getName();
-
 
             $message = (new \Swift_Message('PetAdopt : Confirmation de la révervation'))
                 ->setFrom('YuKunOCR@gmail.com')
@@ -61,7 +48,6 @@ class ReservationController extends Controller
 
             $mailer->send($message);
 
-            return $this->redirectToRoute('ad_show', ['id' => $annonce->getId()]);
+            return new Response('');
         }
     }
-}

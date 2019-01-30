@@ -5,9 +5,9 @@
 {% block body %}
 <img  id="reserv_banner" src="{{ asset('img/reservation.jpg') }}" alt="image reservation" style="width:100%;">
 {% for message in app.flashes('notice_del') %}
-        <div id="change_mdp_alert" class="alert alert-success">
-            {{ message }}
-        </div>
+    <div class="change_mdp_alert">
+        <div class="alert alert-danger">{{ message }}</div>
+    </div>
 {% endfor %}
 <h1 class="titre_reserv"> Mes réservations en cours : </h1>
 <hr class="hr_liste">
@@ -49,7 +49,7 @@
                     <a href="#" data-dismiss="modal" aria-hidden="true" class="close">×</a>
                 </div>
                 <div class="modal-body">
-                    <p>Etes-vous sur de vouloir supprimer l'annonce concernée ?</p>
+                    <p></p>
                 </div>
                 <div class="modal-footer">
                     <a href="" id="btnYes" class="btn btn-default">Oui, je confirme</a>

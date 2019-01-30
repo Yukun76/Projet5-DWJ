@@ -13,14 +13,14 @@
 {% endblock %}
 {% block body %}
         {% for message in app.flashes('success_mail') %}
-            <div id="change_mdp_alert" class="alert alert-success">
-                 {{ message }}
-            </div>
+    		<div class="change_mdp_alert">
+    			<div class="alert alert-success">{{ message }}</div>
+   			</div>
         {% endfor %}
         {% for message in app.flashes('success_new') %}
-            <div id="change_mdp_alert" class="alert alert-success">
-                 {{ message }}
-            </div>
+    		<div class="change_mdp_alert">
+    			<div class="alert alert-success">{{ message }}</div>
+   			</div>
         {% endfor %}
 	<div class="container" id="loginCard">	
 		<div class="card card-register mx-auto mt-5">

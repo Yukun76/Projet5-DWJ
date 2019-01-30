@@ -2,13 +2,13 @@
 {% block title %}PetAdopt' : Liste des annonces !{% endblock %}
 {% block body %}
         {% for message in app.flashes('notice') %}
-            <div id="change_mdp_alert" class="alert alert-success">
-                 {{ message }}
+            <div class="change_mdp_alert">
+                <div class="alert alert-success">{{ message }}</div>
             </div>
         {% endfor %}
         {% for message in app.flashes('notice_del') %}
-            <div id="change_mdp_alert" class="alert alert-danger">
-                 {{ message }}
+            <div class="change_mdp_alert">
+                <div class="alert alert-danger">{{ message }}</div>
             </div>
         {% endfor %}
  <h1 class="admin_title"> Liste des annonces </h1>
@@ -60,7 +60,7 @@
                     <a href="#" data-dismiss="modal" aria-hidden="true" class="close">×</a>
                 </div>
                 <div class="modal-body">
-                    <p>Etes-vous sur de vouloir supprimer l'annonce concernée ?</p>
+                    <p></p>
                 </div>
                 <div class="modal-footer">
                     <a href="" id="btnYes" class="btn btn-default">Oui, je confirme</a>
@@ -70,15 +70,15 @@
         </div>
     </div>
 
-<script>
-    $(function(){
-        $modal = $('.modal');
-        $('a.btn-danger').on('click',function(e){
-            e.preventDefault();
-            $modal.find('a#btnYes').attr('href',$(this).data('modalConfirmUrl'));
-            $modal.find('.modal-body p').text("Êtes-vous sûr de vouloir supprimer l'article concernant " + $(this).data('billetTitle'));
-            $modal.modal("show");
-        })
-    });
-</script>
+    <script>
+        $(function(){
+            $modal = $('.modal');
+            $('a.btn-danger').on('click',function(e){
+                e.preventDefault();
+                $modal.find('a#btnYes').attr('href',$(this).data('modalConfirmUrl'));
+                $modal.find('.modal-body p').text("Êtes-vous sûr de vouloir supprimer l'article concernant " + $(this).data('billetTitle'));
+                $modal.modal("show");
+            })
+        });
+    </script>
 {% endblock %}
