@@ -51,7 +51,7 @@
             			 <label for="remember_me" class="form-check-label"> 
               			 <input class="form-check-input" id="remember_me" name="_remember_me" type="checkbox"> Remember me</label>
           			</div><br/>
-					<input type="hidden" name="_target_path" value="{{ app.request.headers.get('referer') }}" />
+					<input type="hidden" name="_target_path" value="{{ targetPath }}" />
 					<button type="submit" id="connexion" class="btn btn-primary btn-block" name="reg_user">Connexion</button>
 				</form>
 				<div class="text-center">

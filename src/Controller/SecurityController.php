@@ -56,16 +56,23 @@ class SecurityController extends AbstractController
 	/**
 	 * @Route("/connexion", name="login")
 	 */
-	public function login(AuthenticationUtils $authenticationUtils): Response
+	public function login(Request $request, AuthenticationUtils $authenticationUtils): Response
 	{
 		// Obtient l'erreur de connexion s'il y en a une
         $error = $authenticationUtils->getLastAuthenticationError();
         // Dernier nom entré par l'utilisateur
         $lastUsername = $authenticationUtils->getLastUsername();
+        $targetPath = "/";
+        $referer = $request->headers->get('referer');
+
+        if (true === strstr($referer, 'annonce')) {
+        	$targetPath = $referer;
+        }
 
 		return $this->render('security/login.html.twig', [
             'last_username' => $lastUsername,
-            'error' => $error
+            'error' => $error,
+            'targetPath' => $targetPath
         ]);
 	}
 

@@ -2,14 +2,15 @@
 
 namespace App\Controller;
 
-use App\Entity\Ad;
-use App\Entity\Booking;
-use App\Form\BookingType;
 use Doctrine\Common\Persistence\ObjectManager;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+
+use App\Entity\Ad;
+use App\Entity\Booking;
+use App\Form\BookingType;
 
 class ReservationController extends Controller
 {

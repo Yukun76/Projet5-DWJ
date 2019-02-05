@@ -915,6 +915,12 @@ iframe {
     #animal_button_admin {
         font-size: 15px;
     }
+
+    .change_mdp_alert {
+        margin-top: 80px;
+        margin-left: -30%;
+        width: 90%;
+    }
 }
 
 /* -------------------------------------MEDIA QUERIES 765px-------------------------------------------- */
@@ -1283,6 +1289,7 @@ iframe {
 
     #renseignement form {
         width: 250px;
+        margin-left: 15%;
     }
 
     .barre_recherche {
