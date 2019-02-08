@@ -4,13 +4,17 @@
 		<meta charset="UTF-8">
 		<title>{% block title %}Adminitration{% endblock %}</title>
 		{% block stylesheets %}
+			<meta name="viewport" content="width=device-width, initial-scale=1">
+			<link rel="stylesheet" type="text/css" href="{{ asset('css/style.css') }}" />
+			<link rel="shortcut icon" href="{{ asset('img/patte2.png') }}" type="image/x-icon">
 			<link href="https://fonts.googleapis.com/css?family=Cormorant+Garamond|Crimson+Text|Indie+Flower|Lato|Berkshire+Swash|Tangerine|Roboto|Roboto+Slab|Ubuntu|Sail|Zilla+Slab+Highlight" rel="stylesheet">
-			<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
+			<link href="https://fonts.googleapis.com/css?family=Cormorant+Garamond|Crimson+Text|Indie+Flower|Lato|Berkshire+Swash|Tangerine|Roboto|Roboto+Slab|Ubuntu|Sail|Zilla+Slab+Highlight" rel="stylesheet">
 			<link rel="stylesheet" href="https://bootswatch.com/4/litera/bootstrap.min.css" />
-			<link rel="stylesheet" type="text/css" href="../css/style.css" />
-
-			<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+			<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
+			<script src="https://ajax.googleapis.com/ajax/libs/d3js/5.7.0/d3.min.js"></script>
+			<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 			<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+			<script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/2.0.2/anime.min.js"></script>
 		{% endblock %}
 	</head>
 	<body class="admin_body">
@@ -35,12 +39,12 @@
 								<ul>
 									<p id="admin_title" style="color: red; margin-left: 10px;"> ▼ ADMINISTRATION </p>
 									<li><i class="fa fa-home"></i><a href="/">Accueil</a></li>
-									<li><i class="fa fa-users" aria-hidden="true"></i><a href="{{path('utilisateurs')}}">Utilisateurs</a></li>
-									<li><a href="{{path('annonce')}}"><i class="fa fa-newspaper-o" aria-hidden="true"></i>Annonces</a></li>
-									<li><i class="fa fa-paw" aria-hidden="true"></i><a href="{{path('animal')}}">Animaux</a></li>
-									<li><i class="fa fa-paw" aria-hidden="true"></i><a href="{{path('reservation')}}">Reservations</a></li>
+									<li><i class="fa fa-users" aria-hidden="true"></i><a href="{{ path('utilisateurs') }}">Utilisateurs</a></li>
+									<li><a href="{{ path('annonce') }}"><i class="fa fa-newspaper-o" aria-hidden="true"></i>Annonces</a></li>
+									<li><i class="fa fa-paw" aria-hidden="true"></i><a href="{{ path('animal') }}">Animaux</a></li>
+									<li><i class="fa fa-paw" aria-hidden="true"></i><a href="{{ path('reservation') }}">Reservations</a></li>
 									<div class="dropdown-divider"></div>
-									<li><i class="fa fa-sign-out" aria-hidden="true"></i><a href="{{path('logout')}}"> Logout</a></li>
+									<li><i class="fa fa-sign-out" aria-hidden="true"></i><a href="{{ path('logout') }}"> Logout</a></li>
 								</ul>
 							</div>
 						</aside>

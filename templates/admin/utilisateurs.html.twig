@@ -2,11 +2,11 @@
 {% block title %}PetAdopt' : Administration{% endblock %}
 {% block body %}
     {% for message in app.flashes('notice_del') %}
-        <div class="change_mdp_alert">
+        <div class="change_mdp_alert_admin">
             <div class="alert alert-danger">{{ message }}</div>
         </div>
     {% endfor %}
-    <h1 class="admin_title"> Liste des utilisateurs </h1>
+    <h1 class="admin_title" id="user_admin_title"> Liste des utilisateurs </h1>
     <table class="table">
         <thead class="thead-dark">
             <tr>

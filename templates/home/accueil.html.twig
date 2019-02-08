@@ -12,7 +12,7 @@
 						<div class="card" id="card_accueil">
 							<img class="card-img-top" src="{{ asset('uploads/animals/' ~ ad.image) }}" alt="Card image">
 							<div class="card-body">
-								<h4 class="card-title">{{ ad.title }}</h4>
+								<h4 class="card-title" id="title_annonce_card">{{ ad.title }}</h4>
 								<div class="metadata">
 									<p><b>Publié le {{ ad.createdAt | date('d/m/Y') }} à {{ ad.createdAt | date('H:i') }}</b></p>
 								</div>

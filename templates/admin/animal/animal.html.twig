@@ -4,7 +4,7 @@
 {% block title %}PetAdopt' : Home - Adopter un animal de compagnie !{% endblock %}
 {% block body %}
         {% for message in app.flashes('notice') %}
-            <div class="change_mdp_alert">
+            <div class="change_mdp_alert_admin">
                 <div class="alert alert-success">{{ message }}</div>
             </div>
         {% endfor %}

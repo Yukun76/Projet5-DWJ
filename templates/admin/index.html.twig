@@ -1,5 +1,7 @@
 {% extends 'adminBase.html.twig' %}
 {% block title %}PetAdopt' : Administration{% endblock %}
 {% block body %}
-	<h1 id="admin_bienvenue"> Bienvenue {{ app.user.getUsername() }}</h1>
+	<h1 class="admin_title" id="admin_bienvenue"> Bienvenue {{ app.user.getUsername() }}</h1>
+	<img id="dashboard_image" src="{{ asset('img/109232.png') }}" alt="image">
+
 {% endblock %}

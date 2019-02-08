@@ -5,7 +5,7 @@
 {% block body %}
 <img  id="reserv_banner" src="{{ asset('img/reservation.jpg') }}" alt="image reservation" style="width:100%;">
 {% for message in app.flashes('notice_del') %}
-    <div class="change_mdp_alert">
+    <div class="change_mdp_alert"  id="del_reservation_notice">
         <div class="alert alert-danger">{{ message }}</div>
     </div>
 {% endfor %}
@@ -34,7 +34,7 @@
             </div>
         </div> 
     {% else %}
-        <h5 class="titre_reserv"> Aucune réservation en cours </h5> 
+        <h5 class="titre_reserv2"> Aucune réservation en cours </h5> 
     {% endfor %}
 </div>
 {% endblock %}

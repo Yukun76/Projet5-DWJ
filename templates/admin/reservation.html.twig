@@ -2,18 +2,18 @@
 {% block title %}PetAdopt' : Home - Adopter un animal de compagnie !{% endblock %}
 {% block body %}
     {% for message in app.flashes('notice_del') %}
-        <div class="change_mdp_alert">
+        <div class="change_mdp_alert_admin">
             <div class="alert alert-danger">{{ message }}</div>
         </div>
     {% endfor %}
-    <h1 class="admin_title"> Liste des réservations</h1>
+    <h1 class="admin_title" id="reserv_admin_title"> Liste des réservations</h1>
     <table class="table">
         <thead class="thead-dark">
             <tr>
                 <th scope="col"class="title-id">Date de la réservation</th>
                 <th scope="col"class="title-id">Pseudo</th>
                 <th scope="col" class="title-id">Email</th>
-                <th scope="col"class="title-id">Nom de l'animal</th>
+                <th scope="col" class="title-id">Nom de l'animal</th>
                 <th scope="col" class="title-id">Actions</th>
             </tr>
         </thead>

@@ -2,7 +2,7 @@
 {% block title %}PetAdopt' : Liste des annonces !{% endblock %}
 {% block body %}
         {% for message in app.flashes('notice') %}
-            <div class="change_mdp_alert">
+            <div class="change_mdp_alert_admin">
                 <div class="alert alert-success">{{ message }}</div>
             </div>
         {% endfor %}

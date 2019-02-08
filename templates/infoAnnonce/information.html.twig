@@ -8,7 +8,7 @@
 		</div>
 		<div class="card bg-info text-white" id ="card_id">
 			<div class="card-body" id ="card_body_id">
-				<img  class="card bg-light text-dark" id="show_image" src="{{ asset('uploads/animals/' ~ annonce.image) }}" alt=""></img>
+				<img  class="card bg-light text-dark" id="show_image" src="{{ asset('uploads/animals/' ~ annonce.image) }}" alt="image de l'animal"></img>
                 <div class="id_pet">
     				<div class="vl"></div>
     				<h2><u>Identité :</u></h2>
@@ -25,12 +25,12 @@
 		<div class="card bg-success text-white">
 			<div class="card-body">
 				<h2><u>Description :</u></h2>
-				<p id="annonce_content">{{ annonce.content | raw }}</p>
+				<p id="annonce_content">{{ annonce.content | nl2br }}</p>
 			</div>
 		</div>
 		<div class="center">
             {% for booking in bookings %}
-                <img id="image_reserve" src="{{ asset('img/reserve.png') }}" alt="réservé">
+                <img id="image_reserve" src="{{ asset('img/reserve3.png') }}" alt="réservé">
             {% else %}
     			{% if is_granted('IS_AUTHENTICATED_FULLY') %}
     				<button href="#" data-toggle="modal" data-target="#myModal" class="btn btn-info center-block" id="reserve">Reserver</button>
@@ -82,7 +82,6 @@ $(document).ready(function(){
             success: function(message){
                 $("#reserve").replaceWith(message)
                 $("#myModal").modal('hide');
-                $('#show_image').attr('src', "{{ asset('img/reserve.png') }}")
             },
             error: function(){
                 alert("Une erreur s'est produite, veuillez réessayer");

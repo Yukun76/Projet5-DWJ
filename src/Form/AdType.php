@@ -15,7 +15,7 @@ class AdType extends AbstractType
     {
         $builder
             ->add('title')
-            ->add('content')
+            ->add('content', TextareaType::class)
             ->add('image', FileType::class)
             ->add('animal')
         ;
