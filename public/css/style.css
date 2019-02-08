@@ -6,10 +6,8 @@ body {
 }
 
 .admin_body {
+    height: 100%;
     width: 100%;
-    margin: 0px;
-    padding: 0px;
-    overflow-x: hidden;
 }
 
 hr.new5 {
@@ -82,11 +80,9 @@ td img {
     border-radius: 25% 25% 25% 25%;
 }
 
-
 .dropdown {
     border: none;
 }
-
 
 .form-inline {
     margin-right: 100px;
@@ -237,12 +233,6 @@ td img {
     position: absolute;
     left: 55px;
 }
-
-
-#right_contain {
-    margin-left: 30%;
-}
-
 
 
 .hr_liste {
@@ -786,6 +776,12 @@ iframe {
     margin-left: 100px;
 }
 
+#right_contain {
+    margin-left: 30%;
+    width: 70%;
+}
+
+
 /* -------------------------------------MEDIA QUERIES 1200px-------------------------------------------- */
 
 @media (max-width: 1200px) {
@@ -1136,10 +1132,12 @@ iframe {
     #title_show h3 {
         font-size: 20px;
     }
+
     #title_show div {
         font-size: 10px;
         margin-top: 0px;
     }
+
     .id_pet p {
         text-indent: 20px;
     }
@@ -1200,7 +1198,7 @@ iframe {
     /* ------------------------------- */
     #admin_bienvenue {
         font-size: 40px;
-        margin-left: -25px;
+        margin-left: -100px;
     }
 
     thead {
@@ -1222,18 +1220,13 @@ iframe {
         -ms-flex-direction: column;
         flex-direction: column;
         text-align: center;
-        margin-left: 0%;
-    }
-
-    #td_image {
         width: 100%;
-        display: block;
-        margin-right: auto;
-        margin-left: auto;
+        margin-left: 9%;
     }
 
     #dashboard_image {
         margin-left: 50px;
+        margin-left: 30%;
     }
 
     #add-btn-success {
@@ -1245,11 +1238,17 @@ iframe {
         margin-top: 0px;
     }
 
-    #td_title {
+    #td_image {
         width: 100%;
     }
 
-    #td_content {
+    #td_image img {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    #td_title {
         width: 100%;
     }
 
@@ -1262,7 +1261,7 @@ iframe {
     }
 
     .navigation_admin {
-        margin-left: -9%;
+        margin-left: -15%;
         margin-top: 50px;
     }
 
@@ -1277,7 +1276,7 @@ iframe {
 @media (max-width: 500px) {
     tr,
     td {
-        margin-left: 3%;
+        margin-left: 15%;
     }
     
     .navigation {
@@ -1290,10 +1289,6 @@ iframe {
 
     #card_accueil {
         margin-left: 7%;
-    }
-
-    #navbarNavAdminMarkup {
-        width: 70%;
     }
 
     #title_annonce_card {
@@ -1311,7 +1306,7 @@ iframe {
     }
 
     #add-btn-success {
-        margin-left: -35px;
+        margin-left: -10px;
         font-size: 15px;
         margin-top: 0px;
     }
@@ -1333,7 +1328,7 @@ iframe {
     }
 
     .navigation_admin {
-        margin-left: -20%;
+        margin-left: -32%;
     }
 
     #animal_card_header h1 {
@@ -1466,8 +1461,9 @@ iframe {
 
     tr,
     td {
-        margin-left: 10%;
+        margin-left: 22%;
         text-align: left;
+
     }
 
     #td_image {

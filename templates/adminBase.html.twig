@@ -4,7 +4,7 @@
 		<meta charset="UTF-8">
 		<title>{% block title %}Adminitration{% endblock %}</title>
 		{% block stylesheets %}
-			<meta name="viewport" content="width=device-width, initial-scale=1">
+			<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 			<link rel="stylesheet" type="text/css" href="{{ asset('css/style.css') }}" />
 			<link rel="shortcut icon" href="{{ asset('img/patte2.png') }}" type="image/x-icon">
 			<link href="https://fonts.googleapis.com/css?family=Cormorant+Garamond|Crimson+Text|Indie+Flower|Lato|Berkshire+Swash|Tangerine|Roboto|Roboto+Slab|Ubuntu|Sail|Zilla+Slab+Highlight" rel="stylesheet">
@@ -53,12 +53,8 @@
 			</nav>
 		{% endblock %}
 		<div class="container" id="right_contain">
-			<div class="row">
-				<div class="col-lg-8 col-lg-offset-2">
 					{% block body %}
 					{% endblock %}
-				</div>
-			</div>
 		</div>
 		{% block footer %}{% endblock %}
 		{% block javascripts %}
