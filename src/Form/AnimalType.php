@@ -2,12 +2,13 @@
 
 namespace App\Form;
 
-use App\Entity\Animal;
-use App\Form\SearchAnimalType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+
+use App\Entity\Animal;
+use App\Form\SearchAnimalType;
 
 class AnimalType extends AbstractType
 {
@@ -15,21 +16,20 @@ class AnimalType extends AbstractType
     {
         $builder
             ->add('type', ChoiceType::class, array(
-
-            'required' => false,
-            'choices' => array(
-                'Chien' => 'chien',
-                'Chat' => 'chat',
-                'Autres espèces' => 'autre',
-            ),
-        ))
+                'required' => false,
+                'choices' => array(
+                    'Chien' => 'chien',
+                    'Chat' => 'chat',
+                    'Autres espèces' => 'autre',
+                ),
+            ))
             ->add('sexe', ChoiceType::class, array(
-            'required' => false,
-            'choices' => array(
-                'Mâle' => 'm',
-                'Femelle' => 'f',
-            ),
-        ))
+                'required' => false,
+                'choices' => array(
+                    'Mâle' => 'm',
+                    'Femelle' => 'f',
+                ),
+            ))
             ->add('name')
             ->add('region')
         ;

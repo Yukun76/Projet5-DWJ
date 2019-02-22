@@ -65,7 +65,8 @@ class SecurityController extends AbstractController
         $targetPath = "/";
         $referer = $request->headers->get('referer');
 
-        if (true === strstr($referer, 'annonce')) {
+
+        if (false !== strstr($referer, 'annonce')) {
         	$targetPath = $referer;
         }
 

@@ -1,22 +1,21 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<meta charset="UTF-8">
-	<title>{% block title %}Welcome!{% endblock %}</title>
-	{% block stylesheets %}
-			<meta name="viewport" content="width=device-width, initial-scale=1">
-			<link rel="stylesheet" type="text/css" href="../css/style.css" />
-			<link rel="shortcut icon" href="../img/patte2.png" type="image/x-icon">
-			<link href="https://fonts.googleapis.com/css?family=Cormorant+Garamond|Crimson+Text|Indie+Flower|Lato|Berkshire+Swash|Tangerine|Roboto|Roboto+Slab|Ubuntu|Sail|Zilla+Slab+Highlight" rel="stylesheet">
-			<link rel="stylesheet" href="https://bootswatch.com/4/litera/bootstrap.min.css" />
-			<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
-			<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
-			<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-			<script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/2.0.2/anime.min.js"></script>
+	<head>	
+		<title>{% block title %}Home{% endblock %}</title>
+		{% block stylesheets %}			
+				<meta charset="UTF-8">
+				<meta name="viewport" content="width=device-width, initial-scale=1">
+				<link rel="stylesheet" type="text/css" href="{{ asset('css/style.css') }}" />
+				<link rel="shortcut icon" href="{{ asset('img/patte2.png') }}" type="image/x-icon">
+				<link href="https://fonts.googleapis.com/css?family=Cormorant+Garamond|Crimson+Text|Indie+Flower|Lato|Berkshire+Swash|Tangerine|Roboto|Roboto+Slab|Ubuntu|Sail|Zilla+Slab+Highlight" rel="stylesheet">
+				<link rel="stylesheet" href="https://bootswatch.com/4/litera/bootstrap.min.css" />
+				<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
+				<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+				<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+				<script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/2.0.2/anime.min.js"></script>
 		{% endblock %}
 	</head>
-	{% block head %}		
-	{% endblock %}
+	{% block head %}{% endblock %}
 	<body>
 		<nav class="navbar navbar-expand-lg navbar navbar-light bg-light fixed-top" id="nav_admin">
 			<a class="navbar-brand" href="/"><img src="{{ asset('img/patte.png') }}" alt="image_paw" style="width:7%";> PetAdopt'</a>
@@ -65,8 +64,7 @@
 			</div>
 		</div>
 	<div class="container">
-		{% block body %}
-		{% endblock %}
+		{% block body %}{% endblock %}
 	</div>
 	{% block footer %}
 				<!-- Footer -->
@@ -113,7 +111,7 @@
 					<!-- Footer Links -->
 					<!-- Copyright -->
 			<div class="footer-copyright text-center text-black-50 py-3">© 2019 Copyright:
-				<a class="dark-grey-text" href="http://localhost/Projet5-DWJ/accueil/"> Yukun.fr</a>
+				<a class="dark-grey-text" href="http://localhost:8000/"> Yukun.fr</a>
 			</div>
 					<!-- Copyright -->
 		</footer>

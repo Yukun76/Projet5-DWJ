@@ -101,6 +101,7 @@ class AdminController extends Controller
         $repository = $this->getDoctrine()->getRepository(Animal::class); 
         $animals = $repository->findAll(); 
 
+        // recherche du type/sexe/region des animaux
         $search->handleRequest($request);
         if ($search->isSubmitted() && $search->isValid()) {
             $critera = [];

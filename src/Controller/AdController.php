@@ -30,9 +30,9 @@ class AdController extends AbstractController
         if(!$annonce) {
             $annonce = new Ad();
         } else {
-              $annonce->setImage(
-                  new File($this->getParameter('animals_directory').'/'.$annonce->getImage())
-              );
+            $annonce->setImage(
+                new File($this->getParameter('animals_directory').'/'.$annonce->getImage())
+            );
         }
         
         $form = $this->createForm(AdType::class, $annonce);        

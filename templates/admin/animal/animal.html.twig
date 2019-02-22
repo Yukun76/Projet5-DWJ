@@ -1,7 +1,7 @@
 {% extends 'adminBase.html.twig' %}
 
 
-{% block title %}PetAdopt' : Home - Adopter un animal de compagnie !{% endblock %}
+{% block title %}PetAdopt' : Liste des animaux{% endblock %}
 {% block body %}
         {% for message in app.flashes('notice') %}
             <div class="change_mdp_alert_admin">
@@ -68,8 +68,8 @@
                         {{ animal.region.name }}
                     </td>
                     <td scope="row">
-                        <a class="btn btn-primary" href="{{path('pet_edit', { 'id': animal.id})}}">Editer</a>
-                        <a href="#" data-toggle="modal" data-target="#myModal" class="btn btn-danger" id="del-pet" data-billet-title="{{ animal.name }}" data-modal-confirm-url="{{path('del_pet', { 'id': animal.id})}}">Supprimer</a>
+                        <a class="btn btn-primary" href="{{ path('pet_edit', { 'id': animal.id}) }}">Editer</a>
+                        <a href="#" data-toggle="modal" data-target="#myModal" class="btn btn-danger" id="del-pet" data-billet-title="{{ animal.name }}" data-modal-confirm-url="{{ path('del_pet', { 'id': animal.id}) }}">Supprimer</a>
                         <hr class="new5">   
                     </td>
                 </tr>

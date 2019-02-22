@@ -211,5 +211,4 @@ class User implements UserInterface
         $this->token = $token;
         return $this;
     }
-
 }

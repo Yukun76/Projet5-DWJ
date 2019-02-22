@@ -1,5 +1,5 @@
 {% extends 'base.html.twig' %}
-{% block title %}PetAdopt' : Home - Adopter un animal de compagnie !{% endblock %}
+{% block title %}PetAdopt' : Information/Réservation !{% endblock %}
 {% block body %}
 	<article>
 		<div class="card-header" id="title_show">
@@ -42,10 +42,9 @@
 		</div>
 		<!-- line modal -->
 	</article>
-
 {% endblock %}
-{% block footer %}
 
+{% block footer %}
     <!-- Modal -->
     <div class="modal fade" id="myModal" role="dialog">
         <div class="modal-dialog">
@@ -57,7 +56,7 @@
                 </div>
                 <div class="modal-body">
                 	{{ form_start(formBook) }}
-                	{{form_errors(formBook)}}
+                	{{ form_errors(formBook) }}
                     <p>Vous êtes sur le point de réserver {{ annonce.animal.name }}</p> 
                 </div>
                 <div class="modal-footer">
@@ -69,25 +68,25 @@
         </div>
     </div>
 
-<script>
-$(document).ready(function(){
-    $modal = $('.modal');
-    $modal.find('form').on('submit', function(e) {
-        e.preventDefault();
+    <script>
+        $(document).ready(function(){
+            $modal = $('.modal');
+            $modal.find('form').on('submit', function(e) {
+                e.preventDefault();
 
-        $.ajax({
-            type: "POST",
-            url: "{{ path('reservation_accepted', { 'id': annonce.id}) }}",
-            data: $(this).serialize(),
-            success: function(message){
-                $("#reserve").replaceWith(message)
-                $("#myModal").modal('hide');
-            },
-            error: function(){
-                alert("Une erreur s'est produite, veuillez réessayer");
-            }
-        });
-    })
-}); 
- </script>
+                $.ajax({
+                    type: "POST",
+                    url: "{{ path('reservation_accepted', { 'id': annonce.id}) }}",
+                    data: $(this).serialize(),
+                    success: function(message){
+                        $("#reserve").replaceWith(message)
+                        $("#myModal").modal('hide');
+                    },
+                    error: function(){
+                        alert("Une erreur s'est produite, veuillez réessayer");
+                    }
+                });
+            })
+        }); 
+    </script>
 {% endblock %}

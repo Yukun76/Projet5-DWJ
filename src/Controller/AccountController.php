@@ -38,8 +38,6 @@ class AccountController extends AbstractController
      */
     public function mpdChange(request $request, UserPasswordEncoderInterface $encoder, ObjectManager $manager)
     {
-        $this->denyAccessUnlessGranted('IS_AUTHENTICATED_FULLY');
-
         $user = $this->getUser();
         $form = $this->createForm(ProfileType::class, $user);  
         $oldPassword = $request->request->get('profile')['oldPassword'];

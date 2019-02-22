@@ -1191,6 +1191,7 @@ iframe {
 
     #card_reserv {
         width: 300px;
+        display: block;
         margin-right: auto;
         margin-left: auto;
     }
@@ -1258,6 +1259,7 @@ iframe {
 
     hr.new5 {
         display: block;
+        margin-left: 5%;
     }
 
     .navigation_admin {
@@ -1267,6 +1269,16 @@ iframe {
 
     .change_mdp_alert_admin {
         margin-left: -120px;
+    }
+
+    #user_admin_title {
+        margin-left: -30%;
+        font-size: 35px;
+    }
+
+    #reserv_admin_title {
+        margin-left: -30%;
+        font-size: 35px;
     }
 }
 
@@ -1325,6 +1337,10 @@ iframe {
         width: 80%;
         margin-left: -70px;
         font-size: 13px;
+    }
+
+    hr.new5 {
+        margin-left: 10%;
     }
 
     .navigation_admin {
@@ -1483,6 +1499,18 @@ iframe {
 
     .navigation_admin {
         margin-left: -80px;
+    }
+
+    #user_admin_title {
+       margin-left: -35%;
+    }
+
+    #reserv_admin_title {
+        margin-left: -35%;
+    }
+
+     hr.new5 {
+        margin-left: 8%;
     }
 
      #add-btn-success {

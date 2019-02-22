@@ -1,5 +1,5 @@
 {% extends 'adminBase.html.twig' %}
-{% block title %}PetAdopt' : Home - Adopter un animal de compagnie !{% endblock %}
+{% block title %}PetAdopt' : Liste des Réservation !{% endblock %}
 {% block body %}
     {% for message in app.flashes('notice_del') %}
         <div class="change_mdp_alert_admin">
@@ -32,7 +32,6 @@
                     </td>
                     <td scope="row">
                         <a href="{{ path('ad_show', { 'id': booking.ad.id}) }}"> {{ booking.ad.animal.name }}</a>
-                        
                     </td>
                     <td scope="row">
                         <a href="#" data-toggle="modal" data-target="#myModal" class="btn btn-danger" id="del-reserv" data-billet-title="{{ booking.user.username }}" data-animal-name="{{ booking.ad.animal.name }}" data-modal-confirm-url="{{ path('del_admin_reservation', { 'id': booking.id}) }}">Supprimer</a>
@@ -40,9 +39,10 @@
                 </tr>
             {% else %}
                 <tr>
-                    <th>-</th>
-                    <th>Aucune réservation en cours</th>
-                    <th>-</th>
+                    <td>-</td>
+                    <td>Aucune réservation en cours</td>
+                    <td>-</td>
+                    <td></td>
                 </tr>
             {% endfor %}
         </tbody>
